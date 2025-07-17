@@ -39,13 +39,15 @@ export default function MuscadineBanner({ onOpenSettings }: MuscadineBannerProps
         <div className="flex justify-between items-center w-full mb-2">
           <a href="https://www.muscadine.box" className="font-serif text-2xl font-bold text-neutral-900 dark:text-gold-400 hover:underline" target="_blank" rel="noopener noreferrer">Muscadine</a>
           <div className="flex items-center gap-4">
-            <button
-              onClick={handleLoginClick}
+            <a
+              href="https://www.muscadine.box"
               className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-gold-400 hover:bg-stone-300 dark:hover:bg-stone-700 transition-colors font-medium shadow border border-stone-300 dark:border-stone-700"
-              aria-label={isLoggedIn ? "Go to profile" : "Login"}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Home"
             >
-              {isLoggedIn ? 'Profile' : 'Login'}
-            </button>
+              Home
+            </a>
             <button
               className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-gold-400 hover:bg-stone-300 dark:hover:bg-stone-700 transition-colors font-medium shadow border border-stone-300 dark:border-stone-700"
               onClick={handleSettingsClick}
