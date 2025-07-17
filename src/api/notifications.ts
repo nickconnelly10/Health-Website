@@ -1,15 +1,12 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { requireAuth } from './_authMiddleware';
 
 const prisma = new PrismaClient();
 
 export default async function handler(req: Request, res: Response) {
-  const user = await requireAuth(req, res);
-  if (!user) return;
   if (req.method === 'GET') {
     const notifications = await prisma.notification.findMany({
-      where: { OR: [{ userId: user.id }, { userId: null }] },
+      where: { userId: null },
       orderBy: { time: 'desc' },
       take: 10,
     });
@@ -21,7 +18,7 @@ export default async function handler(req: Request, res: Response) {
       return res.status(400).json({ error: 'Text required' });
     }
     const entry = await prisma.notification.create({
-      data: { text, userId: user.id },
+      data: { text, userId: null },
     });
     return res.status(201).json({ notification: entry });
   }

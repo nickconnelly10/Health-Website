@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { requireAuth } from './_authMiddleware';
 
 const prisma = new PrismaClient();
 
@@ -14,14 +13,13 @@ export default async function handler(req: Request, res: Response) {
     return res.status(200).json({ research });
   }
   if (req.method === 'POST') {
-    const user = await requireAuth(req, res);
-    if (!user) return;
     const { title, content } = req.body;
     if (!title || !content) {
       return res.status(400).json({ error: 'Title and content required' });
     }
+    // Anonymous research creation: authorId is omitted
     const entry = await prisma.research.create({
-      data: { title, content, authorId: user.id },
+      data: { title, content, authorId: undefined } as any,
     });
     return res.status(201).json({ research: entry });
   }

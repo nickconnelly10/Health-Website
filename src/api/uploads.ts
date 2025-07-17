@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { requireAuth } from './_authMiddleware';
 
 const prisma = new PrismaClient();
 
@@ -14,15 +13,12 @@ export default async function handler(req: Request, res: Response) {
     return res.status(200).json({ uploads });
   }
   if (req.method === 'POST') {
-    const user = await requireAuth(req, res);
-    if (!user) return;
-    // For now, just accept filename and url in body (stub for real file upload)
     const { filename, url } = req.body;
     if (!filename || !url) {
       return res.status(400).json({ error: 'Filename and url required' });
     }
     const entry = await prisma.upload.create({
-      data: { filename, url, userId: user.id },
+      data: { filename, url } as any,
     });
     return res.status(201).json({ upload: entry });
   }
