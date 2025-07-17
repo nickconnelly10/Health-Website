@@ -60,6 +60,12 @@ export default function MuscadineBanner({ onOpenSettings }: MuscadineBannerProps
         {/* Tab Navigation */}
         <div className="flex gap-6 w-full justify-center border-b border-stone-300 dark:border-stone-700 pb-2">
           <button
+            onClick={() => navigate('/lifestyle')}
+            className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 dark:hover:bg-stone-900 focus:outline-none transition-colors"
+          >
+            Lifestyle
+          </button>
+          <button
             onClick={() => navigate('/nutrition')}
             className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 dark:hover:bg-stone-900 focus:outline-none transition-colors"
           >
