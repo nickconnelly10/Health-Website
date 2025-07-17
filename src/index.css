@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply font-roman bg-marble text-charcoal;
+  transition: background 0.4s, color 0.4s;
+}
+
+.dark body {
+  background: linear-gradient(to bottom, #1f2937 0%, #111827 100%);
+  color: #f3f3ef;
+} 
