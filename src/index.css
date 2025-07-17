@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 html, body {
-  @apply font-roman bg-marble text-charcoal;
+  @apply font-serif bg-gray-100 text-gray-900;
   transition: background 0.4s, color 0.4s;
 }
 

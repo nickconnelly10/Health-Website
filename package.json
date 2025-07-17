@@ -12,7 +12,8 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
-    "setup": "npm install && npm run db:generate && npm run db:push"
+    "setup": "npm install && npm run db:generate && npm run db:push",
+    "test": "vitest run"
   },
   "dependencies": {
     "@prisma/client": "^6.11.1",
@@ -49,9 +50,12 @@
     "@types/react-dom": "^18.3.7",
     "@types/uuid": "^10.0.0",
     "eslint-plugin-react": "^7.37.5",
+    "jsdom": "^26.1.0",
+    "sucrase": "^3.35.0",
     "terser": "^5.43.1",
     "ts-interface-checker": "^1.0.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.36.0"
+    "typescript-eslint": "^8.36.0",
+    "vitest": "^3.2.4"
   }
 }
