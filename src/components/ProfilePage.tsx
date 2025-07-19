@@ -1,52 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import ResearchSubmissionForm from './ResearchSubmissionForm';
 
 export default function ProfilePage() {
-  const [user, setUser] = useState<any>(null);
-  const [uploads, setUploads] = useState<any[]>([]);
-  const [research, setResearch] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [user, setUser] = useState<any>({
+    username: 'Demo User',
+    email: 'demo@example.com',
+    avatar: null,
+    createdAt: new Date().toISOString(),
+    badges: '[]',
+    healthScore: 75
+  });
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) {
-      setError('Not logged in');
-      setLoading(false);
-      return;
-    }
-    fetch('/api/auth/me', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    if (!token) return;
+
+    fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
       .then(res => res.json())
       .then(data => {
         if (data.user) setUser(data.user);
-        else setError(data.error || 'Failed to load profile');
-        setLoading(false);
       })
       .catch(() => {
-        setError('Failed to load profile');
-        setLoading(false);
+        // Keep demo data on error
       });
-    // Fetch uploads for this user
-    fetch('/api/uploads', { headers: { Authorization: `Bearer ${token}` } })
-      .then(res => res.json())
-      .then(data => {
-        if (data.uploads) setUploads(data.uploads.filter((u: any) => u.user?.id === user?.id));
-      });
-    // Fetch research for this user
-    fetch('/api/research', { headers: { Authorization: `Bearer ${token}` } })
-      .then(res => res.json())
-      .then(data => {
-        if (data.research) setResearch(data.research.filter((r: any) => r.author?.id === user?.id));
-      });
-  }, [user?.id]);
-
-  if (loading) return <div className="text-center py-12 text-burgundy font-roman">Loading profile…</div>;
-  if (error) return <div className="text-center py-12 text-burgundy font-roman">{error}</div>;
+  }, []);
 
   return (
-    <div className="max-w-2xl mx-auto mt-12 bg-marble dark:bg-charcoal rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
+    <div className="max-w-2xl mx-auto mt-12 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
       <div className="flex items-center gap-6 mb-8">
         <img
           src={user.avatar || '/favicon.svg'}
@@ -55,11 +34,11 @@ export default function ProfilePage() {
         />
         <div>
           <h2 className="text-3xl font-bold text-burgundy mb-1">{user.username}</h2>
-          <div className="text-stone-700 dark:text-stone-200">{user.email}</div>
+          <div className="text-stone-700">{user.email}</div>
           <div className="text-stone-500 text-sm mt-1">Joined: {new Date(user.createdAt).toLocaleDateString()}</div>
         </div>
       </div>
-      <ResearchSubmissionForm onSubmitted={() => window.location.reload()} />
+      
       <div className="mb-8">
         <h3 className="text-xl font-semibold text-burgundy mb-2">Badges</h3>
         <div className="flex gap-3 flex-wrap">
@@ -68,6 +47,7 @@ export default function ProfilePage() {
           )) : <span className="text-stone-400">No badges yet</span>}
         </div>
       </div>
+      
       <div className="mb-8">
         <h3 className="text-xl font-semibold text-burgundy mb-2">Health Score</h3>
         <div className="w-full bg-charcoal/10 rounded-lg h-8 flex items-center">
@@ -80,26 +60,30 @@ export default function ProfilePage() {
         </div>
         <div className="text-stone-500 text-xs mt-2">Summary of recent AI interactions and habits.</div>
       </div>
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold text-burgundy mb-2">Recent Uploads</h3>
-        <ul className="space-y-1">
-          {uploads.length === 0 && <li className="text-stone-400">No uploads yet</li>}
-          {uploads.map((u, i) => (
-            <li key={i} className="text-burgundy">
-              <a href={u.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-burgundy font-semibold">{u.filename}</a>
-              <span className="text-stone-500 text-xs ml-2">{new Date(u.createdAt).toLocaleDateString()}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold text-burgundy mb-2">Your Research Submissions</h3>
-        <ul className="space-y-1">
-          {research.length === 0 && <li className="text-stone-400">No research yet</li>}
-          {research.map((r, i) => (
-            <li key={i} className="text-burgundy">{r.title} <span className="text-stone-500 text-xs">{new Date(r.createdAt).toLocaleDateString()}</span></li>
-          ))}
-        </ul>
+
+      <div className="bg-stone-50 rounded-2xl border border-stone-200 p-6">
+        <h3 className="text-xl font-bold text-burgundy mb-4">Research Repository</h3>
+        <p className="text-stone-700 mb-4">
+          Contribute to our research collection by submitting papers or requesting new additions.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="https://github.com/nickconnelly10/muscadine.box/tree/main/src/protocols"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-burgundy text-marble font-bold px-6 py-3 rounded-lg shadow-md border border-burgundy hover:bg-marble hover:text-burgundy transition-colors text-center"
+          >
+            View Repository
+          </a>
+          <a
+            href="https://github.com/nickconnelly10/muscadine.box/issues/new?template=add-research-paper.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-stone-200 text-stone-700 font-bold px-6 py-3 rounded-lg shadow-md border border-stone-300 hover:bg-stone-300 transition-colors text-center"
+          >
+            Submit Paper Request
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import ChatWindow from './components/ChatWindow';
 import Dashboard from './components/Dashboard';
 import ProfilePage from './components/ProfilePage';
-import ProtocolUploader from './components/ProtocolUploader';
 import MuscadineBanner from './components/MuscadineBanner';
 import MuscadineFooter from './components/MuscadineFooter';
 import NutritionPage from './components/NutritionPage';
@@ -23,7 +22,6 @@ export default function App() {
             <Route path="/chat" element={<ChatWindow />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/settings" element={<ProtocolUploader />} />
             <Route path="*" element={<Navigate to="/lifestyle" replace />} />
           </Routes>
         </main>

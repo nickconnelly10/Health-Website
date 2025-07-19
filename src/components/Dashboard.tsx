@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationsWidget from './NotificationsWidget';
 
 function Widget({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="bg-marble dark:bg-charcoal rounded-2xl border border-burgundy shadow-md p-6 flex-1 min-w-[250px]">
+    <section className="bg-marble rounded-2xl border border-burgundy shadow-md p-6 flex-1 min-w-[250px]">
       <h3 className="text-lg font-bold text-burgundy mb-3 font-roman">{title}</h3>
       {children}
     </section>
@@ -12,88 +11,70 @@ function Widget({ title, children }: { title: string; children: React.ReactNode 
 }
 
 export default function Dashboard() {
-  const [contributors, setContributors] = useState<any[]>([]);
-  const [research, setResearch] = useState<any[]>([]);
-  const [uploads, setUploads] = useState<any[]>([]);
-  const [notifications, setNotifications] = useState<any[]>([]);
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setLoading(true);
-    Promise.all([
-      fetch('/api/research', { headers: { Authorization: `Bearer ${token}` } }).then(r => r.json()),
-      fetch('/api/uploads', { headers: { Authorization: `Bearer ${token}` } }).then(r => r.json()),
-      fetch('/api/notifications', { headers: { Authorization: `Bearer ${token}` } }).then(r => r.json()),
-    ]).then(([researchRes, uploadsRes, notifRes]) => {
-      setResearch(researchRes.research || []);
-      setUploads(uploadsRes.uploads || []);
-      setNotifications(notifRes.notifications || []);
-      // Top contributors: aggregate from uploads and research authors
-      const userScores: Record<string, number> = {};
-      (uploadsRes.uploads || []).forEach((u: any) => {
-        const user = u.user?.username || 'unknown';
-        userScores[user] = (userScores[user] || 0) + 1;
-      });
-      (researchRes.research || []).forEach((r: any) => {
-        const user = r.author?.username || 'unknown';
-        userScores[user] = (userScores[user] || 0) + 2;
-      });
-      const sorted = Object.entries(userScores).sort((a, b) => b[1] - a[1]);
-      setContributors(sorted.map(([username, score]) => ({ username, score })));
+    if (!token) {
       setLoading(false);
-    }).catch(e => {
-      setError('Failed to load dashboard data');
-      setLoading(false);
-    });
+      return;
+    }
+
+    fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+      .then(res => res.json())
+      .then(data => {
+        if (data.user) setUser(data.user);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
-  if (loading) return <div className="text-center py-12 text-burgundy font-roman">Loading dashboard…</div>;
-  if (error) return <div className="text-center py-12 text-burgundy font-roman">{error}</div>;
+  if (loading) return <div className="text-center py-8 text-burgundy font-roman">Loading dashboard...</div>;
 
   return (
-    <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 font-roman">
-      <div className="flex flex-col gap-8">
-        <Widget title="Top Contributors">
-          <ol className="list-decimal pl-5 space-y-1">
-            {contributors.length === 0 && <li className="text-stone-400">No contributors yet</li>}
-            {contributors.map((c, i) => (
-              <li key={i} className="text-burgundy font-semibold">{c.username} <span className="text-stone-500 font-normal">({c.score})</span></li>
-            ))}
-          </ol>
-        </Widget>
-        <Widget title="Recent Research">
-          <ul className="space-y-1">
-            {research.length === 0 && <li className="text-stone-400">No research yet</li>}
-            {research.map((r, i) => (
-              <li key={i} className="text-burgundy">{r.title} <span className="text-stone-500">by {r.author?.username || 'unknown'}</span></li>
-            ))}
-          </ul>
-        </Widget>
-        <Widget title="Recent Uploads">
-          <ul className="space-y-1">
-            {uploads.length === 0 && <li className="text-stone-400">No uploads yet</li>}
-            {uploads.map((u, i) => (
-              <li key={i} className="text-burgundy">
-                <a href={u.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-burgundy font-semibold">{u.filename}</a>
-                <span className="text-stone-500 text-xs ml-2">by {u.user?.username || 'unknown'} on {new Date(u.createdAt).toLocaleDateString()}</span>
-              </li>
-            ))}
-          </ul>
-        </Widget>
-      </div>
-      <div className="flex flex-col gap-8">
-        <Widget title="Community Chat Preview">
-          <div className="space-y-2">
-            {/* For now, just link to /community */}
-            <div className="mt-2 text-right">
-              <Link to="/community" className="text-burgundy underline">Open Community Chat</Link>
-            </div>
+    <div className="max-w-6xl mx-auto mt-12 px-6">
+      <h1 className="text-3xl font-bold text-burgundy mb-8 font-roman">Dashboard</h1>
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <Widget title="Quick Actions">
+          <div className="space-y-3">
+            <Link to="/chat" className="block text-burgundy hover:underline font-medium">Start Chat</Link>
+            <Link to="/lifestyle" className="block text-burgundy hover:underline font-medium">View Lifestyle Tips</Link>
+            <Link to="/nutrition" className="block text-burgundy hover:underline font-medium">Nutrition Guide</Link>
+            <Link to="/physical-activity" className="block text-burgundy hover:underline font-medium">Exercise Plans</Link>
           </div>
         </Widget>
-        <Widget title="Notifications">
-          <NotificationsWidget />
+
+        <Widget title="Health Score">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-burgundy mb-2">{user?.healthScore || 0}</div>
+            <div className="text-sm text-stone-600">Based on your recent activity</div>
+          </div>
+        </Widget>
+
+        <Widget title="Recent Activity">
+          <div className="text-sm text-stone-600">
+            {user ? 'Welcome back!' : 'Sign in to track your progress'}
+          </div>
+        </Widget>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <Widget title="Resources">
+          <div className="space-y-2 text-sm">
+            <a href="/privacy.html" className="block text-burgundy hover:underline">Privacy Policy</a>
+            <a href="/terms.html" className="block text-burgundy hover:underline">Terms of Service</a>
+            <a href="https://github.com/nickconnelly10/muscadine.box" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">Source Code</a>
+          </div>
+        </Widget>
+        <Widget title="Research Repository">
+          <div className="space-y-2 text-sm">
+            <a href="https://github.com/nickconnelly10/muscadine.box/tree/main/src/protocols" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">View Research Papers</a>
+            <a href="https://github.com/nickconnelly10/muscadine.box/issues/new?template=add-research-paper.md" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">Submit Paper Request</a>
+          </div>
         </Widget>
       </div>
     </div>

@@ -7,9 +7,4 @@
 html, body {
   @apply font-serif bg-gray-100 text-gray-900;
   transition: background 0.4s, color 0.4s;
-}
-
-.dark body {
-  background: linear-gradient(to bottom, #1f2937 0%, #111827 100%);
-  color: #f3f3ef;
 } 

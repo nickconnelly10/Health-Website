@@ -5,16 +5,9 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 // Import API routes
-import authRoutes from './api/auth';
 import chatHandler from './api/chat';
 import userChatHandler from './api/userChat';
-import communityChatHandler from './api/communityChat';
 import dashboardHandler from './api/dashboard';
-import researchHandler from './api/research';
-import uploadsHandler from './api/uploads';
-import notificationsHandler from './api/notifications';
-import visionHandler from './api/vision';
-import wearablesHandler from './api/wearables';
 import ingestHandler from './api/ingest';
 
 // Load environment variables
@@ -37,19 +30,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API Routes
-app.use('/api/auth', authRoutes);
-
 // Individual API endpoints
 app.all('/api/chat', chatHandler);
 app.all('/api/userChat', userChatHandler);
-app.all('/api/communityChat', communityChatHandler);
 app.all('/api/dashboard', dashboardHandler);
-app.all('/api/research', researchHandler);
-app.all('/api/uploads', uploadsHandler);
-app.all('/api/notifications', notificationsHandler);
-app.all('/api/vision', visionHandler);
-app.all('/api/wearables', wearablesHandler);
 app.all('/api/ingest', ingestHandler);
 
 // Health check endpoint
