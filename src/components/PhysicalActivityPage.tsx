@@ -71,8 +71,15 @@ export default function PhysicalActivityPage() {
           <p className="text-sm text-stone-800 mb-2">
             Start simple—download Strava to track runs or workouts. And follow our Strava club @ NEST Run Club.
           </p>
-          <div className="rounded-xl overflow-hidden border border-stone-300 bg-white">
-            <iframe allowTransparency={true} frameBorder='0' height='160' scrolling='no' src='https://www.strava.com/clubs/1284036/latest-rides/d1fef7f441c5fc4894f0308226fa46da1465ff16?show_rides=false' width='300'></iframe>
+          <div className="rounded-2xl border-2 border-orange-400 bg-white shadow-lg p-2 flex flex-col items-center gap-2 w-fit mx-auto">
+            <div className="flex items-center gap-2 mb-1">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Strava_Logo.svg" alt="Strava logo" className="h-6 w-auto" />
+              <span className="text-lg font-bold text-orange-500 tracking-wide">NEST RUN CLUB</span>
+            </div>
+            <iframe allowTransparency={true} frameBorder='0' height='160' scrolling='no' src='https://www.strava.com/clubs/1284036/latest-rides/d1fef7f441c5fc4894f0308226fa46da1465ff16?show_rides=false' width='320' className="rounded-lg border border-stone-200"></iframe>
+            <a href="https://www.strava.com/clubs/1284036" target="_blank" rel="noopener noreferrer" className="mt-1 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-1.5 rounded-lg shadow transition-colors text-center w-full">
+              View Club on Strava
+            </a>
           </div>
         </div>
         <div className="mt-8">

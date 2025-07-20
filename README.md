@@ -1,4 +1,4 @@
-# Muscadine Health AI
+# Muscadine Launch Health
 
 **Institutional-grade AI chat for health and financial self-sovereignty.**
 
@@ -90,6 +90,10 @@
 - `npm run db:studio` — Open Prisma Studio for database management
 - `npm run db:migrate` — Run database migrations
 
+## Product
+
+- **Launch Health**: `https://health.muscadine.box`
+
 ---
 
-*Built on BITCOIN • Secure • Transparent • Professional* 
+*Built on BITCOIN • Secure • Transparent • Professional • Strava Club* 
