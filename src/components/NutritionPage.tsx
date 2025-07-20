@@ -27,8 +27,8 @@ export default function NutritionPage() {
             <span className="font-bold">Build Your Plate, Paleo‑Style</span>
             <ul className="ml-5 list-disc">
               <li><span className="font-semibold">Carbohydrates:</span> Choose colorful, nutrient‑dense plant foods—dark leafy greens, cruciferous vegetables, berries, sweet potatoes, rice, plantains, and winter squash.</li>
-              <li><span className="font-semibold">Protein:</span> Opt for pasture‑raised chicken, grass‑fed beef, wild salmon, free‑range eggs, and other animal sources.</li>
-              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, and animal fats like beef tallow, glee and lard. Avoid seed oils. Nuts and beans are great too.</li>
+              <li><span className="font-semibold">Protein:</span> Opt for pasture‑raised chicken, grass‑fed beef, wild salmon, free‑range eggs, and other animal sources. Focus on protein quality—animal proteins are more digestible and provide complete amino acid profiles for better absorption and utilization. Plant proteins like nuts and beans are great complementary sources but may need to be combined for complete amino acid profiles.</li>
+              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, and animal fats like beef tallow, glee and lard. Avoid seed oils. Nuts and beans are excellent sources of healthy fats and fiber too.</li>
             </ul>
           </li>
           <li>
