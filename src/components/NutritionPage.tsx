@@ -73,7 +73,7 @@ export default function NutritionPage() {
           <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Immune Support</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">High-dose Vitamin C:</span> Good when sick, like elderberry. Do not take ascorbic acid for vitamin C.</li>
+              <li><span className="font-semibold">High-dose Vitamin C:</span> Good when sick, like elderberry. Choose liposomal vitamin C for better bioavailability and longer half-life in your body. Your body can handle high doses since vitamin C is water soluble.</li>
               <li><span className="font-semibold">Elderberry:</span> Natural immune support, especially helpful during cold and flu season.</li>
               <li><span className="font-semibold">Zinc:</span> Supports immune function and wound healing. Take with food to avoid stomach upset.</li>
             </ul>
@@ -122,7 +122,7 @@ export default function NutritionPage() {
               <li>Consult healthcare provider before starting new supplements</li>
               <li>Be aware of potential interactions with medications</li>
               <li>Store supplements properly in a cool, dry place</li>
-            </ul>
+        </ul>
           </div>
         </div>
       </aside>

@@ -4,11 +4,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req: Request, res: Response) {
-  // For now, treat all users as anonymous since auth middleware is not available
-  const user = null;
-  
   if (req.method === 'GET') {
-    // Return empty chat history for anonymous users
+    // Return empty chat history for users
     return res.status(200).json({ chats: [] });
   }
   
@@ -25,7 +22,7 @@ export default async function handler(req: Request, res: Response) {
       'Summary bullet 2',
     ];
     
-    // Anonymous user - just return response without persisting
+    // Return response without persisting
     return res.status(201).json({ 
       chat: { 
         id: 'anonymous-' + Date.now(),

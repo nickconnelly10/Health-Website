@@ -4,14 +4,10 @@ import cors from 'cors';
 import { json } from 'body-parser';
 import chatHandler from './src/api/chat';
 import ingestHandler from './src/api/ingest';
-import authRouter from './src/api/auth';
 
 const app = express();
 app.use(cors());
 app.use(json());
-
-// Auth routes
-app.use('/api/auth', authRouter);
 
 // Ingest & chat endpoints
 app.use('/api/ingest', ingestHandler);

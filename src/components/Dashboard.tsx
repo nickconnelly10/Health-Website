@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Widget({ title, children }: { title: string; children: React.ReactNode }) {
@@ -11,28 +11,9 @@ function Widget({ title, children }: { title: string; children: React.ReactNode 
 }
 
 export default function Dashboard() {
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setLoading(false);
-      return;
-    }
-
-    fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
-      .then(res => res.json())
-      .then(data => {
-        if (data.user) setUser(data.user);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div className="text-center py-8 text-burgundy font-roman">Loading dashboard...</div>;
+  const user = {
+    healthScore: 75
+  };
 
   return (
     <div className="max-w-6xl mx-auto mt-12 px-6">
@@ -50,14 +31,14 @@ export default function Dashboard() {
 
         <Widget title="Health Score">
           <div className="text-center">
-            <div className="text-3xl font-bold text-burgundy mb-2">{user?.healthScore || 0}</div>
+            <div className="text-3xl font-bold text-burgundy mb-2">{user.healthScore}</div>
             <div className="text-sm text-stone-600">Based on your recent activity</div>
           </div>
         </Widget>
 
         <Widget title="Recent Activity">
           <div className="text-sm text-stone-600">
-            {user ? 'Welcome back!' : 'Sign in to track your progress'}
+            Welcome! Explore our health resources to get started.
           </div>
         </Widget>
       </div>

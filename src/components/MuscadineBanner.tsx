@@ -3,17 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function MuscadineBanner() {
   const navigate = useNavigate();
-  const isLoggedIn = !!localStorage.getItem('token');
-
-  const handleLoginClick = () => {
-    if (isLoggedIn) {
-      // If logged in, go to profile
-      navigate('/profile');
-    } else {
-      // If not logged in, go to login
-      navigate('/login');
-    }
-  };
 
   return (
     <nav className="w-full bg-white/90 backdrop-blur-md border-b border-stone-200/50 sticky top-0 z-50 transition-colors">
@@ -30,13 +19,6 @@ export default function MuscadineBanner() {
             >
               Home
             </a>
-            <button
-              className="px-4 py-2 rounded-lg bg-stone-200 text-stone-700 hover:bg-stone-300 transition-colors font-medium shadow border border-stone-300"
-              onClick={handleLoginClick}
-              aria-label={isLoggedIn ? "Go to profile" : "Login"}
-            >
-              {isLoggedIn ? "Profile" : "Login"}
-            </button>
           </div>
         </div>
         {/* Tab Navigation */}

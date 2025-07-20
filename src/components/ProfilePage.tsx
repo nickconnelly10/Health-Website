@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function ProfilePage() {
-  const [user, setUser] = useState<any>({
+  const user = {
     username: 'Demo User',
     email: 'demo@example.com',
     avatar: null,
     createdAt: new Date().toISOString(),
     badges: '[]',
     healthScore: 75
-  });
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
-    fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
-      .then(res => res.json())
-      .then(data => {
-        if (data.user) setUser(data.user);
-      })
-      .catch(() => {
-        // Keep demo data on error
-      });
-  }, []);
+  };
 
   return (
     <div className="max-w-2xl mx-auto mt-12 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
