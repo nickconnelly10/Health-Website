@@ -13,7 +13,7 @@ export default function NutritionPage() {
         <ul className="space-y-5 text-base text-stone-800 mb-6">
           <li>
             <span className="font-bold">Shop the Perimeter</span><br />
-            Focus on whole foods—fresh produce, pasture‑raised meats, wild‑caught fish, nuts, and seeds—found around the edges of the store.<br />
+            Focus on whole foods—fresh produce, pasture‑raised meats, and wild‑caught fish —found around the edges of the store.<br />
             Avoid the middle aisles where added sugars, refined oils, preservatives, and chemicals hide.
           </li>
           <li>
@@ -26,9 +26,9 @@ export default function NutritionPage() {
           <li>
             <span className="font-bold">Build Your Plate, Paleo‑Style</span>
             <ul className="ml-5 list-disc">
-              <li><span className="font-semibold">Carbohydrates:</span> Choose colorful, nutrient‑dense plant foods—dark leafy greens, cruciferous vegetables, berries, sweet potatoes, plantains, and winter squash.</li>
+              <li><span className="font-semibold">Carbohydrates:</span> Choose colorful, nutrient‑dense plant foods—dark leafy greens, cruciferous vegetables, berries, sweet potatoes, rice, plantains, and winter squash.</li>
               <li><span className="font-semibold">Protein:</span> Opt for pasture‑raised chicken, grass‑fed beef, wild salmon, free‑range eggs, and other animal sources.</li>
-              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, nuts, and seeds for sustained energy and brain health.</li>
+              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, and animal fats like beef tallow, glee and lard. Avoid seed oils. Nuts and beans are great too.</li>
             </ul>
           </li>
           <li>
@@ -39,19 +39,93 @@ export default function NutritionPage() {
             <span className="font-bold">Hydration</span><br />
             Drink filtered water throughout the day. Aim for half your body weight in ounces daily. Add lemon, cucumber, or mint for flavor without artificial sweeteners.
           </li>
+          <li>
+            <span className="font-bold">Batch-Cooking</span><br />
+            To save time and avoid fast food, cook in bulk so you always have meals ready to heat and eat.
+          </li>
         </ul>
       </div>
 
       {/* Supplement Sidebar */}
       <aside className="w-full md:w-80 flex-shrink-0 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-8 font-roman h-fit">
-        <h3 className="text-2xl font-bold text-burgundy mb-4">Supplements</h3>
-        <ul className="space-y-3 text-base text-stone-800">
-          <li><span className="font-bold">Whole Foods First:</span> Prioritize nutrients from real food before considering supplements.</li>
-          <li><span className="font-bold">Research Quality:</span> Choose reputable brands and check for third-party testing.</li>
-          <li><span className="font-bold">Personal Needs:</span> Consider vitamin D, magnesium, or omega-3s if you have a known deficiency or dietary gap.</li>
-          <li><span className="font-bold">Consult a Professional:</span> Talk to a healthcare provider before starting new supplements, especially if you take medications.</li>
-          <li><span className="font-bold">Consistency:</span> Take supplements as directed and monitor for any side effects.</li>
-        </ul>
+        <h3 className="text-2xl font-bold text-burgundy mb-4">Supplements Only When Needed</h3>
+        
+        <div className="mb-4">
+          <h4 className="text-lg font-bold text-burgundy mb-2">Micronutrients (Vitamins & Minerals)</h4>
+          <p className="text-sm text-stone-800 mb-2">
+            Since whole foods aren't processed, they come with natural micronutrients and phytochemicals in plants and animals, which have all sorts of benefits. Avoid gummies and anything with added sugar. Vitamins in pills have more bioavailability.
+          </p>
+          <p className="text-sm text-stone-800">
+            Whole foods should be your first source of nutrients. Always research a supplement (how it's made, half-life, methylation, and its effects) before taking it.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Immune Support</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">High-dose Vitamin C:</span> Good when sick, like elderberry. Do not take ascorbic acid for vitamin C.</li>
+              <li><span className="font-semibold">Elderberry:</span> Natural immune support, especially helpful during cold and flu season.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Sleep Support</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Magnesium Glycinate:</span> Gentle on the stomach and promotes better sleep quality.</li>
+              <li><span className="font-semibold">Melatonin:</span> Use with caution - can affect natural hormone production and cause dependency. Best for short-term use only.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Mitochondria Support</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Supplements that support cellular energy production and mitochondrial function.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Energy Support</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Natural supplements to boost energy levels and combat fatigue.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Essential Nutrients</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Multivitamins:</span> Do thorough research about what's in it and quality. Make sure it doesn't have folic acid (should have methylated folate instead). Avoid gummy versions which often contain added sugars and artificial ingredients.</li>
+              <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure.</li>
+              <li><span className="font-semibold">Omega-3s:</span> Support brain health, reduce inflammation, and promote heart health. Choose high-quality fish oil.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Methylation Support</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Take niche supplements like methylation support when needed</li>
+              <li><span className="font-semibold">Folate:</span> Find methylated folate, not folic acid for better absorption and utilization.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Gut Health</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Avoid Probiotic Gummies:</span> More natural solutions like fermented foods (yogurt, kombucha) are better.</li>
+              <li><span className="font-semibold">Prebiotics:</span> Great for feeding beneficial gut bacteria and supporting digestive health.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Safety Guidelines</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Start with one supplement at a time to monitor effects</li>
+              <li>Consult healthcare provider before starting new supplements</li>
+              <li>Be aware of potential interactions with medications</li>
+              <li>Store supplements properly in a cool, dry place</li>
+            </ul>
+          </div>
+        </div>
       </aside>
     </div>
   );
