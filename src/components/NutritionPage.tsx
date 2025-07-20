@@ -72,7 +72,7 @@ export default function NutritionPage() {
             <h4 className="text-lg font-bold text-burgundy mb-2">Fat-Soluble Vitamins</h4>
             <ul className="text-sm text-stone-800 space-y-1">
               <li><span className="font-semibold">Vitamin A:</span> Supports vision, immune function, and skin health.</li>
-              <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure.</li>
+              <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure. Morning or evening sunlight is a great way to increase vitamin D (it's a hormone your body makes, not a vitamin).</li>
               <li><span className="font-semibold">Vitamin K2:</span> Important for bone and cardiovascular health.</li>
             </ul>
           </div>
@@ -80,10 +80,8 @@ export default function NutritionPage() {
           <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Water-Soluble Vitamins</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">B12:</span> Essential for nerve function and energy production. Choose methylcobalamin form for better absorption.</li>
+              <li><span className="font-semibold">B Complex:</span> B vitamins (including B1, B2, B3, B5, B6, B7, B9/folate, and B12) support energy, brain health, and methylation. Methylated forms (like methylfolate and methylcobalamin) are best absorbed and utilized by the body.</li>
               <li><span className="font-semibold">Vitamin C:</span> See Immune Support below for details.</li>
-              <li><span className="font-semibold">B6 (P5P):</span> See Methylation Support below for details.</li>
-              <li><span className="font-semibold">Folate:</span> See Methylation Support below for details.</li>
             </ul>
           </div>
 
@@ -116,7 +114,7 @@ export default function NutritionPage() {
           <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Immune Support</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">High-dose Vitamin C:</span> Good when sick, like elderberry. Choose liposomal vitamin C for better bioavailability and longer half-life in your body. Your body can handle high doses since vitamin C is water soluble.</li>
+              <li><span className="font-semibold">High-dose Vitamin C:</span> Choose liposomal vitamin C for better bioavailability and longer half-life in your body. Your body can handle high doses since vitamin C is water soluble.</li>
               <li><span className="font-semibold">Elderberry:</span> Natural immune support, especially helpful during cold and flu season.</li>
               <li><span className="font-semibold">Zinc:</span> Supports immune function and wound healing. Take with food to avoid stomach upset.</li>
             </ul>
