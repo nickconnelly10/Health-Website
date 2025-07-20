@@ -62,7 +62,6 @@ export default function PhysicalActivityPage() {
           <li><span className="font-semibold">Start Small:</span> Begin with 5-10 minutes daily and build gradually</li>
           <li><span className="font-semibold">Consistency First:</span> Focus on showing up regularly over intensity</li>
           <li><span className="font-semibold">Listen to Your Body:</span> Pay attention to signals and adjust accordingly</li>
-          <li><span className="font-semibold">Celebrate Progress:</span> Acknowledge small victories along the way</li>
           <li><span className="font-semibold">Find What You Enjoy:</span> Choose activities that bring you joy</li>
           <li><span className="font-semibold">Build Gradually:</span> Increase intensity and duration over time</li>
           <li><span className="font-semibold">Rest is Important:</span> Include recovery days in your routine</li>

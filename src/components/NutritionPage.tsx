@@ -28,7 +28,7 @@ export default function NutritionPage() {
             <ul className="ml-5 list-disc">
               <li><span className="font-semibold">Carbohydrates:</span> Choose colorful, nutrient‑dense plant foods—dark leafy greens, cruciferous vegetables, berries, sweet potatoes, rice, plantains, and winter squash.</li>
               <li><span className="font-semibold">Protein:</span> Opt for pasture‑raised chicken, grass‑fed beef, wild salmon, free‑range eggs, and other animal sources. Focus on protein quality—animal proteins are more digestible and provide complete amino acid profiles for better absorption and utilization. Plant proteins like nuts and beans are great complementary sources but may need to be combined for complete amino acid profiles.</li>
-              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, and animal fats like beef tallow, glee and lard. Avoid seed oils. Nuts and beans are excellent sources of healthy fats and fiber too.</li>
+              <li><span className="font-semibold">Healthy Fats:</span> Include avocados, olive oil, coconut oil, and animal fats like beef tallow, glee and lard. Avoid seed oils.</li>
             </ul>
           </li>
           <li>
@@ -62,10 +62,20 @@ export default function NutritionPage() {
 
         <div className="space-y-4">
           <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Essential Nutrients</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Multivitamins:</span> Do thorough research about what's in it and quality. Make sure it doesn't have folic acid (should have methylated folate instead). Avoid gummy versions which often contain added sugars and artificial ingredients.</li>
+              <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure.</li>
+              <li><span className="font-semibold">B12:</span> Essential for nerve function and energy production. Choose methylcobalamin form for better absorption.</li>
+            </ul>
+          </div>
+
+          <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Immune Support</h4>
             <ul className="text-sm text-stone-800 space-y-1">
               <li><span className="font-semibold">High-dose Vitamin C:</span> Good when sick, like elderberry. Do not take ascorbic acid for vitamin C.</li>
               <li><span className="font-semibold">Elderberry:</span> Natural immune support, especially helpful during cold and flu season.</li>
+              <li><span className="font-semibold">Zinc:</span> Supports immune function and wound healing. Take with food to avoid stomach upset.</li>
             </ul>
           </div>
 
@@ -74,37 +84,25 @@ export default function NutritionPage() {
             <ul className="text-sm text-stone-800 space-y-1">
               <li><span className="font-semibold">Magnesium Glycinate:</span> Gentle on the stomach and promotes better sleep quality.</li>
               <li><span className="font-semibold">Melatonin:</span> Use with caution - can affect natural hormone production and cause dependency. Best for short-term use only.</li>
+              <li><span className="font-semibold">L-Theanine:</span> Natural amino acid that promotes relaxation and better sleep quality.</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold text-burgundy mb-2">Mitochondria Support</h4>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Energy & Brain Health</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li>Supplements that support cellular energy production and mitochondrial function.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold text-burgundy mb-2">Energy Support</h4>
-            <ul className="text-sm text-stone-800 space-y-1">
-              <li>Natural supplements to boost energy levels and combat fatigue.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold text-burgundy mb-2">Essential Nutrients</h4>
-            <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">Multivitamins:</span> Do thorough research about what's in it and quality. Make sure it doesn't have folic acid (should have methylated folate instead). Avoid gummy versions which often contain added sugars and artificial ingredients.</li>
-              <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure.</li>
               <li><span className="font-semibold">Omega-3s:</span> Support brain health, reduce inflammation, and promote heart health. Choose high-quality fish oil.</li>
+              <li><span className="font-semibold">CoQ10:</span> Supports cellular energy production and heart health, especially important as we age.</li>
+              <li><span className="font-semibold">Creatine:</span> Natural compound that supports muscle strength and brain function.</li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Methylation Support</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li>Take niche supplements like methylation support when needed</li>
               <li><span className="font-semibold">Folate:</span> Find methylated folate, not folic acid for better absorption and utilization.</li>
+              <li><span className="font-semibold">B6 (P5P):</span> Active form of vitamin B6 that supports methylation and neurotransmitter production.</li>
+              <li>Take niche supplements like methylation support when needed</li>
             </ul>
           </div>
 
@@ -113,6 +111,7 @@ export default function NutritionPage() {
             <ul className="text-sm text-stone-800 space-y-1">
               <li><span className="font-semibold">Avoid Probiotic Gummies:</span> More natural solutions like fermented foods (yogurt, kombucha) are better.</li>
               <li><span className="font-semibold">Prebiotics:</span> Great for feeding beneficial gut bacteria and supporting digestive health.</li>
+              <li><span className="font-semibold">Glutamine:</span> Amino acid that supports gut lining integrity and digestive health.</li>
             </ul>
           </div>
 
