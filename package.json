@@ -1,4 +1,7 @@
 {
+  "name": "muscadine-health-ai",
+  "version": "0.0.11",
+  "description": "Institutional-grade AI chat for health and financial self-sovereignty",
   "scripts": {
     "dev": "concurrently \"vite\" \"ts-node -P tsconfig.server.json src/server.ts\"",
     "dev:frontend": "vite",
