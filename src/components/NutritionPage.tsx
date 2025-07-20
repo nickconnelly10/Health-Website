@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function NutritionPage() {
   return (
-    <div className="flex flex-col md:flex-row max-w-5xl mx-auto mt-12 gap-8">
+    <div className="flex flex-col md:flex-row max-w-7xl mx-auto mt-12 gap-8">
       {/* Main Content */}
-      <div className="flex-1 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
+      <div className="w-full md:w-1/2 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
         <h2 className="text-3xl font-bold text-burgundy mb-4 font-roman">Nutrition</h2>
         <p className="mb-6 text-lg text-stone-700 font-semibold">
           Inspired by <span className="italic">The Paleo Cure</span> by Chris Kresser, these whole‑foods principles will boost your energy and health:
@@ -47,7 +47,7 @@ export default function NutritionPage() {
       </div>
 
       {/* Supplement Sidebar */}
-      <aside className="w-full md:w-80 flex-shrink-0 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-8 font-roman h-fit">
+      <aside className="w-full md:w-1/2 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-8 font-roman h-fit">
         <h3 className="text-2xl font-bold text-burgundy mb-4">Supplements Only When Needed</h3>
         
         <div className="mb-4">
