@@ -28,7 +28,7 @@ export default function PhysicalActivityPage() {
             <span className="font-bold">Aerobic Activity (2–4×/week)</span>
             <ul className="ml-5 list-disc">
               <li>Running, cycling, swimming, or water aerobics.</li>
-              <li><span className="font-semibold">Sprinting:</span> Excellent for body mechanics, energy, and muscle development. I highly recommend it, but caution against sprinting without proper training—build running endurance and mobility first to avoid injury.</li>
+              <li>Sprinting: Excellent for body mechanics, energy, and muscle development. I highly recommend it, but caution against sprinting without proper training—build running endurance and mobility first to avoid injury.</li>
               <li><span className="font-semibold">Getting Started:</span> Begin with walking, then focus on time rather than distance. Start with 10 minutes and gradually increase. Be consistent and you'll see results. I run 3 times per week for 30 minutes each.</li>
             </ul>
           </li>
@@ -40,7 +40,7 @@ export default function PhysicalActivityPage() {
           
           <li>
             <span className="font-bold">Recreational & Functional (1–2×/week)</span><br />
-            Dancing, obstacle courses, or primal movement. Even playing sports like soccer or pickleball is great.
+            Enjoy recreational movement such as dancing, obstacle courses, primal movement, or participating in sports like soccer, pickleball, or any activity that keeps you active and engaged.
           </li>
           
           <li>
@@ -65,8 +65,30 @@ export default function PhysicalActivityPage() {
           <li><span className="font-semibold">Find What You Enjoy:</span> Choose activities that bring you joy</li>
           <li><span className="font-semibold">Build Gradually:</span> Increase intensity and duration over time</li>
           <li><span className="font-semibold">Rest is Important:</span> Include recovery days in your routine</li>
-          <li><span className="font-semibold">Track Your Progress:</span> Keep a simple log of your workouts</li>
         </ul>
+        <div className="mt-8">
+          <h4 className="text-lg font-bold text-burgundy mb-2">Track Your Progress</h4>
+          <p className="text-sm text-stone-800 mb-2">
+            Start simple—download Strava to track runs or workouts. And follow our Strava club @ NEST Run Club.
+          </p>
+          <div className="rounded-xl overflow-hidden border border-stone-300 bg-white">
+            <iframe allowTransparency={true} frameBorder='0' height='160' scrolling='no' src='https://www.strava.com/clubs/1284036/latest-rides/d1fef7f441c5fc4894f0308226fa46da1465ff16?show_rides=false' width='300'></iframe>
+          </div>
+        </div>
+        <div className="mt-8">
+          <h4 className="text-lg font-bold text-burgundy mb-2">Injury Self-Recovery Resource</h4>
+          <a
+            href="https://www.sportsinjuryclinic.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-burgundy underline font-semibold"
+          >
+            Sports Injury Clinic
+          </a>
+          <p className="text-sm text-stone-800 mt-1">
+            A comprehensive database for all parts of the body’s injuries and ways to heal. This site provides information for self-recovery, rehabilitation exercises, and advice for anyone dealing with sports injuries.
+          </p>
+        </div>
       </aside>
     </div>
   );

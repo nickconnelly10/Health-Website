@@ -39,15 +39,17 @@ export default function LifestylePage() {
       </div>
       {/* Sidebar */}
       <aside className="w-full md:w-1/3 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-8 font-roman h-fit">
+        <p className="italic text-stone-700 mb-4">“Very little is needed to make a happy life; it is all within yourself, in your way of thinking.”<br /><span className="block mt-2 text-right text-xs text-stone-500">—Marcus Aurelius, <span className="italic">Meditations</span></span></p>
         <h3 className="text-2xl font-bold text-burgundy mb-4">Holistic Life Balance</h3>
         <ul className="space-y-2 text-base text-stone-800">
           <li>Physical</li>
-          <li>Mental</li>
-          <li>Spiritual</li>
-          <li>Financial</li>
-          <li>Work</li>
-          <li>Social</li>
+          <li>Mental/Emotional</li>
+          <li>Spiritual/Purpose</li>
           <li>Family</li>
+          <li>Career</li>
+          <li>Financial</li>
+          <li>Environment</li>
+          <li>Social</li>
         </ul>
         <p className="text-sm text-stone-700 mt-6">
           A lot of times, you don’t realize where you devote your time. Take time once a week to be in your own thoughts—away from distractions. Try thinking, walking, or writing to reflect on which areas of your life you may be under-giving to during this season.

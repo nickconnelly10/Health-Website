@@ -53,7 +53,7 @@ export default function NutritionPage() {
         <div className="mb-4">
           <h4 className="text-lg font-bold text-burgundy mb-2">Micronutrients (Vitamins & Minerals)</h4>
           <p className="text-sm text-stone-800 mb-2">
-            Since whole foods aren't processed, they come with natural micronutrients and phytochemicals in plants and animals, which have all sorts of benefits. Avoid gummies and anything with added sugar. Vitamins in pills have more bioavailability.
+            Since whole foods aren't processed, they come with natural micronutrients and phytochemicals in plants and animals, which have all sorts of benefits. Avoid gummies and anything with added sugar. Vitamins in pills and capsules usually contain fewer added ingredients and provide higher amounts of the active nutrient.
           </p>
           <p className="text-sm text-stone-800">
             Whole foods should be your first source of nutrients. Always research a supplement (how it's made, half-life, methylation, and its effects) before taking it.
@@ -62,11 +62,54 @@ export default function NutritionPage() {
 
         <div className="space-y-4">
           <div>
-            <h4 className="text-lg font-bold text-burgundy mb-2">Essential Nutrients</h4>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Multivitamins</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">Multivitamins:</span> Do thorough research about what's in it and quality. Make sure it doesn't have folic acid (should have methylated folate instead). Avoid gummy versions which often contain added sugars and artificial ingredients.</li>
+              <li>Do thorough research about what's in it and quality. Make sure it doesn't have folic acid (should have methylated folate instead). Avoid gummy versions which often contain added sugars and artificial ingredients.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Fat-Soluble Vitamins</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Vitamin A:</span> Supports vision, immune function, and skin health.</li>
               <li><span className="font-semibold">Vitamin D:</span> Important for immune function and bone health, especially if you have limited sun exposure.</li>
+              <li><span className="font-semibold">Vitamin K2:</span> Important for bone and cardiovascular health.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Water-Soluble Vitamins</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
               <li><span className="font-semibold">B12:</span> Essential for nerve function and energy production. Choose methylcobalamin form for better absorption.</li>
+              <li><span className="font-semibold">Vitamin C:</span> See Immune Support below for details.</li>
+              <li><span className="font-semibold">B6 (P5P):</span> See Methylation Support below for details.</li>
+              <li><span className="font-semibold">Folate:</span> See Methylation Support below for details.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Major Minerals</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Calcium:</span> Important for bone health (prefer food sources).</li>
+              <li><span className="font-semibold">Magnesium:</span> Supports muscle, nerve, and metabolic health.</li>
+              <li><span className="font-semibold">Potassium:</span> Supports heart and muscle function.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Trace Minerals</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li><span className="font-semibold">Iron:</span> Needed for healthy blood and energy (supplement only if deficient).</li>
+              <li><span className="font-semibold">Iodine:</span> Essential for thyroid function.</li>
+              <li><span className="font-semibold">Selenium:</span> Antioxidant, supports immune and thyroid health.</li>
+              <li><span className="font-semibold">Zinc:</span> See Immune Support below for details.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Collagen</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Collagen supports healthy ligaments, skin, and tendons. It can be especially helpful for injury recovery and tissue repair where connective tissues are damaged.</li>
             </ul>
           </div>
 
@@ -109,9 +152,17 @@ export default function NutritionPage() {
           <div>
             <h4 className="text-lg font-bold text-burgundy mb-2">Gut Health</h4>
             <ul className="text-sm text-stone-800 space-y-1">
-              <li><span className="font-semibold">Avoid Probiotic Gummies:</span> More natural solutions like fermented foods (yogurt, kombucha) are better.</li>
+              <li><span className="font-semibold">Avoid Probiotic Gummies:</span> More natural solutions like fermented foods (yogurt, kombucha) are better. Taking the same probiotic repeatedly can lead to over-colonization of just a few species, so focus on variety and whole-food sources.</li>
               <li><span className="font-semibold">Prebiotics:</span> Great for feeding beneficial gut bacteria and supporting digestive health.</li>
               <li><span className="font-semibold">Glutamine:</span> Amino acid that supports gut lining integrity and digestive health.</li>
+              <li>To avoid over-colonization, focus on eating a variety of whole foods and foods that naturally promote a healthy balance of gut bacteria.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold text-burgundy mb-2">Peptides</h4>
+            <ul className="text-sm text-stone-800 space-y-1">
+              <li>Peptides are short chains of amino acids with a wide range of highly specific functions in the body. Their effects can vary—from supporting tissue repair to influencing metabolism or immune function. Research thoroughly and consult a professional before considering peptide supplements, as their safety and efficacy can differ greatly.</li>
             </ul>
           </div>
 
