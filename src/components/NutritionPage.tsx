@@ -7,7 +7,7 @@ export default function NutritionPage() {
       <div className="w-full md:w-1/2 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-10 font-roman">
         <h2 className="text-3xl font-bold text-burgundy mb-4 font-roman">Nutrition</h2>
         <p className="mb-6 text-lg text-stone-700 font-semibold">
-          Inspired by <span className="italic">The Paleo Cure</span> by Chris Kresser, these whole‑foods principles will boost your energy and health:
+          Inspired by <span className="italic">The Paleo Cure</span> by Chris Kresser. It's about the quantity, quality, and timing of your eating.
         </p>
         <h3 className="text-2xl font-bold text-burgundy mb-2 font-roman">Shopping</h3>
         <ul className="space-y-5 text-base text-stone-800 mb-6">
