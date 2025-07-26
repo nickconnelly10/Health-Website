@@ -134,6 +134,13 @@ export default function ChatWindow() {
             <p className="text-xs text-stone-500 mt-4">
               Note: I provide general guidance only. Always consult healthcare professionals for medical advice.
             </p>
+            {connectionStatus === 'disconnected' && (
+              <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-sm text-yellow-800">
+                  ⚠️ Backend connection issue detected. You can still type messages, but AI responses may not work.
+                </p>
+              </div>
+            )}
           </div>
         ) : (
           messages.map((message) => (
@@ -163,7 +170,7 @@ export default function ChatWindow() {
         value={inputValue}
         onChange={setInputValue}
         onSend={handleSend}
-        disabled={isLoading || connectionStatus === 'disconnected'}
+        disabled={isLoading}
       />
     </div>
   );

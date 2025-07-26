@@ -1,6 +1,8 @@
 // Health AI API Service
 // Handles communication with Flask backend running Ollama/Mistral
 
+import fetch from 'node-fetch';
+
 export interface HealthAIResponse {
   response: string;
   success: boolean;
