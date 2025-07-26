@@ -1,8 +1,5 @@
 import { Request, Response } from 'express';
-
-interface AIResponse {
-  response: string;
-}
+import { serverHealthAIService } from './serverHealthAI';
 
 export default async function handler(req: Request, res: Response) {
   if (req.method === 'POST') {
@@ -14,28 +11,12 @@ export default async function handler(req: Request, res: Response) {
     }
 
     try {
-      // Connect to live Flask backend with Ollama/Mistral
-      const aiResponse = await fetch('http://health.muscadine.box/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: userQuestion }),
-      });
-
-      if (!aiResponse.ok) {
-        throw new Error(`Backend error: ${aiResponse.status} ${aiResponse.statusText}`);
-      }
-
-      const data = await aiResponse.json() as AIResponse;
+      // Use the server-side HealthAIService
+      const aiResponse = await serverHealthAIService.getHealthAdvice(userQuestion);
       
-      if (!data.response) {
-        throw new Error('Invalid response format from backend');
-      }
-
       return res.status(200).json({
         success: true,
-        response: data.response,
+        response: aiResponse.response,
         summary: [],
         timestamp: new Date(),
       });

@@ -1,11 +1,8 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { serverHealthAIService } from './serverHealthAI';
 
 const prisma = new PrismaClient();
-
-interface AIResponse {
-  response: string;
-}
 
 export default async function handler(req: Request, res: Response) {
   if (req.method === 'GET') {
@@ -22,31 +19,15 @@ export default async function handler(req: Request, res: Response) {
     }
     
     try {
-      // Connect to live Flask backend with Ollama/Mistral
-      const aiResponse = await fetch('http://health.muscadine.box/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: userQuestion }),
-      });
-
-      if (!aiResponse.ok) {
-        throw new Error(`Backend error: ${aiResponse.status} ${aiResponse.statusText}`);
-      }
-
-      const data = await aiResponse.json() as AIResponse;
-      
-      if (!data.response) {
-        throw new Error('Invalid response format from backend');
-      }
+      // Use the server-side HealthAIService
+      const aiResponse = await serverHealthAIService.getHealthAdvice(userQuestion);
       
       // Return response without persisting
       return res.status(201).json({ 
         chat: { 
           id: 'anonymous-' + Date.now(),
           question: userQuestion,
-          answer: data.response,
+          answer: aiResponse.response,
           summary: JSON.stringify([]),
           time: new Date()
         } 

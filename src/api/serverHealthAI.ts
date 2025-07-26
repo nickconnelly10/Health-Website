@@ -1,5 +1,7 @@
-// Health AI API Service
+// Server-side Health AI API Service
 // Handles communication with Flask backend running Ollama/Mistral
+
+import fetch from 'node-fetch';
 
 export interface HealthAIResponse {
   response: string;
@@ -15,7 +17,7 @@ interface BackendResponse {
   response: string;
 }
 
-class HealthAIService {
+class ServerHealthAIService {
   private baseURL = 'http://health.muscadine.box';
   private endpoint = '/chat';
   private timeout = 30000; // 30 seconds timeout
@@ -55,7 +57,7 @@ class HealthAIService {
         timestamp: new Date(),
       };
     } catch (error) {
-      console.error('Health AI Service Error:', error);
+      console.error('Server Health AI Service Error:', error);
       
       if (error instanceof Error) {
         if (error.name === 'AbortError') {
@@ -83,7 +85,7 @@ class HealthAIService {
       
       return response.ok;
     } catch (error) {
-      console.error('Connection check failed:', error);
+      console.error('Server connection check failed:', error);
       return false;
     }
   }
@@ -99,7 +101,7 @@ class HealthAIService {
         return await this.askQuestion(prompt);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error('Unknown error');
-        console.warn(`Attempt ${attempt} failed:`, lastError.message);
+        console.warn(`Server attempt ${attempt} failed:`, lastError.message);
         
         if (attempt < maxRetries) {
           // Wait before retrying (exponential backoff)
@@ -113,5 +115,5 @@ class HealthAIService {
 }
 
 // Export singleton instance
-export const healthAIService = new HealthAIService();
-export default healthAIService; 
+export const serverHealthAIService = new ServerHealthAIService();
+export default serverHealthAIService; 
