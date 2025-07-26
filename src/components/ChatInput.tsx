@@ -38,7 +38,7 @@ export default function ChatInput({
       />
       <button
         className="bg-gradient-to-tr from-gold-500 to-gold-600 text-white font-bold px-5 py-2 rounded-lg shadow-md border border-gold-600 hover:from-gold-600 hover:to-gold-700 transition-colors disabled:opacity-50"
-        onClick={onSend}
+        onClick={() => onSend()}
         disabled={disabled || !value.trim()}
       >
         Send

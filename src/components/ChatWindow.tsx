@@ -16,7 +16,6 @@ export default function ChatWindow() {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
-  const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -35,17 +34,17 @@ export default function ChatWindow() {
         setConnectionStatus('checking');
         const isConnected = await healthAIService.checkConnection();
         setConnectionStatus(isConnected ? 'connected' : 'disconnected');
-        setError(null);
-      } catch (error) {
+      } catch {
         setConnectionStatus('disconnected');
-        setError('Failed to check connection status');
       }
     };
 
-    checkConnection();
+    void checkConnection();
     
     // Set up periodic connection check every 30 seconds
-    const interval = setInterval(checkConnection, 30000);
+    const interval = setInterval(() => {
+      void checkConnection();
+    }, 30000);
     return () => clearInterval(interval);
   }, []);
 
@@ -62,7 +61,6 @@ export default function ChatWindow() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
-    setError(null);
 
     // Cancel any existing request
     if (abortControllerRef.current) {
@@ -110,23 +108,25 @@ export default function ChatWindow() {
       
       setMessages(prev => [...prev, errorMsg]);
       setConnectionStatus('disconnected');
-      setError(errorMessage);
     } finally {
       setIsLoading(false);
       abortControllerRef.current = null;
     }
   }, [inputValue, isLoading]);
 
-  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+  const handleSendWrapper = useCallback(() => {
+    void handleSend();
+  }, [handleSend]);
+
+  const handleKeyPress = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSend();
+      void handleSend();
     }
   }, [handleSend]);
 
   const clearChat = useCallback(() => {
     setMessages([]);
-    setError(null);
   }, []);
 
   const connectionStatusDisplay = useMemo(() => {
@@ -234,7 +234,7 @@ export default function ChatWindow() {
       <ChatInput
         value={inputValue}
         onChange={setInputValue}
-        onSend={handleSend}
+        onSend={handleSendWrapper}
         onKeyPress={handleKeyPress}
         disabled={isLoading}
         placeholder="Ask about nutrition, exercise, wellness, or any health topic..."
