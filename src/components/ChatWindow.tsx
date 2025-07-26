@@ -39,7 +39,8 @@ export default function ChatWindow() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://10.0.0.95:5000/chat', {
+      // Use local API endpoint instead of external AI service
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +67,7 @@ export default function ChatWindow() {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'ai',
-        content: `Sorry, I encountered an error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        content: `Sorry, I encountered an error: ${error instanceof Error ? error.message : 'Unknown error'}. Please check if the AI service is running.`,
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
