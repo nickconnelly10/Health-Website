@@ -45,11 +45,10 @@ export default function LifestylePage() {
           <li>Physical</li>
           <li>Mental/Emotional</li>
           <li>Spiritual/Purpose</li>
-          <li>Family</li>
           <li>Career</li>
           <li>Financial</li>
           <li>Environment</li>
-          <li>Social</li>
+          <li>Family/Social</li>
         </ul>
         <p className="text-sm text-stone-700 mt-6">
           A lot of times, you don’t realize where you devote your time. Take time once a week to be in your own thoughts—away from distractions. Try thinking, walking, or writing to reflect on which areas of your life you may be under-giving to during this season.

@@ -8,6 +8,7 @@ import MuscadineFooter from './components/MuscadineFooter';
 import NutritionPage from './components/NutritionPage';
 import PhysicalActivityPage from './components/PhysicalActivityPage';
 import LifestylePage from './components/LifestylePage';
+import HomePage from './components/HomePage';
 
 export default function App() {
   return (
@@ -16,13 +17,14 @@ export default function App() {
         <MuscadineBanner />
         <main className="flex-1">
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/lifestyle" element={<LifestylePage />} />
             <Route path="/physical-activity" element={<PhysicalActivityPage />} />
             <Route path="/nutrition" element={<NutritionPage />} />
             <Route path="/chat" element={<ChatWindow />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<Navigate to="/lifestyle" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <MuscadineFooter />
