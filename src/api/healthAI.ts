@@ -19,6 +19,8 @@ class HealthAIService {
   private baseURL = 'http://health.muscadine.box';
   private endpoint = '/chat';
   private timeout = 30000; // 30 seconds timeout
+  private connectionCache: { status: boolean; timestamp: number } | null = null;
+  private readonly CACHE_DURATION = 10000; // 10 seconds cache
 
   /**
    * Send a health question to the AI advisor
@@ -69,9 +71,14 @@ class HealthAIService {
   }
 
   /**
-   * Check if the backend is available
+   * Check if the backend is available with caching
    */
   async checkConnection(): Promise<boolean> {
+    // Check cache first
+    if (this.connectionCache && Date.now() - this.connectionCache.timestamp < this.CACHE_DURATION) {
+      return this.connectionCache.status;
+    }
+
     try {
       const response = await fetch(`${this.baseURL}${this.endpoint}`, {
         method: 'POST',
@@ -81,15 +88,30 @@ class HealthAIService {
         body: JSON.stringify({ prompt: 'test' }),
       });
       
-      return response.ok;
+      const isConnected = response.ok;
+      
+      // Update cache
+      this.connectionCache = {
+        status: isConnected,
+        timestamp: Date.now()
+      };
+      
+      return isConnected;
     } catch (error) {
       console.error('Connection check failed:', error);
+      
+      // Update cache with failure
+      this.connectionCache = {
+        status: false,
+        timestamp: Date.now()
+      };
+      
       return false;
     }
   }
 
   /**
-   * Get health advice with retry logic
+   * Get health advice with retry logic and exponential backoff
    */
   async getHealthAdvice(prompt: string, maxRetries = 2): Promise<HealthAIResponse> {
     let lastError: Error | null = null;
@@ -102,13 +124,31 @@ class HealthAIService {
         console.warn(`Attempt ${attempt} failed:`, lastError.message);
         
         if (attempt < maxRetries) {
-          // Wait before retrying (exponential backoff)
-          await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+          // Exponential backoff: 1s, 2s, 4s, etc.
+          const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
+          await new Promise(resolve => setTimeout(resolve, delay));
         }
       }
     }
     
     throw lastError || new Error('All retry attempts failed');
+  }
+
+  /**
+   * Clear connection cache
+   */
+  clearCache(): void {
+    this.connectionCache = null;
+  }
+
+  /**
+   * Get connection status from cache without making a request
+   */
+  getCachedConnectionStatus(): boolean | null {
+    if (this.connectionCache && Date.now() - this.connectionCache.timestamp < this.CACHE_DURATION) {
+      return this.connectionCache.status;
+    }
+    return null;
   }
 }
 

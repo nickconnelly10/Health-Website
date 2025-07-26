@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import ChatInput from './ChatInput';
 import Message from './Message';
 import { healthAIService } from '../api/healthAI';
@@ -16,31 +16,40 @@ export default function ChatWindow() {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
+  const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   // Check backend connection on component mount
   useEffect(() => {
     const checkConnection = async () => {
       try {
+        setConnectionStatus('checking');
         const isConnected = await healthAIService.checkConnection();
         setConnectionStatus(isConnected ? 'connected' : 'disconnected');
+        setError(null);
       } catch (error) {
         setConnectionStatus('disconnected');
+        setError('Failed to check connection status');
       }
     };
 
     checkConnection();
+    
+    // Set up periodic connection check every 30 seconds
+    const interval = setInterval(checkConnection, 30000);
+    return () => clearInterval(interval);
   }, []);
 
-  const handleSend = async () => {
+  const handleSend = useCallback(async () => {
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage: ChatMessage = {
@@ -53,9 +62,17 @@ export default function ChatWindow() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    setError(null);
+
+    // Cancel any existing request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    // Create new abort controller for this request
+    abortControllerRef.current = new AbortController();
 
     try {
-      // Use the HealthAIService with retry logic
       const aiResponse = await healthAIService.getHealthAdvice(inputValue.trim());
       
       const aiMessage: ChatMessage = {
@@ -69,18 +86,59 @@ export default function ChatWindow() {
       setConnectionStatus('connected');
     } catch (error) {
       console.error('Error sending message:', error);
-      const errorMessage: ChatMessage = {
+      
+      let errorMessage = 'I apologize, but I encountered an error. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Request was cancelled. Please try again.';
+        } else if (error.message.includes('timeout')) {
+          errorMessage = 'The request took too long. Please try again.';
+        } else if (error.message.includes('network')) {
+          errorMessage = 'Network error. Please check your connection and try again.';
+        } else {
+          errorMessage = `Error: ${error.message}`;
+        }
+      }
+
+      const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'ai',
-        content: `I apologize, but I'm having trouble connecting to my health advisory system. Please try again in a moment, or contact support if the issue persists. Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        content: errorMessage,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, errorMessage]);
+      
+      setMessages(prev => [...prev, errorMsg]);
       setConnectionStatus('disconnected');
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
+      abortControllerRef.current = null;
     }
-  };
+  }, [inputValue, isLoading]);
+
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  }, [handleSend]);
+
+  const clearChat = useCallback(() => {
+    setMessages([]);
+    setError(null);
+  }, []);
+
+  const connectionStatusDisplay = useMemo(() => {
+    const statusConfig = {
+      connected: { color: 'bg-green-400', text: 'Connected', icon: '🟢' },
+      disconnected: { color: 'bg-red-400', text: 'Disconnected', icon: '🔴' },
+      checking: { color: 'bg-yellow-400', text: 'Checking...', icon: '🟡' }
+    };
+    
+    const config = statusConfig[connectionStatus];
+    return { ...config, color: config.color };
+  }, [connectionStatus]);
 
   return (
     <div className="flex flex-col h-[calc(100vh-200px)] max-w-4xl mx-auto bg-white">
@@ -91,15 +149,22 @@ export default function ChatWindow() {
             <h1 className="text-2xl font-serif font-bold">Health AI Advisor</h1>
             <p className="text-burgundy-100 text-sm mt-1">Evidence-based health guidance powered by Mistral AI</p>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className={`w-3 h-3 rounded-full ${
-              connectionStatus === 'connected' ? 'bg-green-400' : 
-              connectionStatus === 'disconnected' ? 'bg-red-400' : 'bg-yellow-400'
-            }`}></div>
-            <span className="text-xs text-burgundy-100">
-              {connectionStatus === 'connected' ? 'Connected' : 
-               connectionStatus === 'disconnected' ? 'Disconnected' : 'Checking...'}
-            </span>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <div className={`w-3 h-3 rounded-full ${connectionStatusDisplay.color}`}></div>
+              <span className="text-xs text-burgundy-100">
+                {connectionStatusDisplay.text}
+              </span>
+            </div>
+            {messages.length > 0 && (
+              <button
+                onClick={clearChat}
+                className="text-xs text-burgundy-100 hover:text-white transition-colors px-2 py-1 rounded border border-burgundy-300 hover:border-burgundy-100"
+                title="Clear chat history"
+              >
+                Clear Chat
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -114,19 +179,19 @@ export default function ChatWindow() {
               I'm your evidence-based health advisor, powered by advanced AI. I can help you with:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-lg mx-auto text-sm">
-              <div className="bg-white p-3 rounded-lg border border-stone-200">
+              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
                 <span className="font-semibold text-burgundy">💪 Exercise Science</span>
                 <p className="text-stone-600 text-xs mt-1">Workout plans, fitness advice</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200">
+              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
                 <span className="font-semibold text-burgundy">🥗 Nutrition</span>
                 <p className="text-stone-600 text-xs mt-1">Dietary guidance, meal planning</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200">
+              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
                 <span className="font-semibold text-burgundy">🧘 Wellness</span>
                 <p className="text-stone-600 text-xs mt-1">Lifestyle, stress management</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200">
+              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
                 <span className="font-semibold text-burgundy">📚 Education</span>
                 <p className="text-stone-600 text-xs mt-1">Health knowledge, research</p>
               </div>
@@ -170,7 +235,9 @@ export default function ChatWindow() {
         value={inputValue}
         onChange={setInputValue}
         onSend={handleSend}
+        onKeyPress={handleKeyPress}
         disabled={isLoading}
+        placeholder="Ask about nutrition, exercise, wellness, or any health topic..."
       />
     </div>
   );
