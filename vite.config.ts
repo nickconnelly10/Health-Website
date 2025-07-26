@@ -16,6 +16,18 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      external: ['node-fetch', 'node:http', 'node:https', 'node:zlib'],
+      input: {
+        main: 'index.html'
+      }
+    }
+  },
+  optimizeDeps: {
+    exclude: ['node-fetch']
+  },
+  define: {
+    'process.env.NODE_ENV': '"production"'
   }
 }) 
