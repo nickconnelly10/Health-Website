@@ -24,7 +24,10 @@ export default function ChatWindow() {
   }, []);
 
   useEffect(() => {
-    scrollToBottom();
+    // Only scroll to bottom when new messages are added, not on initial load
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
   }, [messages, scrollToBottom]);
 
   // Check backend connection on component mount
@@ -141,37 +144,22 @@ export default function ChatWindow() {
   }, [connectionStatus]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm font-bold">H</span>
-            </div>
-            <div>
-              <h1 className="text-lg font-semibold text-gray-900">Health AI Advisor</h1>
-              <p className="text-sm text-gray-500">Powered by Mistral AI</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2">
-              <div className={`w-2 h-2 rounded-full ${connectionStatusDisplay.color}`}></div>
-              <span className="text-xs text-gray-500">
-                {connectionStatusDisplay.text}
-              </span>
-            </div>
-            {messages.length > 0 && (
-              <button
-                onClick={clearChat}
-                className="text-sm text-gray-600 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100 transition-colors"
-                title="Clear chat history"
-              >
-                Clear chat
-              </button>
-            )}
-          </div>
-        </div>
+    <div className="flex flex-col h-screen bg-gray-50 relative">
+      {/* Connection Status Corner */}
+      <div className="absolute top-4 right-4 z-10 flex items-center space-x-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg border border-gray-200 shadow-sm">
+        <div className={`w-2 h-2 rounded-full ${connectionStatusDisplay.color}`}></div>
+        <span className="text-xs text-gray-600 font-medium">
+          {connectionStatusDisplay.text}
+        </span>
+        {messages.length > 0 && (
+          <button
+            onClick={clearChat}
+            className="text-xs text-gray-500 hover:text-gray-700 px-2 py-1 rounded hover:bg-gray-100 transition-colors ml-2"
+            title="Clear chat history"
+          >
+            Clear
+          </button>
+        )}
       </div>
 
       {/* Messages Container */}
@@ -189,56 +177,6 @@ export default function ChatWindow() {
                 <p className="text-gray-600 mb-8 text-lg">
                   I'm your evidence-based health advisor. Ask me anything about nutrition, exercise, wellness, or general health topics.
                 </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="text-blue-600 text-sm">💪</span>
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">Exercise Science</h3>
-                        <p className="text-sm text-gray-500">Workout plans & fitness advice</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                        <span className="text-green-600 text-sm">🥗</span>
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">Nutrition</h3>
-                        <p className="text-sm text-gray-500">Dietary guidance & meal planning</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <span className="text-purple-600 text-sm">🧘</span>
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">Wellness</h3>
-                        <p className="text-sm text-gray-500">Lifestyle & stress management</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <span className="text-orange-600 text-sm">📚</span>
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">Education</h3>
-                        <p className="text-sm text-gray-500">Health knowledge & research</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="text-sm text-blue-800">

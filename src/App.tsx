@@ -14,7 +14,7 @@ import HomePage from './components/HomePage';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col transition-colors duration-200">
         <MuscadineBanner />
         <main className="flex-1">
           <Routes>
