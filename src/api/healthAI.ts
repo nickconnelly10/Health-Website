@@ -19,7 +19,10 @@ class HealthAIService {
   private baseURLs = [
     'https://health.muscadine.box',
     'http://health.muscadine.box',
-    'http://localhost:5000'
+    'https://health.muscadine.box:5000',
+    'http://health.muscadine.box:5000',
+    'http://localhost:5000',
+    'http://127.0.0.1:5000'
   ];
   private endpoint = '/chat';
   private timeout = 30000; // 30 seconds timeout

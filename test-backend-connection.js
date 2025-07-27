@@ -3,7 +3,10 @@ const testBackendConnection = async () => {
   const endpoints = [
     'https://health.muscadine.box/chat',
     'http://health.muscadine.box/chat',
-    'http://localhost:5000/chat'
+    'https://health.muscadine.box:5000/chat',
+    'http://health.muscadine.box:5000/chat',
+    'http://localhost:5000/chat',
+    'http://127.0.0.1:5000/chat'
   ];
 
   console.log('🔍 Testing backend connections...\n');
@@ -38,6 +41,12 @@ const testBackendConnection = async () => {
   }
 
   console.log('❌ No working backend endpoints found');
+  console.log('💡 Backend connection failed. Please ensure the Flask backend is running.');
+  console.log('📋 To start the backend:');
+  console.log('   1. Clone https://github.com/nickconnelly10/health-backend');
+  console.log('   2. Follow the setup instructions in the README');
+  console.log('   3. Run the automated setup: ./start_service.sh');
+  console.log('   4. Check if the backend is running on a different port or domain');
   return null;
 };
 
