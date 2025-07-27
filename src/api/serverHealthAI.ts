@@ -18,7 +18,11 @@ interface BackendResponse {
 }
 
 class ServerHealthAIService {
-  private baseURL = 'http://health.muscadine.box';
+  private baseURLs = [
+    'https://health.muscadine.box',
+    'http://health.muscadine.box',
+    'http://localhost:5000'
+  ];
   private endpoint = '/chat';
   private timeout = 30000; // 30 seconds timeout
 
@@ -26,72 +30,85 @@ class ServerHealthAIService {
    * Send a health question to the AI advisor
    */
   async askQuestion(prompt: string): Promise<HealthAIResponse> {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+    let lastError: Error | null = null;
+    
+    // Try each backend URL
+    for (const baseURL of this.baseURLs) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
-      const response = await fetch(`${this.baseURL}${this.endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
-        signal: controller.signal,
-      });
+        const response = await fetch(`${baseURL}${this.endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+          signal: controller.signal,
+        });
 
-      clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(`Backend error: ${response.status} ${response.statusText}`);
-      }
-
-      const data = await response.json() as BackendResponse;
-      
-      if (!data.response) {
-        throw new Error('Invalid response format from backend');
-      }
-
-      return {
-        response: data.response,
-        success: true,
-        timestamp: new Date(),
-      };
-    } catch (error) {
-      console.error('Server Health AI Service Error:', error);
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          throw new Error('Request timeout - the AI is taking too long to respond. Please try again.');
+        if (!response.ok) {
+          throw new Error(`Backend error: ${response.status} ${response.statusText}`);
         }
-        throw error;
+
+        const data = await response.json() as BackendResponse;
+        
+        if (!data.response) {
+          throw new Error('Invalid response format from backend');
+        }
+
+        return {
+          response: data.response,
+          success: true,
+          timestamp: new Date(),
+        };
+      } catch (error) {
+        console.warn(`Server failed to connect to ${baseURL}:`, error);
+        lastError = error instanceof Error ? error : new Error('Unknown error');
+        continue;
       }
-      
-      throw new Error('Unknown error occurred while communicating with the health AI');
     }
+    
+    // If all backends fail, throw the last error
+    if (lastError) {
+      console.error('Server: All backend connections failed:', lastError);
+      throw lastError;
+    }
+    
+    throw new Error('No backend endpoints available');
   }
 
   /**
    * Check if the backend is available
    */
   async checkConnection(): Promise<boolean> {
-    try {
-      const response = await fetch(`${this.baseURL}${this.endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: 'test' }),
-      });
-      
-      return response.ok;
-    } catch (error) {
-      console.error('Server connection check failed:', error);
-      return false;
+    // Try each backend URL
+    for (const baseURL of this.baseURLs) {
+      try {
+        const response = await fetch(`${baseURL}${this.endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt: 'test' }),
+        });
+        
+        if (response.ok) {
+          return true;
+        }
+      } catch (error) {
+        console.warn(`Server connection check failed for ${baseURL}:`, error);
+        continue;
+      }
     }
+    
+    return false;
   }
 
   /**
-   * Get health advice with retry logic
+   * Get health advice with retry logic and exponential backoff
    */
   async getHealthAdvice(prompt: string, maxRetries = 2): Promise<HealthAIResponse> {
     let lastError: Error | null = null;
@@ -104,8 +121,9 @@ class ServerHealthAIService {
         console.warn(`Server attempt ${attempt} failed:`, lastError.message);
         
         if (attempt < maxRetries) {
-          // Wait before retrying (exponential backoff)
-          await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+          // Exponential backoff: 1s, 2s, 4s, etc.
+          const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
+          await new Promise(resolve => setTimeout(resolve, delay));
         }
       }
     }

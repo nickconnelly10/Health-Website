@@ -16,58 +16,75 @@ interface BackendResponse {
 }
 
 class HealthAIService {
-  private baseURL = 'http://health.muscadine.box';
+  private baseURLs = [
+    'https://health.muscadine.box',
+    'http://health.muscadine.box',
+    'http://localhost:5000'
+  ];
   private endpoint = '/chat';
   private timeout = 30000; // 30 seconds timeout
-  private connectionCache: { status: boolean; timestamp: number } | null = null;
+  private connectionCache: { status: boolean; timestamp: number; url: string } | null = null;
   private readonly CACHE_DURATION = 10000; // 10 seconds cache
 
   /**
    * Send a health question to the AI advisor
    */
   async askQuestion(prompt: string): Promise<HealthAIResponse> {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+    let lastError: Error | null = null;
+    
+    // Try each backend URL
+    for (const baseURL of this.baseURLs) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
-      const response = await fetch(`${this.baseURL}${this.endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
-        signal: controller.signal,
-      });
+        const response = await fetch(`${baseURL}${this.endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+          signal: controller.signal,
+        });
 
-      clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(`Backend error: ${response.status} ${response.statusText}`);
-      }
-
-      const data = await response.json() as BackendResponse;
-      
-      if (!data.response) {
-        throw new Error('Invalid response format from backend');
-      }
-
-      return {
-        response: data.response,
-        success: true,
-        timestamp: new Date(),
-      };
-    } catch (error) {
-      console.error('Health AI Service Error:', error);
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          throw new Error('Request timeout - the AI is taking too long to respond. Please try again.');
+        if (!response.ok) {
+          throw new Error(`Backend error: ${response.status} ${response.statusText}`);
         }
-        throw error;
+
+        const data = await response.json() as BackendResponse;
+        
+        if (!data.response) {
+          throw new Error('Invalid response format from backend');
+        }
+
+        // Update cache with successful connection
+        this.connectionCache = {
+          status: true,
+          timestamp: Date.now(),
+          url: baseURL
+        };
+
+        return {
+          response: data.response,
+          success: true,
+          timestamp: new Date(),
+        };
+      } catch (error) {
+        console.warn(`Failed to connect to ${baseURL}:`, error);
+        lastError = error instanceof Error ? error : new Error('Unknown error');
+        continue;
       }
-      
-      throw new Error('Unknown error occurred while communicating with the health AI');
     }
+    
+    // If all backends fail, throw the last error
+    if (lastError) {
+      console.error('All backend connections failed:', lastError);
+      throw lastError;
+    }
+    
+    throw new Error('No backend endpoints available');
   }
 
   /**
@@ -79,35 +96,40 @@ class HealthAIService {
       return this.connectionCache.status;
     }
 
-    try {
-      const response = await fetch(`${this.baseURL}${this.endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: 'test' }),
-      });
-      
-      const isConnected = response.ok;
-      
-      // Update cache
-      this.connectionCache = {
-        status: isConnected,
-        timestamp: Date.now()
-      };
-      
-      return isConnected;
-    } catch (error) {
-      console.error('Connection check failed:', error);
-      
-      // Update cache with failure
-      this.connectionCache = {
-        status: false,
-        timestamp: Date.now()
-      };
-      
-      return false;
+    // Try each backend URL
+    for (const baseURL of this.baseURLs) {
+      try {
+        const response = await fetch(`${baseURL}${this.endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt: 'test' }),
+        });
+        
+        if (response.ok) {
+          // Update cache with successful connection
+          this.connectionCache = {
+            status: true,
+            timestamp: Date.now(),
+            url: baseURL
+          };
+          return true;
+        }
+      } catch (error) {
+        console.warn(`Connection check failed for ${baseURL}:`, error);
+        continue;
+      }
     }
+    
+    // Update cache with failure
+    this.connectionCache = {
+      status: false,
+      timestamp: Date.now(),
+      url: ''
+    };
+    
+    return false;
   }
 
   /**
@@ -147,6 +169,16 @@ class HealthAIService {
   getCachedConnectionStatus(): boolean | null {
     if (this.connectionCache && Date.now() - this.connectionCache.timestamp < this.CACHE_DURATION) {
       return this.connectionCache.status;
+    }
+    return null;
+  }
+
+  /**
+   * Get the currently connected backend URL
+   */
+  getConnectedBackendURL(): string | null {
+    if (this.connectionCache && this.connectionCache.status) {
+      return this.connectionCache.url;
     }
     return null;
   }

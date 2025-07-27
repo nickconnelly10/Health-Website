@@ -112,6 +112,38 @@ POST http://health.muscadine.box/chat
 }
 ```
 
+### Backend Setup
+The frontend requires the [health-backend](https://github.com/nickconnelly10/health-backend) to be running. To set up the backend:
+
+1. **Clone the backend repository**:
+   ```bash
+   git clone https://github.com/nickconnelly10/health-backend.git
+   cd health-backend
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+3. **Start Ollama** (if not running):
+   ```bash
+   ollama serve
+   ollama pull mistral
+   ```
+
+4. **Run automated setup**:
+   ```bash
+   ./start_service.sh
+   ```
+
+5. **Verify setup**:
+   ```bash
+   ./verify_setup.sh
+   ```
+
 ### Health AI Service
 ```typescript
 import { healthAIService } from './api/healthAI';
@@ -121,6 +153,9 @@ const response = await healthAIService.getHealthAdvice("How much protein should 
 
 // Check connection
 const isConnected = await healthAIService.checkConnection();
+
+// Get connected backend URL
+const backendURL = healthAIService.getConnectedBackendURL();
 ```
 
 ## 🚀 Deployment
@@ -228,6 +263,48 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 2. **API errors**: Verify Flask backend is running
 3. **Connection issues**: Check network and firewall settings
 4. **TypeScript errors**: Run `npm run build:server` to check server types
+
+#### Backend Connection Issues
+If the AI chat is not connecting to the backend:
+
+1. **Check backend status**:
+   ```bash
+   # Test backend connection
+   node test-backend-connection.js
+   
+   # Check if Ollama is running
+   curl http://localhost:11434/api/tags
+   
+   # Check Flask service status
+   sudo systemctl status healthchat.service
+   ```
+
+2. **Restart backend services**:
+   ```bash
+   # Restart Flask service
+   sudo systemctl restart healthchat.service
+   
+   # Restart NGINX
+   sudo systemctl restart nginx
+   
+   # Restart Ollama
+   ollama serve
+   ```
+
+3. **Verify NGINX configuration**:
+   ```bash
+   sudo nginx -t
+   sudo systemctl status nginx
+   ```
+
+4. **Check logs**:
+   ```bash
+   # Flask service logs
+   sudo journalctl -u healthchat.service -f
+   
+   # NGINX logs
+   sudo tail -f /var/log/nginx/error.log
+   ```
 
 #### Debug Mode
 ```bash
