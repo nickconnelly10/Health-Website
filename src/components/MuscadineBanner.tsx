@@ -47,6 +47,12 @@ export default function MuscadineBanner() {
           >
             Physical Activity
           </button>
+          <button
+            onClick={() => navigate('/resources')}
+            className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 focus:outline-none transition-colors"
+          >
+            Resources
+          </button>
         </div>
       </div>
     </nav>

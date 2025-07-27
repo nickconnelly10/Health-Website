@@ -80,8 +80,7 @@ export default function NutritionPage() {
 
       {/* Supplement Sidebar */}
       <aside className="w-full md:w-1/2 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-8 font-roman h-fit">
-        <h3 className="text-2xl font-bold text-burgundy mb-4">Supplements: A Pragmatic, Food‑First Approach</h3>
-        <div className="text-xs text-stone-700 mb-4">Guide Inspired by Chris Kresser’s Functional Medicine Philosophy</div>
+        <h3 className="text-2xl font-bold text-burgundy mb-4">Guide Inspired by Chris Kresser's Functional Medicine Philosophy</h3>
         <div className="space-y-6">
           <section>
             <h4 className="text-lg font-bold text-burgundy mb-2">1. Whole Foods First</h4>
