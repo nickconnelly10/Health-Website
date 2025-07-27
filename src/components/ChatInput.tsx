@@ -26,23 +26,52 @@ export default function ChatInput({
   };
 
   return (
-    <div className="w-full bg-gradient-to-t from-stone-100 to-white border-t border-stone-300 p-4 flex items-end gap-3 transition-colors">
-      <textarea
-        className="flex-1 resize-none rounded-lg border border-stone-300 bg-white px-4 py-2 text-stone-900 font-serif shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-400 min-h-[48px] max-h-32 transition-colors"
-        placeholder={placeholder}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        onKeyDown={handleKeyDown}
-        rows={1}
-        disabled={disabled}
-      />
-      <button
-        className="bg-gradient-to-tr from-gold-500 to-gold-600 text-white font-bold px-5 py-2 rounded-lg shadow-md border border-gold-600 hover:from-gold-600 hover:to-gold-700 transition-colors disabled:opacity-50"
-        onClick={() => onSend()}
-        disabled={disabled || !value.trim()}
-      >
-        Send
-      </button>
+    <div className="relative">
+      <div className="flex items-end space-x-3">
+        <div className="flex-1 relative">
+          <textarea
+            className="w-full resize-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-12 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[52px] max-h-32 transition-all duration-200"
+            placeholder={placeholder}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            onKeyDown={handleKeyDown}
+            rows={1}
+            disabled={disabled}
+            style={{
+              resize: 'none',
+              overflow: 'hidden'
+            }}
+          />
+        </div>
+        
+        <button
+          className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
+            disabled || !value.trim()
+              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm'
+          }`}
+          onClick={() => onSend()}
+          disabled={disabled || !value.trim()}
+        >
+          <svg 
+            className="w-5 h-5" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+            />
+          </svg>
+        </button>
+      </div>
+      
+      <div className="text-xs text-gray-400 mt-2 text-center">
+        Press Enter to send, Shift+Enter for new line
+      </div>
     </div>
   );
 } 

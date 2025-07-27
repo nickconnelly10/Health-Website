@@ -24,6 +24,12 @@ export default function MuscadineBanner() {
         {/* Tab Navigation */}
         <div className="flex gap-6 w-full justify-center border-b border-stone-300 pb-2">
           <button
+            onClick={() => navigate('/')}
+            className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 focus:outline-none transition-colors"
+          >
+            AI Chat
+          </button>
+          <button
             onClick={() => navigate('/lifestyle')}
             className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 focus:outline-none transition-colors"
           >
@@ -40,12 +46,6 @@ export default function MuscadineBanner() {
             className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 focus:outline-none transition-colors"
           >
             Physical Activity
-          </button>
-          <button
-            onClick={() => navigate('/chat')}
-            className="text-lg font-medium px-4 py-2 rounded-t-lg hover:bg-stone-100 focus:outline-none transition-colors"
-          >
-            AI Chat
           </button>
         </div>
       </div>

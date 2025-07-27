@@ -131,9 +131,9 @@ export default function ChatWindow() {
 
   const connectionStatusDisplay = useMemo(() => {
     const statusConfig = {
-      connected: { color: 'bg-green-400', text: 'Connected', icon: '🟢' },
-      disconnected: { color: 'bg-red-400', text: 'Disconnected', icon: '🔴' },
-      checking: { color: 'bg-yellow-400', text: 'Checking...', icon: '🟡' }
+      connected: { color: 'bg-green-500', text: 'Connected', icon: '🟢' },
+      disconnected: { color: 'bg-red-500', text: 'Disconnected', icon: '🔴' },
+      checking: { color: 'bg-yellow-500', text: 'Checking...', icon: '🟡' }
     };
     
     const config = statusConfig[connectionStatus];
@@ -141,28 +141,33 @@ export default function ChatWindow() {
   }, [connectionStatus]);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-200px)] max-w-4xl mx-auto bg-white">
-      {/* Chat Header */}
-      <div className="bg-gradient-to-r from-burgundy to-burgundy-800 text-white px-6 py-4 border-b border-burgundy-700">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-serif font-bold">Health AI Advisor</h1>
-            <p className="text-burgundy-100 text-sm mt-1">Evidence-based health guidance powered by Mistral AI</p>
+    <div className="flex flex-col h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 px-4 py-3">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-sm font-bold">H</span>
+            </div>
+            <div>
+              <h1 className="text-lg font-semibold text-gray-900">Health AI Advisor</h1>
+              <p className="text-sm text-gray-500">Powered by Mistral AI</p>
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <div className={`w-3 h-3 rounded-full ${connectionStatusDisplay.color}`}></div>
-              <span className="text-xs text-burgundy-100">
+              <div className={`w-2 h-2 rounded-full ${connectionStatusDisplay.color}`}></div>
+              <span className="text-xs text-gray-500">
                 {connectionStatusDisplay.text}
               </span>
             </div>
             {messages.length > 0 && (
               <button
                 onClick={clearChat}
-                className="text-xs text-burgundy-100 hover:text-white transition-colors px-2 py-1 rounded border border-burgundy-300 hover:border-burgundy-100"
+                className="text-sm text-gray-600 hover:text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100 transition-colors"
                 title="Clear chat history"
               >
-                Clear Chat
+                Clear chat
               </button>
             )}
           </div>
@@ -170,75 +175,126 @@ export default function ChatWindow() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-stone-50 to-white">
-        {messages.length === 0 ? (
-          <div className="text-center text-stone-500 py-12">
-            <div className="text-4xl mb-4">🏥</div>
-            <h3 className="text-xl font-semibold text-burgundy mb-2">Welcome to Health AI Advisor</h3>
-            <p className="text-stone-600 max-w-md mx-auto mb-4">
-              I'm your evidence-based health advisor, powered by advanced AI. I can help you with:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-lg mx-auto text-sm">
-              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
-                <span className="font-semibold text-burgundy">💪 Exercise Science</span>
-                <p className="text-stone-600 text-xs mt-1">Workout plans, fitness advice</p>
-              </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
-                <span className="font-semibold text-burgundy">🥗 Nutrition</span>
-                <p className="text-stone-600 text-xs mt-1">Dietary guidance, meal planning</p>
-              </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
-                <span className="font-semibold text-burgundy">🧘 Wellness</span>
-                <p className="text-stone-600 text-xs mt-1">Lifestyle, stress management</p>
-              </div>
-              <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm">
-                <span className="font-semibold text-burgundy">📚 Education</span>
-                <p className="text-stone-600 text-xs mt-1">Health knowledge, research</p>
-              </div>
-            </div>
-            <p className="text-xs text-stone-500 mt-4">
-              Note: I provide general guidance only. Always consult healthcare professionals for medical advice.
-            </p>
-            {connectionStatus === 'disconnected' && (
-              <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm text-yellow-800">
-                  ⚠️ Backend connection issue detected. You can still type messages, but AI responses may not work.
-                </p>
-              </div>
-            )}
-          </div>
-        ) : (
-          messages.map((message) => (
-            <Message key={message.id} message={message} />
-          ))
-        )}
-        
-        {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-marble text-burgundy border-marble rounded-xl px-5 py-4 max-w-lg shadow-md border">
-              <div className="flex items-center space-x-3">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-burgundy"></div>
-                <div>
-                  <span className="text-sm font-medium">AI is thinking...</span>
-                  <p className="text-xs text-burgundy/70 mt-1">Processing your health question</p>
+      <div className="flex-1 overflow-y-auto">
+        <div className="max-w-4xl mx-auto">
+          {messages.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full px-4 py-16">
+              <div className="text-center max-w-2xl">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-white text-2xl">🏥</span>
                 </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                  Welcome to Health AI Advisor
+                </h2>
+                <p className="text-gray-600 mb-8 text-lg">
+                  I'm your evidence-based health advisor. Ask me anything about nutrition, exercise, wellness, or general health topics.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span className="text-blue-600 text-sm">💪</span>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-900">Exercise Science</h3>
+                        <p className="text-sm text-gray-500">Workout plans & fitness advice</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                        <span className="text-green-600 text-sm">🥗</span>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-900">Nutrition</h3>
+                        <p className="text-sm text-gray-500">Dietary guidance & meal planning</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <span className="text-purple-600 text-sm">🧘</span>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-900">Wellness</h3>
+                        <p className="text-sm text-gray-500">Lifestyle & stress management</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <span className="text-orange-600 text-sm">📚</span>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-900">Education</h3>
+                        <p className="text-sm text-gray-500">Health knowledge & research</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-sm text-blue-800">
+                    <strong>Note:</strong> I provide general guidance only. Always consult healthcare professionals for medical advice.
+                  </p>
+                </div>
+                
+                {connectionStatus === 'disconnected' && (
+                  <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <p className="text-sm text-yellow-800">
+                      ⚠️ Backend connection issue detected. You can still type messages, but AI responses may not work.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-        )}
-        
-        <div ref={messagesEndRef} />
+          ) : (
+            <div className="space-y-6 py-6">
+              {messages.map((message) => (
+                <Message key={message.id} message={message} />
+              ))}
+              
+              {isLoading && (
+                <div className="flex justify-start px-4">
+                  <div className="bg-white border border-gray-200 rounded-2xl px-6 py-4 max-w-3xl shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      </div>
+                      <span className="text-sm text-gray-600">AI is thinking...</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+          
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
       {/* Chat Input */}
-      <ChatInput
-        value={inputValue}
-        onChange={setInputValue}
-        onSend={handleSendWrapper}
-        onKeyPress={handleKeyPress}
-        disabled={isLoading}
-        placeholder="Ask about nutrition, exercise, wellness, or any health topic..."
-      />
+      <div className="bg-white border-t border-gray-200 px-4 py-4">
+        <div className="max-w-4xl mx-auto">
+          <ChatInput
+            value={inputValue}
+            onChange={setInputValue}
+            onSend={handleSendWrapper}
+            onKeyPress={handleKeyPress}
+            disabled={isLoading}
+            placeholder="Ask about nutrition, exercise, wellness, or any health topic..."
+          />
+        </div>
+      </div>
     </div>
   );
 } 
