@@ -38,7 +38,35 @@ app.all('/api/ingest', ingestHandler);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    service: 'health-ai-frontend',
+    version: '0.0.12',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Backend health check endpoint
+app.get('/api/backend-health', async (req, res) => {
+  try {
+    const { serverHealthAIService } = await import('./api/serverHealthAI');
+    const isConnected = await serverHealthAIService.checkConnection();
+    res.json({ 
+      status: isConnected ? 'connected' : 'disconnected',
+      timestamp: new Date().toISOString(),
+      backend: 'health-backend',
+      ollama_status: isConnected ? 'connected' : 'disconnected'
+    });
+  } catch (error) {
+    res.json({ 
+      status: 'error',
+      timestamp: new Date().toISOString(),
+      backend: 'health-backend',
+      ollama_status: 'error',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
 });
 
 // Serve static files in production

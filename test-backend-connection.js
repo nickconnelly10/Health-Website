@@ -6,7 +6,9 @@ const testBackendConnection = async () => {
     'https://health.muscadine.box:5000/chat',
     'http://health.muscadine.box:5000/chat',
     'http://localhost:5000/chat',
-    'http://127.0.0.1:5000/chat'
+    'http://127.0.0.1:5000/chat',
+    'https://api.health.muscadine.box/chat',
+    'http://api.health.muscadine.box/chat'
   ];
 
   console.log('🔍 Testing backend connections...\n');
@@ -28,10 +30,12 @@ const testBackendConnection = async () => {
         console.log(`✅ SUCCESS: ${endpoint}`);
         console.log(`   Response: ${data.response ? 'Valid response' : 'Invalid response format'}`);
         console.log(`   Status: ${response.status}`);
+        console.log(`   Headers: ${JSON.stringify(Object.fromEntries(response.headers.entries()))}`);
         console.log('');
         return endpoint; // Return the working endpoint
       } else {
         console.log(`❌ FAILED: ${endpoint} - Status: ${response.status}`);
+        console.log(`   Headers: ${JSON.stringify(Object.fromEntries(response.headers.entries()))}`);
         console.log('');
       }
     } catch (error) {
@@ -47,6 +51,7 @@ const testBackendConnection = async () => {
   console.log('   2. Follow the setup instructions in the README');
   console.log('   3. Run the automated setup: ./start_service.sh');
   console.log('   4. Check if the backend is running on a different port or domain');
+  console.log('   5. Verify NGINX configuration and systemd services');
   return null;
 };
 
