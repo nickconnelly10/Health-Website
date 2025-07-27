@@ -11,27 +11,37 @@ A professional health advisory application powered by advanced AI, providing evi
 - **Evidence-Based Responses**: Medical-grade health guidance
 - **Real-time Chat**: Instant responses with loading states
 - **Connection Monitoring**: Live status indicator for backend connectivity
+- **Timeout Handling**: 120-second timeout for AI processing
 
 ### 💬 Professional Chat Interface
-- **Modern UI**: Clean, medical-grade design
+- **Modern UI**: Clean, medical-grade design with ChatGPT-like interface
+- **Dark Mode Support**: Toggle between light and dark themes
 - **Message History**: Full conversation tracking
 - **Error Handling**: Graceful handling of network issues
 - **Responsive Design**: Works on desktop and mobile
 - **Accessibility**: ARIA labels and keyboard navigation
+- **Connection Status**: Real-time backend connectivity indicator
 
-### 🏥 Health Categories
-- **💪 Exercise Science**: Workout plans, fitness advice, training programs
-- **🥗 Nutrition**: Dietary guidance, meal planning, supplement advice
-- **🧘 Wellness**: Lifestyle tips, stress management, mental health
-- **📚 Education**: Health knowledge, research insights, medical information
+### 🏥 Health Categories & Resources
+- **💪 Physical Activity**: Exercise science and injury recovery resources
+- **🥗 Nutrition**: Evidence-based nutrition guidance and resources
+- **🧘 Lifestyle**: Holistic wellness and daily living resources
+- **📚 Resources**: Comprehensive health resources database
+- **🔬 Health Protocol Database**: Scientific literature repository powering AI decisions
+
+### ⚙️ Settings & Configuration
+- **Dark Mode Toggle**: Switch between light and dark themes
+- **GitHub Repository Links**: Direct access to health protocols repository
+- **System Status**: Real-time service monitoring
+- **Connection Management**: Backend connectivity controls
 
 ### 🔧 Technical Features
 - **TypeScript**: Full type safety and IntelliSense
 - **React 18**: Modern React with hooks and concurrent features
 - **Vite**: Fast development and optimized builds
-- **Tailwind CSS**: Utility-first styling
-- **Express.js**: Robust backend API
-- **Prisma**: Type-safe database operations
+- **Tailwind CSS**: Utility-first styling with dark mode support
+- **Flask Backend**: Robust Python backend API
+- **NGINX Integration**: Production-ready web server
 
 ## 🛠️ Quick Start
 
@@ -39,6 +49,8 @@ A professional health advisory application powered by advanced AI, providing evi
 - Node.js 18+
 - npm or yarn
 - Git
+- Python 3.8+ (for backend)
+- Ollama (for AI service)
 
 ### Local Development
 1. **Clone the repository**:
@@ -65,8 +77,8 @@ A professional health advisory application powered by advanced AI, providing evi
 
 5. **Open in browser**:
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3001
-   - Health Check: http://localhost:3001/api/health
+   - Backend API: http://localhost:5000
+   - Health Check: http://localhost:5000/health
 
 ## 🏗️ Project Structure
 
@@ -74,20 +86,22 @@ A professional health advisory application powered by advanced AI, providing evi
 health.muscadine.box/
 ├── src/
 │   ├── components/          # React components
-│   │   ├── ChatWindow.tsx   # Main chat interface
+│   │   ├── ChatWindow.tsx   # Main chat interface with dark mode
 │   │   ├── ChatInput.tsx    # Message input component
 │   │   ├── Message.tsx      # Individual message display
+│   │   ├── MuscadineBanner.tsx # Navigation with settings dropdown
+│   │   ├── ResourcesPage.tsx # Health resources and protocols
+│   │   ├── NutritionPage.tsx # Nutrition guidance
+│   │   ├── LifestylePage.tsx # Lifestyle resources
+│   │   ├── PhysicalActivityPage.tsx # Exercise resources
 │   │   └── ...              # Other UI components
 │   ├── api/                 # API services
-│   │   ├── healthAI.ts      # Frontend AI service
-│   │   ├── serverHealthAI.ts # Backend AI service
-│   │   ├── chat.ts          # Chat API endpoint
-│   │   └── userChat.ts      # User chat API
-│   ├── protocols/           # Health research documents
-│   └── server.ts            # Express server
-├── prisma/                  # Database schema
+│   │   └── healthAI.ts      # Frontend AI service with retry logic
+│   ├── App.tsx              # Main application with routing
+│   └── main.tsx             # Application entry point
 ├── public/                  # Static assets
-└── dist/                    # Production build
+├── dist/                    # Production build
+└── package.json             # Dependencies and scripts
 ```
 
 ## 🔌 API Integration
@@ -97,7 +111,7 @@ The application connects to a Flask backend running Ollama with Mistral AI:
 
 ```typescript
 // API Endpoint
-POST http://health.muscadine.box/chat
+POST https://health.muscadine.box/chat
 
 // Request Body
 {
@@ -128,20 +142,26 @@ The frontend requires the [health-backend](https://github.com/nickconnelly10/hea
    pip install -r requirements.txt
    ```
 
-3. **Start Ollama** (if not running):
+3. **Start all services** (recommended):
    ```bash
-   ollama serve
-   ollama pull mistral
+   ./start_health_system.sh
    ```
 
-4. **Run automated setup**:
+4. **Or start individual services**:
    ```bash
-   ./start_service.sh
+   # Start Ollama AI service
+   sudo systemctl start ollama
+   
+   # Start Flask backend
+   sudo systemctl start healthchat
+   
+   # Start NGINX web server
+   sudo systemctl start nginx
    ```
 
 5. **Verify setup**:
    ```bash
-   ./verify_setup.sh
+   curl -s http://localhost:5000/health | jq .
    ```
 
 ### Health AI Service
@@ -160,26 +180,32 @@ const backendURL = healthAIService.getConnectedBackendURL();
 
 ## 🚀 Deployment
 
-### Vercel Deployment
-1. **Connect repository** to Vercel
-2. **Set build settings**:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-   - Install Command: `npm install`
-3. **Configure environment variables** in Vercel dashboard
-4. **Deploy** automatically on push to main branch
+### Production Deployment
+1. **Build the application**:
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy to NGINX**:
+   ```bash
+   sudo cp -r dist/* /var/www/health.muscadine.box/
+   ```
+
+3. **Configure NGINX** (if not already configured):
+   ```bash
+   sudo nginx -t
+   sudo systemctl reload nginx
+   ```
 
 ### Environment Variables
 ```env
-# Database
-DATABASE_URL="file:./dev.db"
+# Backend API URLs
+VITE_HEALTH_AI_URL="https://health.muscadine.box"
+VITE_BACKUP_URLS="http://localhost:5000,http://127.0.0.1:5000"
 
-# Server
-PORT=3001
+# Build Configuration
 NODE_ENV=production
-
-# AI Backend
-HEALTH_AI_URL="http://health.muscadine.box"
+VITE_APP_VERSION="1.0.0"
 ```
 
 ## 🧪 Testing
@@ -197,10 +223,10 @@ npm run build
 ### API Test
 ```bash
 # Health check
-curl http://localhost:3001/api/health
+curl http://localhost:5000/health
 
 # Chat test
-curl -X POST http://localhost:3001/api/chat \
+curl -X POST http://localhost:5000/chat \
   -H "Content-Type: application/json" \
   -d '{"prompt":"test message"}'
 ```
@@ -213,9 +239,10 @@ curl -X POST http://localhost:3001/api/chat \
 - **Request Cancellation**: AbortController for pending requests
 - **Code Splitting**: Lazy loading for better performance
 - **Bundle Optimization**: Tree shaking and minification
+- **Dark Mode**: Optimized theme switching
 
 ### Metrics
-- **Bundle Size**: ~222KB (gzipped)
+- **Bundle Size**: ~250KB (gzipped)
 - **Load Time**: <2s on 3G
 - **Time to Interactive**: <3s
 - **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices)
@@ -227,9 +254,31 @@ curl -X POST http://localhost:3001/api/chat \
 - **Input Validation**: Sanitized user inputs
 - **Error Handling**: No sensitive data in error messages
 - **HTTPS Only**: Secure connections in production
+- **Security Headers**: XSS protection and content security
 
 ### Medical Disclaimer
 > This application provides general health guidance only. Always consult healthcare professionals for medical advice, diagnosis, or treatment.
+
+## 🎨 UI/UX Features
+
+### Dark Mode
+- **Toggle Control**: Settings dropdown with dark mode switch
+- **Persistent State**: Remembers user preference
+- **Smooth Transitions**: Animated theme switching
+- **Accessibility**: High contrast ratios maintained
+
+### Navigation
+- **AI Chat**: Primary interface (default landing page)
+- **Lifestyle**: Holistic wellness resources
+- **Nutrition**: Evidence-based nutrition guidance
+- **Physical Activity**: Exercise science resources
+- **Resources**: Health protocols database
+
+### Settings Dropdown
+- **Dark Mode Toggle**: Switch between themes
+- **GitHub Repository**: Link to health protocols
+- **Click Outside**: Auto-close functionality
+- **Responsive Design**: Works on all screen sizes
 
 ## 🤝 Contributing
 
@@ -244,6 +293,7 @@ curl -X POST http://localhost:3001/api/chat \
 - Write tests for new features
 - Update documentation
 - Follow the existing code style
+- Test dark mode compatibility
 
 ## 📝 License
 
@@ -262,7 +312,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 1. **Build fails**: Check Node.js version (18+ required)
 2. **API errors**: Verify Flask backend is running
 3. **Connection issues**: Check network and firewall settings
-4. **TypeScript errors**: Run `npm run build:server` to check server types
+4. **Dark mode not working**: Check browser console for errors
 
 #### Backend Connection Issues
 If the AI chat is not connecting to the backend:
@@ -270,10 +320,10 @@ If the AI chat is not connecting to the backend:
 1. **Check backend status**:
    ```bash
    # Test backend connection
-   node test-backend-connection.js
+   curl -s http://localhost:5000/health
    
    # Check if Ollama is running
-   curl http://localhost:11434/api/tags
+   curl -s http://localhost:11434/api/tags
    
    # Check Flask service status
    sudo systemctl status healthchat.service
@@ -281,14 +331,9 @@ If the AI chat is not connecting to the backend:
 
 2. **Restart backend services**:
    ```bash
-   # Restart Flask service
-   sudo systemctl restart healthchat.service
-   
-   # Restart NGINX
-   sudo systemctl restart nginx
-   
-   # Restart Ollama
-   ollama serve
+   # Use the startup script
+   cd ~/Desktop/Github-Repositories/health-backend
+   ./start_health_system.sh
    ```
 
 3. **Verify NGINX configuration**:
@@ -311,8 +356,8 @@ If the AI chat is not connecting to the backend:
 # Enable debug logging
 DEBUG=true npm run dev
 
-# Check server logs
-npm run dev:backend
+# Check browser console for errors
+# Check network tab for API calls
 ```
 
 ## 🎯 Roadmap
@@ -325,8 +370,11 @@ npm run dev:backend
 - [ ] Mobile app (React Native)
 - [ ] Multi-language support
 - [ ] Advanced AI models integration
+- [ ] File upload interface
+- [ ] Health protocols viewer
 
 ### Version History
+- **v0.0.12**: Dark mode implementation and UI improvements
 - **v0.0.11**: Production-ready health AI chat
 - **v0.0.10**: Flask backend integration
 - **v0.0.9**: UI/UX improvements
