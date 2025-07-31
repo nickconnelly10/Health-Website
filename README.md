@@ -4,11 +4,11 @@ A modern, evidence-based health AI advisor powered by AurraCloud, deployed on Ve
 
 ## 🚀 Live Application
 
-**Production URL**: https://healthmuscadine-kgageih9p-nicks-projects-000b3e21.vercel.app
+**Production URL**: https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app
 
 ## ✨ Features
 
-- **🤖 AI-Powered Health Advice**: Evidence-based recommendations using AurraCloud's Grok-4 model
+- **🤖 AI-Powered Health Advice**: Evidence-based recommendations using AurraCloud's GPT-4 model
 - **📚 Protocol Integration**: References peer-reviewed health protocols from the Health-protocols repository
 - **💬 Real-time Chat**: Interactive chat interface with debounced message handling
 - **🔒 Secure**: API keys protected, HTTPS-only, security headers enabled
@@ -23,7 +23,7 @@ Frontend (React/TypeScript) → Vercel Serverless Functions → AurraCloud AI �
 
 - **Frontend**: React with TypeScript, Vite build system
 - **Backend**: Vercel serverless functions (`/api/chat`, `/api/health`)
-- **AI Provider**: AurraCloud with Grok-4 model
+- **AI Provider**: AurraCloud with GPT-4 model
 - **Protocols**: GitHub repository with evidence-based health documents
 - **Deployment**: Vercel with automatic deployments
 
@@ -31,7 +31,7 @@ Frontend (React/TypeScript) → Vercel Serverless Functions → AurraCloud AI �
 
 - **Frontend**: React 18, TypeScript, Tailwind CSS, Vite
 - **Backend**: Vercel Serverless Functions, Node.js
-- **AI**: AurraCloud API with Grok-4 model
+- **AI**: AurraCloud API with GPT-4 model
 - **Deployment**: Vercel
 - **Protocols**: GitHub repository integration
 
@@ -122,7 +122,7 @@ The application will be available at `http://localhost:5173`
   "response": "AI response text",
   "success": true,
   "timestamp": "2024-07-31T16:33:00.000Z",
-  "model": "aurra-xai-grok-4",
+  "model": "aurra-gpt-4o",
   "response_time": 1500,
   "protocol_hint": "sleep_hygiene.pdf",
   "source": "AurraCloud"
@@ -139,10 +139,10 @@ npm test
 ### Test API Endpoints
 ```bash
 # Health check
-curl https://your-vercel-url.vercel.app/api/health
+curl https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app/api/health
 
 # Chat endpoint
-curl -X POST https://your-vercel-url.vercel.app/api/chat \
+curl -X POST https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app/api/chat \
   -H "Content-Type: application/json" \
   -d '{"input": "hello"}'
 ```
@@ -243,6 +243,12 @@ HTML authentication page instead of API response
 ```
 **Solution**: Disable password protection in Vercel project settings
 
+**API Endpoint Errors**
+```
+FUNCTION_INVOCATION_FAILED
+```
+**Solution**: Verify API key format and AurraCloud API endpoint configuration
+
 ### Debug Mode
 
 Enable debug logging by setting `DEBUG=true` in environment variables.
@@ -279,6 +285,7 @@ For issues and questions:
 **Current Version**: v2.0.0
 **Status**: ✅ **Production Ready**
 **Last Updated**: July 31, 2024
+**API Endpoint**: Updated to AurraCloud v1 API format
 
 ---
 
