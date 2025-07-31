@@ -218,7 +218,7 @@ class HealthAIService {
   /**
    * Get health advice with retry logic and exponential backoff
    */
-  async getHealthAdvice(prompt: string, maxRetries = 2): Promise<HealthAIResponse> {
+  async getHealthAdvice(prompt: string, maxRetries = 1): Promise<HealthAIResponse> {
     let lastError: Error | null = null;
     
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -242,7 +242,7 @@ class HealthAIService {
   /**
    * Get health advice with enhanced data
    */
-  async getHealthAdviceWithData(request: HealthAIRequest, maxRetries = 2): Promise<HealthAIResponse> {
+  async getHealthAdviceWithData(request: HealthAIRequest, maxRetries = 1): Promise<HealthAIResponse> {
     let lastError: Error | null = null;
     
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
