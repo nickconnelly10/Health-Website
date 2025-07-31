@@ -31,9 +31,9 @@ export default async function handler(
       });
     }
 
-    // Test AurraCloud connectivity with a simple request
+    // Test AurraCloud API connection
     const testResponse = await fetch(
-      'https://api.aurra.cloud/v1/agents/1a1caab0-a136-40fe-b323-d56d4f2683f2/run',
+      'https://api-v1.aurracloud.com/v1/chat/completions',
       {
         method: 'POST',
         headers: {
@@ -41,9 +41,9 @@ export default async function handler(
           'Authorization': `Bearer ${aurraApiKey}`
         },
         body: JSON.stringify({
-          input: 'health check',
-          multimodal: {},
-          context: {}
+          model: 'aurra-gpt-4o',
+          messages: [{ role: 'user', content: 'test' }],
+          max_tokens: 10
         })
       }
     );
