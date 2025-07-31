@@ -2,16 +2,17 @@
 
 **Institutional-grade AI chat for health and financial self-sovereignty.**
 
-A professional health advisory application powered by advanced AI, providing evidence-based guidance on nutrition, exercise, wellness, and lifestyle topics.
+A professional health advisory application powered by AurraCloud AI, providing evidence-based guidance on nutrition, exercise, wellness, and lifestyle topics with protocol-based responses. **Fully deployed on Vercel with integrated serverless functions.**
 
 ## 🚀 Features
 
 ### 🤖 AI-Powered Health Advisory
-- **Mistral AI Integration**: Powered by Ollama with Mistral 7.2B model
-- **Evidence-Based Responses**: Medical-grade health guidance
+- **AurraCloud Integration**: Powered by advanced cloud-based AI agents
+- **Protocol-Based Responses**: Evidence-based health guidance with scientific literature
 - **Real-time Chat**: Instant responses with loading states
-- **Connection Monitoring**: Live status indicator for backend connectivity
-- **Timeout Handling**: 120-second timeout for AI processing
+- **Connection Monitoring**: Live status indicator for API connectivity
+- **Timeout Handling**: 30-second timeout for AI processing
+- **Multimodal Support**: Wearables data and image processing capabilities
 
 ### 💬 Professional Chat Interface
 - **Modern UI**: Clean, medical-grade design with ChatGPT-like interface
@@ -20,7 +21,8 @@ A professional health advisory application powered by advanced AI, providing evi
 - **Error Handling**: Graceful handling of network issues
 - **Responsive Design**: Works on desktop and mobile
 - **Accessibility**: ARIA labels and keyboard navigation
-- **Connection Status**: Real-time backend connectivity indicator
+- **Connection Status**: Real-time API connectivity indicator
+- **Protocol Indicators**: Visual indicators for evidence-based responses
 
 ### 🏥 Health Categories & Resources
 - **💪 Physical Activity**: Exercise science and injury recovery resources
@@ -33,15 +35,15 @@ A professional health advisory application powered by advanced AI, providing evi
 - **Dark Mode Toggle**: Switch between light and dark themes
 - **GitHub Repository Links**: Direct access to health protocols repository
 - **System Status**: Real-time service monitoring
-- **Connection Management**: Backend connectivity controls
+- **Connection Management**: API connectivity controls
 
 ### 🔧 Technical Features
 - **TypeScript**: Full type safety and IntelliSense
 - **React 18**: Modern React with hooks and concurrent features
 - **Vite**: Fast development and optimized builds
 - **Tailwind CSS**: Utility-first styling with dark mode support
-- **Flask Backend**: Robust Python backend API
-- **NGINX Integration**: Production-ready web server
+- **Vercel Serverless Functions**: Integrated backend API
+- **AurraCloud AI**: Cloud-based AI service with protocol integration
 
 ## 🛠️ Quick Start
 
@@ -49,8 +51,7 @@ A professional health advisory application powered by advanced AI, providing evi
 - Node.js 18+
 - npm or yarn
 - Git
-- Python 3.8+ (for backend)
-- Ollama (for AI service)
+- AurraCloud API Key
 
 ### Local Development
 1. **Clone the repository**:
@@ -77,159 +78,157 @@ A professional health advisory application powered by advanced AI, providing evi
 
 5. **Open in browser**:
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:5000
-   - Health Check: http://localhost:5000/health
+   - API Functions: http://localhost:3000/api/* (when using `vercel dev`)
 
 ## 🏗️ Project Structure
 
 ```
 health.muscadine.box/
-├── src/
-│   ├── components/          # React components
-│   │   ├── ChatWindow.tsx   # Main chat interface with dark mode
-│   │   ├── ChatInput.tsx    # Message input component
-│   │   ├── Message.tsx      # Individual message display
+├── src/                    # Frontend React code
+│   ├── components/         # React components
+│   │   ├── ChatWindow.tsx  # Main chat interface with AurraCloud integration
+│   │   ├── ChatInput.tsx   # Message input component
+│   │   ├── Message.tsx     # Individual message display with metadata
 │   │   ├── MuscadineBanner.tsx # Navigation with settings dropdown
 │   │   ├── ResourcesPage.tsx # Health resources and protocols
 │   │   ├── NutritionPage.tsx # Nutrition guidance
 │   │   ├── LifestylePage.tsx # Lifestyle resources
 │   │   ├── PhysicalActivityPage.tsx # Exercise resources
-│   │   └── ...              # Other UI components
-│   ├── api/                 # API services
-│   │   └── healthAI.ts      # Frontend AI service with retry logic
-│   ├── App.tsx              # Main application with routing
-│   └── main.tsx             # Application entry point
-├── public/                  # Static assets
-├── dist/                    # Production build
-└── package.json             # Dependencies and scripts
+│   │   └── ...             # Other UI components
+│   ├── api/                # API services
+│   │   ├── healthAI.ts     # Frontend AI service with AurraCloud support
+│   │   ├── serverHealthAI.ts # Server-side AI service
+│   │   └── chat.ts         # API handler
+│   ├── App.tsx             # Main application with routing
+│   └── main.tsx            # Application entry point
+├── api/                    # Vercel serverless functions
+│   ├── chat.ts             # Chat API endpoint
+│   └── health.ts           # Health check endpoint
+├── public/                 # Static assets
+├── dist/                   # Production build
+├── vercel.json             # Vercel configuration
+└── package.json            # Dependencies and scripts
 ```
 
 ## 🔌 API Integration
 
-### Backend Connection
-The application connects to a Flask backend running Ollama with Mistral AI:
+### Vercel Serverless Functions
+The application uses Vercel serverless functions for the backend API:
 
 ```typescript
 // API Endpoint
-POST https://health.muscadine.box/chat
+POST /api/chat
 
-// Request Body
+// Request Body (Legacy Format)
 {
   "prompt": "user health question"
 }
 
+// Request Body (Enhanced Format)
+{
+  "input": "user health question",
+  "wearables": {
+    "sleep": { "duration": 420, "quality": "fair" },
+    "heartRate": 58
+  },
+  "images": [],
+  "protocol_hint": "sleep_hygiene.pdf",
+  "extra_context": { "userId": "abc123" }
+}
+
 // Response
 {
-  "response": "AI health advice",
+  "response": "AI health advice with protocol citations",
   "success": true,
-  "timestamp": "2024-01-01T00:00:00.000Z"
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "model": "aurra-agent-1a1caab0",
+  "response_time": 3.45,
+  "protocol_hint": "sleep_hygiene.pdf",
+  "source": "aurra"
 }
 ```
-
-### Backend Setup
-The frontend requires the [health-backend](https://github.com/nickconnelly10/health-backend) to be running. To set up the backend:
-
-1. **Clone the backend repository**:
-   ```bash
-   git clone https://github.com/nickconnelly10/health-backend.git
-   cd health-backend
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-
-3. **Start all services** (recommended):
-   ```bash
-   ./start_health_system.sh
-   ```
-
-4. **Or start individual services**:
-   ```bash
-   # Start Ollama AI service
-   sudo systemctl start ollama
-   
-   # Start Flask backend
-   sudo systemctl start healthchat
-   
-   # Start NGINX web server
-   sudo systemctl start nginx
-   ```
-
-5. **Verify setup**:
-   ```bash
-   curl -s http://localhost:5000/health | jq .
-   ```
 
 ### Health AI Service
 ```typescript
 import { healthAIService } from './api/healthAI';
 
-// Get health advice
+// Get health advice (legacy format)
 const response = await healthAIService.getHealthAdvice("How much protein should I eat?");
+
+// Get health advice with enhanced data
+const enhancedResponse = await healthAIService.getHealthAdviceWithData({
+  input: "I need sleep advice",
+  wearables: { sleep: { duration: 360, quality: "poor" } },
+  protocol_hint: "sleep_duration_recommendations_hirshkowitz2015.pdf"
+});
 
 // Check connection
 const isConnected = await healthAIService.checkConnection();
 
-// Get connected backend URL
-const backendURL = healthAIService.getConnectedBackendURL();
+// Check AurraCloud status
+const aurraStatus = await healthAIService.checkAurraCloudStatus();
 ```
 
 ## 🚀 Deployment
 
-### Production Deployment
-1. **Build the application**:
+### Vercel Deployment (Recommended)
+This application is optimized for Vercel deployment:
+
+1. **Connect to Vercel**:
    ```bash
-   npm run build
+   npm install -g vercel
+   vercel login
    ```
 
-2. **Deploy to NGINX**:
+2. **Deploy**:
    ```bash
-   sudo cp -r dist/* /var/www/health.muscadine.box/
+   vercel --prod
    ```
 
-3. **Configure NGINX** (if not already configured):
-   ```bash
-   sudo nginx -t
-   sudo systemctl reload nginx
+3. **Set environment variables** in Vercel dashboard:
+   ```env
+   AURRA_API_KEY=your-aurra-api-key-here
    ```
 
 ### Environment Variables
 ```env
-# Backend API URLs
-VITE_HEALTH_AI_URL="https://health.muscadine.box"
-VITE_BACKUP_URLS="http://localhost:5000,http://127.0.0.1:5000"
+# AurraCloud Configuration
+AURRA_API_KEY=your-aurra-api-key-here
 
 # Build Configuration
 NODE_ENV=production
-VITE_APP_VERSION="1.0.0"
+VITE_APP_VERSION="2.0.0"
 ```
 
 ## 🧪 Testing
 
 ### Run Tests
 ```bash
+# Frontend tests
 npm test
-```
 
-### Build Test
-```bash
+# TypeScript compilation check
+npx tsc --noEmit
+
+# Build test
 npm run build
+
+# Lint check
+npm run lint
 ```
 
-### API Test
+### Local Development with Vercel
 ```bash
-# Health check
-curl http://localhost:5000/health
+# Install Vercel CLI
+npm install -g vercel
 
-# Chat test
-curl -X POST http://localhost:5000/chat \
-  -H "Content-Type: application/json" \
-  -d '{"prompt":"test message"}'
+# Start local development
+vercel dev
 ```
+
+This will start:
+- Frontend: `http://localhost:3000`
+- API Functions: `http://localhost:3000/api/*`
 
 ## 📊 Performance
 
@@ -240,12 +239,14 @@ curl -X POST http://localhost:5000/chat \
 - **Code Splitting**: Lazy loading for better performance
 - **Bundle Optimization**: Tree shaking and minification
 - **Dark Mode**: Optimized theme switching
+- **Vercel Edge Functions**: Global CDN distribution
 
 ### Metrics
 - **Bundle Size**: ~250KB (gzipped)
 - **Load Time**: <2s on 3G
 - **Time to Interactive**: <3s
 - **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices)
+- **AI Response Time**: 2-10 seconds (AurraCloud processing)
 
 ## 🔒 Security
 
@@ -255,6 +256,7 @@ curl -X POST http://localhost:5000/chat \
 - **Error Handling**: No sensitive data in error messages
 - **HTTPS Only**: Secure connections in production
 - **Security Headers**: XSS protection and content security
+- **API Key Protection**: AurraCloud API key never exposed to clients
 
 ### Medical Disclaimer
 > This application provides general health guidance only. Always consult healthcare professionals for medical advice, diagnosis, or treatment.
@@ -280,6 +282,11 @@ curl -X POST http://localhost:5000/chat \
 - **Click Outside**: Auto-close functionality
 - **Responsive Design**: Works on all screen sizes
 
+### AurraCloud Indicators
+- **Connection Status**: Real-time AurraCloud connectivity
+- **Response Metadata**: Display response time and protocol hints
+- **Protocol Citations**: Visual indicators for evidence-based responses
+
 ## 🤝 Contributing
 
 1. **Fork** the repository
@@ -294,6 +301,7 @@ curl -X POST http://localhost:5000/chat \
 - Update documentation
 - Follow the existing code style
 - Test dark mode compatibility
+- Ensure Vercel function compatibility
 
 ## 📝 License
 
@@ -310,46 +318,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 #### Common Issues
 1. **Build fails**: Check Node.js version (18+ required)
-2. **API errors**: Verify Flask backend is running
+2. **API errors**: Verify AurraCloud API key is configured
 3. **Connection issues**: Check network and firewall settings
 4. **Dark mode not working**: Check browser console for errors
-
-#### Backend Connection Issues
-If the AI chat is not connecting to the backend:
-
-1. **Check backend status**:
-   ```bash
-   # Test backend connection
-   curl -s http://localhost:5000/health
-   
-   # Check if Ollama is running
-   curl -s http://localhost:11434/api/tags
-   
-   # Check Flask service status
-   sudo systemctl status healthchat.service
-   ```
-
-2. **Restart backend services**:
-   ```bash
-   # Use the startup script
-   cd ~/Desktop/Github-Repositories/health-backend
-   ./start_health_system.sh
-   ```
-
-3. **Verify NGINX configuration**:
-   ```bash
-   sudo nginx -t
-   sudo systemctl status nginx
-   ```
-
-4. **Check logs**:
-   ```bash
-   # Flask service logs
-   sudo journalctl -u healthchat.service -f
-   
-   # NGINX logs
-   sudo tail -f /var/log/nginx/error.log
-   ```
+5. **AurraCloud not responding**: Verify API key and network connectivity
 
 #### Debug Mode
 ```bash
@@ -358,27 +330,49 @@ DEBUG=true npm run dev
 
 # Check browser console for errors
 # Check network tab for API calls
+# Verify AurraCloud status in connection indicator
 ```
 
 ## 🎯 Roadmap
 
 ### Upcoming Features
+- [ ] Enhanced protocol integration
 - [ ] User authentication and profiles
 - [ ] Chat history persistence
 - [ ] Voice input/output
 - [ ] Health tracking integration
 - [ ] Mobile app (React Native)
 - [ ] Multi-language support
-- [ ] Advanced AI models integration
+- [ ] Advanced multimodal processing
 - [ ] File upload interface
 - [ ] Health protocols viewer
 
 ### Version History
+- **v2.0.0**: Vercel-only deployment with integrated serverless functions
 - **v0.0.12**: Dark mode implementation and UI improvements
 - **v0.0.11**: Production-ready health AI chat
 - **v0.0.10**: Flask backend integration
 - **v0.0.9**: UI/UX improvements
 - **v0.0.8**: Initial release
+
+## 🔄 Migration from External Backend
+
+This application has been simplified to run entirely on Vercel:
+
+### What Changed
+- **Backend**: External servers → Vercel serverless functions
+- **Deployment**: Multiple services → Single Vercel deployment
+- **Dependencies**: Reduced from 50+ to essential packages only
+- **Configuration**: Simplified to Vercel-only setup
+
+### What's Preserved
+- **All Features**: Complete functionality maintained
+- **UI/UX**: Same user experience
+- **API Structure**: Legacy format still supported
+- **Security**: All security features maintained
+
+For detailed deployment information, see:
+- [Vercel Deployment Guide](VERCEL_DEPLOYMENT.md)
 
 ---
 

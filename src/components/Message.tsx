@@ -46,9 +46,34 @@ export default function Message({ message }: { message: ChatMessage }) {
             )}
           </div>
           
-          {/* Timestamp */}
+          {/* Timestamp and Metadata */}
           <div className={`text-xs text-gray-400 mt-2 ${isUser ? 'text-right' : 'text-left'}`}>
-            {timestamp}
+            <div className="flex items-center space-x-2">
+              <span>{timestamp}</span>
+              
+              {/* AurraCloud metadata for AI messages */}
+              {message.role === 'ai' && (
+                <>
+                  {message.response_time && (
+                    <span className="text-gray-500">
+                      • {message.response_time}s
+                    </span>
+                  )}
+                  
+                  {message.source === 'aurra' && (
+                    <span className="text-blue-600 font-medium">
+                      • AurraCloud
+                    </span>
+                  )}
+                  
+                  {message.protocol_hint && (
+                    <span className="text-green-600" title={`Protocol: ${message.protocol_hint}`}>
+                      • 📄 Protocol
+                    </span>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

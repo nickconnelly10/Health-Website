@@ -9,6 +9,10 @@ export interface ChatMessage {
   content: string;
   timestamp: Date;
   summary?: string[];
+  model?: string;
+  response_time?: number;
+  protocol_hint?: string;
+  source?: string;
 }
 
 export default function ChatWindow() {
@@ -16,6 +20,7 @@ export default function ChatWindow() {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
+  const [aurraStatus, setAurraStatus] = useState<{ isAurra: boolean; status: string } | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -30,15 +35,22 @@ export default function ChatWindow() {
     }
   }, [messages, scrollToBottom]);
 
-  // Check backend connection on component mount
+  // Check backend connection and AurraCloud status on component mount
   useEffect(() => {
     const checkConnection = async () => {
       try {
         setConnectionStatus('checking');
         const isConnected = await healthAIService.checkConnection();
         setConnectionStatus(isConnected ? 'connected' : 'disconnected');
+        
+        // Check if backend is AurraCloud-powered
+        if (isConnected) {
+          const aurraInfo = await healthAIService.checkAurraCloudStatus();
+          setAurraStatus(aurraInfo);
+        }
       } catch {
         setConnectionStatus('disconnected');
+        setAurraStatus(null);
       }
     };
 
@@ -80,7 +92,11 @@ export default function ChatWindow() {
         id: (Date.now() + 1).toString(),
         role: 'ai',
         content: aiResponse.response,
-        timestamp: new Date(),
+        timestamp: aiResponse.timestamp,
+        model: aiResponse.model,
+        response_time: aiResponse.response_time,
+        protocol_hint: aiResponse.protocol_hint,
+        source: aiResponse.source,
       };
 
       setMessages(prev => [...prev, aiMessage]);
@@ -151,6 +167,11 @@ export default function ChatWindow() {
         <span className="text-xs text-gray-600 font-medium">
           {connectionStatusDisplay.text}
         </span>
+        {aurraStatus?.isAurra && (
+          <span className="text-xs text-blue-600 font-medium ml-2">
+            AurraCloud
+          </span>
+        )}
         {messages.length > 0 && (
           <button
             onClick={clearChat}
@@ -175,7 +196,7 @@ export default function ChatWindow() {
                   Welcome to Health AI Advisor
                 </h2>
                 <p className="text-gray-600 mb-8 text-lg">
-                  I'm your evidence-based health advisor. Ask me anything about nutrition, exercise, wellness, or general health topics.
+                  I'm your evidence-based health advisor powered by AurraCloud. Ask me anything about nutrition, exercise, wellness, or general health topics.
                 </p>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -183,6 +204,14 @@ export default function ChatWindow() {
                     <strong>Note:</strong> I provide general guidance only. Always consult healthcare professionals for medical advice.
                   </p>
                 </div>
+                
+                {aurraStatus?.isAurra && (
+                  <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-sm text-green-800">
+                      ✅ Connected to AurraCloud AI - Enhanced protocol-based responses available
+                    </p>
+                  </div>
+                )}
                 
                 {connectionStatus === 'disconnected' && (
                   <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -208,7 +237,9 @@ export default function ChatWindow() {
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
-                      <span className="text-sm text-gray-600">AI is thinking...</span>
+                      <span className="text-sm text-gray-600">
+                        {aurraStatus?.isAurra ? 'AurraCloud AI is thinking...' : 'AI is thinking...'}
+                      </span>
                     </div>
                   </div>
                 </div>
