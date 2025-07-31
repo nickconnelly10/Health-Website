@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 interface ChatInputProps {
   value: string;
@@ -17,12 +17,27 @@ export default function ChatInput({
   disabled, 
   placeholder = "Ask HealthAI anything..." 
 }: ChatInputProps) {
+  const lastSendTime = useRef<number>(0);
+  const DEBOUNCE_DELAY = 1000; // 1 second debounce
+
+  const handleSend = () => {
+    const now = Date.now();
+    if (now - lastSendTime.current < DEBOUNCE_DELAY || disabled) {
+      return; // Prevent rapid double submissions or disabled state
+    }
+    lastSendTime.current = now;
+    onSend();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      onSend();
+      handleSend();
     }
-    onKeyPress?.(e);
+    // Only call onKeyPress for non-Enter keys to avoid double submission
+    if (e.key !== 'Enter') {
+      onKeyPress?.(e);
+    }
   };
 
   return (
@@ -50,22 +65,27 @@ export default function ChatInput({
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm'
           }`}
-          onClick={() => onSend()}
+          onClick={handleSend}
           disabled={disabled || !value.trim()}
+          title={disabled ? "Processing..." : "Send message"}
         >
-          <svg 
-            className="w-5 h-5" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
-            />
-          </svg>
+          {disabled ? (
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            <svg 
+              className="w-5 h-5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+              />
+            </svg>
+          )}
         </button>
       </div>
       
