@@ -118,7 +118,7 @@ export default async function handler(
 
     // Call AurraCloud API
     const aurraResponse = await fetch(
-      'https://api.aurra.cloud/v1/agents/1a1caab0-a136-40fe-b323-d56d4f2683f2/run',
+      'https://api-v1.aurracloud.com/v1/chat/completions',
       {
         method: 'POST',
         headers: {
@@ -126,11 +126,11 @@ export default async function handler(
           'Authorization': `Bearer ${aurraApiKey}`
         },
         body: JSON.stringify({
-          input: userInput,
-          multimodal: {
-            wearables: body.wearables || {},
-            images: body.images || []
-          },
+          model: 'aurra-gpt-4o',
+          messages: [{ role: 'user', content: userInput }],
+          tools: [
+            {type: 'native', slug: 'chainlink-toolkit'}
+          ],
           context: {
             protocol_hint: protocolHint,
             protocols_directory: "https://github.com/nickconnelly10/Health-protocols",
@@ -148,20 +148,44 @@ export default async function handler(
       });
     }
 
-    const aurraData = await aurraResponse.json();
+    // Handle streaming response
+    const responseText = await aurraResponse.text();
     const responseTime = Date.now() - startTime;
 
-    // Extract response from various possible fields
+    // Parse streaming response
     let aiResponse = '';
-    if (aurraData.output) {
-      aiResponse = aurraData.output;
-    } else if (aurraData.message) {
-      aiResponse = aurraData.message;
-    } else if (aurraData.response) {
-      aiResponse = aurraData.response;
-    } else if (aurraData.content) {
-      aiResponse = aurraData.content;
-    } else {
+    const lines = responseText.split('\n');
+    
+    for (const line of lines) {
+      if (line.startsWith('0:')) {
+        // Extract content from streaming format
+        const content = line.substring(2);
+        aiResponse += content;
+      }
+    }
+
+    // If no streaming content found, try to parse as JSON
+    if (!aiResponse.trim()) {
+      try {
+        const aurraData = JSON.parse(responseText);
+        if (aurraData.choices && aurraData.choices[0] && aurraData.choices[0].message) {
+          aiResponse = aurraData.choices[0].message.content;
+        } else if (aurraData.output) {
+          aiResponse = aurraData.output;
+        } else if (aurraData.message) {
+          aiResponse = aurraData.message;
+        } else if (aurraData.response) {
+          aiResponse = aurraData.response;
+        } else if (aurraData.content) {
+          aiResponse = aurraData.content;
+        }
+      } catch (e) {
+        console.error('Failed to parse response:', e);
+      }
+    }
+
+    // Fallback if no response extracted
+    if (!aiResponse.trim()) {
       aiResponse = 'I apologize, but I received an unexpected response format from the AI service.';
     }
 
@@ -176,10 +200,10 @@ export default async function handler(
       response: aiResponse,
       success: true,
       timestamp: new Date().toISOString(),
-      model: 'aurra-agent-1a1caab0',
+      model: 'aurra-gpt-4o',
       response_time: responseTime,
       protocol_hint: protocolHint,
-      source: 'aurra'
+      source: 'AurraCloud'
     };
 
     res.status(200).json(response);
