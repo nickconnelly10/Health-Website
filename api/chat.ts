@@ -118,7 +118,7 @@ export default async function handler(
 
     // Call AurraCloud API
     const aurraResponse = await fetch(
-      'https://api-v1.aurracloud.com/v1/chat/completions',
+      'https://api.aurra.cloud/v1/agents/1a1caab0-a136-40fe-b323-d56d4f2683f2/run',
       {
         method: 'POST',
         headers: {
@@ -126,11 +126,11 @@ export default async function handler(
           'Authorization': `Bearer ${aurraApiKey}`
         },
         body: JSON.stringify({
-          model: 'aurra-gpt-4o',
-          messages: [{ role: 'user', content: userInput }],
-          tools: [
-            {type: 'native', slug: 'chainlink-toolkit'}
-          ],
+          input: userInput,
+          multimodal: {
+            wearables: body.wearables || {},
+            images: body.images || []
+          },
           context: {
             protocol_hint: protocolHint,
             protocols_directory: "https://github.com/nickconnelly10/Health-protocols",
