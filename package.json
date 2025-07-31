@@ -1,6 +1,7 @@
 {
   "name": "muscadine-health-ai",
   "version": "2.0.0",
+  "type": "module",
   "description": "Institutional-grade AI chat for health and financial self-sovereignty - Vercel deployment",
   "scripts": {
     "dev": "vite",

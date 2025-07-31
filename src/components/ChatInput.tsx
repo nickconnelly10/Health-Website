@@ -6,6 +6,7 @@ interface ChatInputProps {
   onSend: () => void;
   onKeyPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   disabled?: boolean;
+  isDarkMode?: boolean;
   placeholder?: string;
 }
 
@@ -15,6 +16,7 @@ export default function ChatInput({
   onSend, 
   onKeyPress, 
   disabled, 
+  isDarkMode = false,
   placeholder = "Ask HealthAI anything..." 
 }: ChatInputProps) {
   const lastSendTime = useRef<number>(0);
@@ -45,7 +47,11 @@ export default function ChatInput({
       <div className="flex items-end space-x-3">
         <div className="flex-1 relative">
           <textarea
-            className="w-full resize-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-12 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[52px] max-h-32 transition-all duration-200"
+            className={`w-full resize-none rounded-xl border px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[52px] max-h-32 transition-all duration-200 ${
+              isDarkMode
+                ? 'bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400'
+                : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+            }`}
             placeholder={placeholder}
             value={value}
             onChange={e => onChange(e.target.value)}
@@ -62,7 +68,9 @@ export default function ChatInput({
         <button
           className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
             disabled || !value.trim()
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              ? isDarkMode
+                ? 'bg-gray-600 text-gray-500 cursor-not-allowed'
+                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm'
           }`}
           onClick={handleSend}
@@ -89,7 +97,9 @@ export default function ChatInput({
         </button>
       </div>
       
-      <div className="text-xs text-gray-400 mt-2 text-center">
+      <div className={`text-xs mt-2 text-center transition-colors ${
+        isDarkMode ? 'text-gray-500' : 'text-gray-400'
+      }`}>
         Press Enter to send, Shift+Enter for new line
       </div>
     </div>

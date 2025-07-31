@@ -6,9 +6,9 @@ Your Muscadine Health AI application has been **successfully deployed to Vercel*
 
 ## 🚀 **Live Application URLs**
 
-- **Production**: https://healthmuscadine-ewb1mofd6-nicks-projects-000b3e21.vercel.app
-- **API Health**: https://healthmuscadine-ewb1mofd6-nicks-projects-000b3e21.vercel.app/api/health
-- **API Chat**: https://healthmuscadine-ewb1mofd6-nicks-projects-000b3e21.vercel.app/api/chat
+- **Production**: https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app
+- **API Health**: https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app/api/health
+- **API Chat**: https://healthmuscadine-j6q7jm7xe-nicks-projects-000b3e21.vercel.app/api/chat
 
 ## 🔧 **Final Configuration Required**
 
@@ -28,9 +28,11 @@ To make the AI features work:
 1. **In the same project**, go to: Settings → **Environment Variables**
 2. **Add variable**:
    - **Name**: `AURRA_API_KEY`
-   - **Value**: Your actual AurraCloud API key
+   - **Value**: Your AurraCloud API key (from the dashboard)
    - **Environment**: Production (and Preview if needed)
 3. **Save and redeploy**
+
+**Note**: Your application is now configured to use the AurraCloud Grok-4 model with agent ID `1a1caab0-a136-40fe-b323-d56d4f2683f2`
 
 ### **3. Redeploy After Changes**
 After making the above changes:
@@ -43,8 +45,8 @@ npx vercel --prod
 
 ### ✅ **health.muscadine.box** (MAIN REPOSITORY)
 - **Status**: ✅ **UPDATED AND COMMITTED**
-- **Version**: v2.0.0
-- **Changes**: Complete Vercel deployment with serverless functions
+- **Version**: v2.1.0
+- **Changes**: Complete Vercel deployment with serverless functions, Health Protocol Database, Dark Mode
 - **Git Status**: All changes committed and pushed to GitHub
 - **Deployment**: Live on Vercel
 
@@ -103,6 +105,13 @@ npx vercel --prod
 - ✅ **Security headers**: XSS protection, content validation
 - ✅ **HTTPS only**: Secure by default
 
+### **New Features Added**
+- ✅ **Health Protocol Database**: 21 protocols with search and filtering
+- ✅ **Dark Mode**: Full dark/light mode support
+- ✅ **Responsive Layout**: 60/40 grid proportions
+- ✅ **Resource Pages**: Nutrition, Physical Activity, Lifestyle guides
+- ✅ **Updated Navigation**: Clean banner and footer
+
 ## 📊 **Performance Metrics**
 
 - **Bundle Size**: 238KB (gzipped) - 5% reduction
@@ -131,6 +140,7 @@ npx vercel --prod
 - ✅ **Architecture simplified**: No external dependencies
 - ✅ **Documentation updated**: Comprehensive guides created
 - ✅ **Testing passed**: All functionality verified
+- ✅ **New features**: Health Protocol Database, Dark Mode, Responsive Layout
 
 ### **🔧 REQUIRES ACTION**
 - 🔧 **Disable authentication**: Make application publicly accessible
@@ -147,4 +157,4 @@ npx vercel --prod
 
 ---
 
-**🎉 Congratulations! Your application is now a modern, scalable, production-ready health AI platform!** 
+**🎉 Congratulations! Your application is now a modern, scalable, production-ready health AI platform with comprehensive health resources!** 

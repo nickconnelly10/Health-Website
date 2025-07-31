@@ -306,8 +306,8 @@ class HealthAIService {
         if (response.ok) {
           const data = await response.json();
           return {
-            isAurra: data.service === 'vercel-aurra-backend',
-            status: data.aurra_status || 'unknown'
+            isAurra: data.aurracloud_agent_id === '1a1caab0-a136-40fe-b323-d56d4f2683f2',
+            status: data.aurracloud_status || 'unknown'
           };
         }
       } catch (error) {

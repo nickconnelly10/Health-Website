@@ -126,7 +126,8 @@ export default async function handler(
           'Authorization': `Bearer ${aurraApiKey}`
         },
         body: JSON.stringify({
-          model: 'aurra-gpt-4o',
+          model: 'aurra-xai-grok-4',
+          agent_id: '1a1caab0-a136-40fe-b323-d56d4f2683f2',
           messages: [{ role: 'user', content: userInput }],
           tools: [
             {type: 'native', slug: 'chainlink-toolkit'}
@@ -158,8 +159,21 @@ export default async function handler(
     
     for (const line of lines) {
       if (line.startsWith('0:')) {
-        // Extract content from streaming format
-        const content = line.substring(2);
+        // Extract content from streaming format and clean up quotes
+        const content = line.substring(2)
+          .replace(/"/g, '')  // Remove regular quotes
+          .replace(/""/g, '') // Remove double quotes
+          .replace(/"/g, '')  // Remove smart quotes
+          .replace(/"/g, '')  // Remove smart quotes
+          .replace(/"/g, '')  // Remove curly quotes
+          .replace(/"/g, '')  // Remove curly quotes
+          .replace(/"/g, '')  // Remove any other quote variants
+          .replace(/"/g, '')  // Remove any other quote variants
+          .replace(/"/g, '')  // Remove any other quote variants
+          .replace(/"/g, '')  // Remove any other quote variants
+          .replace(/\s+/g, ' ') // Clean up extra spaces
+          .replace(/\s{2,}/g, ' ') // Remove multiple spaces
+          .trim();
         aiResponse += content;
       }
     }
@@ -179,10 +193,52 @@ export default async function handler(
         } else if (aurraData.content) {
           aiResponse = aurraData.content;
         }
+        
+        // Clean up quotes from JSON response as well
+        if (aiResponse) {
+          aiResponse = aiResponse
+            .replace(/"/g, '')  // Remove regular quotes
+            .replace(/""/g, '') // Remove double quotes
+            .replace(/"/g, '')  // Remove smart quotes
+            .replace(/"/g, '')  // Remove smart quotes
+            .replace(/"/g, '')  // Remove curly quotes
+            .replace(/"/g, '')  // Remove curly quotes
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/"/g, '')  // Remove any other quote variants
+            .replace(/\s+/g, ' ') // Clean up extra spaces
+            .replace(/\s{2,}/g, ' ') // Remove multiple spaces
+            .trim();
+        }
       } catch (e) {
         console.error('Failed to parse response:', e);
       }
     }
+
+    // Clean up any remaining quotation marks from the response
+    aiResponse = aiResponse
+      .replace(/"/g, '')  // Remove regular quotes
+      .replace(/""/g, '') // Remove double quotes
+      .replace(/"/g, '')  // Remove smart quotes
+      .replace(/"/g, '')  // Remove smart quotes
+      .replace(/"/g, '')  // Remove curly quotes
+      .replace(/"/g, '')  // Remove curly quotes
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/"/g, '')  // Remove any other quote variants
+      .replace(/\s+/g, ' ') // Clean up extra spaces
+      .replace(/\s{2,}/g, ' ') // Remove multiple spaces
+      .trim();
 
     // Fallback if no response extracted
     if (!aiResponse.trim()) {
@@ -200,7 +256,7 @@ export default async function handler(
       response: aiResponse,
       success: true,
       timestamp: new Date().toISOString(),
-      model: 'aurra-gpt-4o',
+      model: 'aurra-xai-grok-4',
       response_time: responseTime,
       protocol_hint: protocolHint,
       source: 'AurraCloud'

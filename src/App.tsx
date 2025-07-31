@@ -9,6 +9,7 @@ import NutritionPage from './components/NutritionPage';
 import PhysicalActivityPage from './components/PhysicalActivityPage';
 import LifestylePage from './components/LifestylePage';
 import ResourcesPage from './components/ResourcesPage';
+import HealthProtocolsPage from './components/HealthProtocolsPage';
 import HomePage from './components/HomePage';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/physical-activity" element={<PhysicalActivityPage />} />
             <Route path="/nutrition" element={<NutritionPage />} />
             <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/health-protocols" element={<HealthProtocolsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -57,7 +57,8 @@ export default async function handler(
               'Authorization': `Bearer ${aurraApiKey}`
             },
             body: JSON.stringify({
-              model: 'aurra-gpt-4o',
+              model: 'aurra-xai-grok-4',
+              agent_id: '1a1caab0-a136-40fe-b323-d56d4f2683f2',
               messages: [{ role: 'user', content: 'test' }],
               max_tokens: 10
             })

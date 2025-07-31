@@ -1,6 +1,6 @@
 # 🏥 Muscadine Health AI
 
-A modern, evidence-based health AI advisor powered by AurraCloud, deployed on Vercel with integrated serverless functions.
+A modern, evidence-based health AI advisor powered by AurraCloud Grok-4, deployed on Vercel with integrated serverless functions and comprehensive health resources.
 
 ## 🚀 Live Application
 
@@ -8,12 +8,14 @@ A modern, evidence-based health AI advisor powered by AurraCloud, deployed on Ve
 
 ## ✨ Features
 
-- **🤖 AI-Powered Health Advice**: Evidence-based recommendations using AurraCloud's GPT-4 model
-- **📚 Protocol Integration**: References peer-reviewed health protocols from the Health-protocols repository
+- **🤖 AI-Powered Health Advice**: Evidence-based recommendations using AurraCloud's Grok-4 model
+- **📚 Health Protocol Database**: Comprehensive collection of peer-reviewed health protocols with search and filtering
 - **💬 Real-time Chat**: Interactive chat interface with debounced message handling
+- **📖 Resource Pages**: Detailed guides for Nutrition, Physical Activity, and Lifestyle
 - **🔒 Secure**: API keys protected, HTTPS-only, security headers enabled
 - **📱 Responsive**: Modern UI that works on desktop and mobile
 - **⚡ Fast**: Serverless deployment with global CDN
+- **🌙 Dark Mode**: Full dark/light mode support across all components
 
 ## 🏗️ Architecture
 
@@ -21,19 +23,20 @@ A modern, evidence-based health AI advisor powered by AurraCloud, deployed on Ve
 Frontend (React/TypeScript) → Vercel Serverless Functions → AurraCloud AI → Health Protocols
 ```
 
-- **Frontend**: React with TypeScript, Vite build system
+- **Frontend**: React with TypeScript, Vite build system, Tailwind CSS
 - **Backend**: Vercel serverless functions (`/api/chat`, `/api/health`)
-- **AI Provider**: AurraCloud with GPT-4 model
+- **AI Provider**: AurraCloud with Grok-4 model and agent ID
 - **Protocols**: GitHub repository with evidence-based health documents
 - **Deployment**: Vercel with automatic deployments
 
 ## 🛠️ Technology Stack
 
 - **Frontend**: React 18, TypeScript, Tailwind CSS, Vite
-- **Backend**: Vercel Serverless Functions, Node.js
-- **AI**: AurraCloud API with GPT-4 model
+- **Backend**: Vercel Serverless Functions, Node.js (ES Modules)
+- **AI**: AurraCloud API with Grok-4 model
 - **Deployment**: Vercel
 - **Protocols**: GitHub repository integration
+- **Styling**: Tailwind CSS with custom color scheme
 
 ## 📋 Prerequisites
 
@@ -122,7 +125,7 @@ The application will be available at `http://localhost:5173`
   "response": "AI response text",
   "success": true,
   "timestamp": "2024-07-31T16:33:00.000Z",
-  "model": "aurra-gpt-4o",
+  "model": "aurra-xai-grok-4",
   "response_time": 1500,
   "protocol_hint": "sleep_hygiene.pdf",
   "source": "AurraCloud"
@@ -164,7 +167,16 @@ health.muscadine.box/
 │   ├── components/        # React components
 │   │   ├── ChatWindow.tsx # Main chat interface
 │   │   ├── ChatInput.tsx  # Message input component
-│   │   └── Message.tsx    # Individual message component
+│   │   ├── Message.tsx    # Individual message component
+│   │   ├── Dashboard.tsx  # Dashboard page
+│   │   ├── ProfilePage.tsx # Profile page
+│   │   ├── NutritionPage.tsx # Nutrition guide
+│   │   ├── PhysicalActivityPage.tsx # Exercise guide
+│   │   ├── LifestylePage.tsx # Lifestyle guide
+│   │   ├── ResourcesPage.tsx # Resources page
+│   │   ├── HealthProtocolsPage.tsx # Protocol database
+│   │   ├── MuscadineBanner.tsx # Navigation banner
+│   │   └── MuscadineFooter.tsx # Footer
 │   └── api/
 │       └── healthAI.ts    # API service layer
 ├── dist/                  # Build output
@@ -197,10 +209,31 @@ The AI advisor specializes in:
 
 The AI references protocols from: https://github.com/nickconnelly10/Health-protocols
 
+### Health Protocol Database
+- **21 Protocols**: Comprehensive collection of peer-reviewed research
+- **8 Categories**: Physical Activity, Nutrition, Sleep, Mental Health, Medical Protocols, etc.
+- **Search & Filter**: Find protocols by category or keyword
+- **Direct Access**: Read online or download PDFs
+- **Evidence-Based**: All protocols are peer-reviewed and evidence-based
+
 Each response includes:
 1. **Evidence Summary**: Concise bullet points with protocol citations
 2. **Action Plan**: 3-5 precise steps for implementation
 3. **Disclaimer**: Medical advice disclaimer
+
+## 🎨 UI/UX Features
+
+### Layout & Design
+- **Responsive Grid**: 60/40 layout proportions for optimal content display
+- **Dark Mode**: Full dark/light mode support with real-time theme detection
+- **Modern Design**: Clean, professional interface with custom color scheme
+- **Accessibility**: Proper contrast ratios and keyboard navigation
+
+### Navigation
+- **Banner Navigation**: Clean navigation with dropdown settings
+- **Resource Pages**: Dedicated pages for Nutrition, Physical Activity, and Lifestyle
+- **Health Protocols**: Comprehensive database with search functionality
+- **Footer Links**: Updated repository links and legal information
 
 ## 🔄 Development
 
@@ -230,6 +263,12 @@ npm run lint         # Run linter
 Error: AurraCloud API key not configured
 ```
 **Solution**: Add `AURRA_API_KEY` environment variable in Vercel dashboard
+
+**Module System Errors**
+```
+SyntaxError: Unexpected token 'export'
+```
+**Solution**: Ensure `"type": "module"` is set in package.json
 
 **Double Message Submissions**
 ```
@@ -282,10 +321,11 @@ For issues and questions:
 
 ## 🎉 Status
 
-**Current Version**: v2.0.0
+**Current Version**: v2.1.0
 **Status**: ✅ **Production Ready**
-**Last Updated**: July 31, 2024
-**API Endpoint**: Updated to AurraCloud v1 API format
+**Last Updated**: January 2025
+**API Endpoint**: Updated to AurraCloud Grok-4 model
+**Features**: Health Protocol Database, Dark Mode, Responsive Layout
 
 ---
 

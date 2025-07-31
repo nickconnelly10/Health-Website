@@ -54,7 +54,7 @@ export default function ProfilePage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <a
-            href="https://github.com/nickconnelly10/Health-protocols"
+            href="https://github.com/nickconnelly10/health.muscadine.box"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-burgundy text-marble font-bold px-6 py-3 rounded-lg shadow-md border border-burgundy hover:bg-marble hover:text-burgundy transition-colors text-center"
@@ -62,12 +62,12 @@ export default function ProfilePage() {
             View Repository
           </a>
           <a
-            href="https://github.com/nickconnelly10/Health-protocols/issues/new"
+            href="https://github.com/nickconnelly10/health.muscadine.box/issues/new"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-stone-200 text-stone-700 font-bold px-6 py-3 rounded-lg shadow-md border border-stone-300 hover:bg-stone-300 transition-colors text-center"
           >
-            Submit Paper Request
+            Submit Issue
           </a>
         </div>
       </div>
