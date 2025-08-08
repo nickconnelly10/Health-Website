@@ -47,30 +47,7 @@ export default function ProfilePage() {
         <div className="text-stone-500 text-xs mt-2">Summary of recent AI interactions and habits.</div>
       </div>
 
-      <div className="bg-stone-50 rounded-2xl border border-stone-200 p-6">
-        <h3 className="text-xl font-bold text-burgundy mb-4">Research Repository</h3>
-        <p className="text-stone-700 mb-4">
-          Contribute to our research collection by submitting papers or requesting new additions.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="https://github.com/nickconnelly10/health.muscadine.box"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-burgundy text-marble font-bold px-6 py-3 rounded-lg shadow-md border border-burgundy hover:bg-marble hover:text-burgundy transition-colors text-center"
-          >
-            View Repository
-          </a>
-          <a
-            href="https://github.com/nickconnelly10/health.muscadine.box/issues/new"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-stone-200 text-stone-700 font-bold px-6 py-3 rounded-lg shadow-md border border-stone-300 hover:bg-stone-300 transition-colors text-center"
-          >
-            Submit Issue
-          </a>
-        </div>
-      </div>
+
     </div>
   );
 } 

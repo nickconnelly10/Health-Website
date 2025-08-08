@@ -51,12 +51,7 @@ export default function Dashboard() {
             <a href="https://github.com/nickconnelly10/health.muscadine.box" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">Source Code</a>
           </div>
         </Widget>
-        <Widget title="Research Repository">
-          <div className="space-y-2 text-sm">
-            <a href="https://github.com/nickconnelly10/Health-protocols" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">View Research Papers</a>
-            <a href="https://github.com/nickconnelly10/health.muscadine.box/issues/new" className="block text-burgundy hover:underline" target="_blank" rel="noopener noreferrer">Submit Issue</a>
-          </div>
-        </Widget>
+
       </div>
     </div>
   );
