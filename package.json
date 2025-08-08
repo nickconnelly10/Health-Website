@@ -1,8 +1,8 @@
 {
-  "name": "muscadine-health-ai",
+  "name": "muscadine-health-dashboard",
   "version": "2.0.0",
   "type": "module",
-  "description": "Institutional-grade AI chat for health and financial self-sovereignty - Vercel deployment",
+  "description": "Modern health dashboard for the Muscadine ecosystem - Vercel deployment",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,10 +11,8 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@vercel/node": "^5.3.7",
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
-    "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -27,7 +25,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.13",
-    "@types/node-fetch": "^2.6.11",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "eslint-plugin-react": "^7.37.5",
