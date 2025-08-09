@@ -4,8 +4,8 @@ export default function LifestylePage() {
   return (
     <div className="flex flex-col lg:flex-row max-w-7xl mx-auto mt-12 gap-6">
       {/* Main Content */}
-      <div className="w-full lg:w-3/5 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman">
-        <h2 className="text-2xl font-bold text-burgundy mb-4 font-roman">Lifestyle – Dawn to Dusk</h2>
+      <div className="w-full lg:w-3/5 bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">Lifestyle – Dawn to Dusk</h2>
         <ul className="space-y-4 text-sm text-stone-800">
           <li>
             <span className="font-bold text-burgundy">Morning Wakefulness</span><br />
@@ -38,7 +38,7 @@ export default function LifestylePage() {
         </ul>
       </div>
       {/* Sidebar */}
-      <aside className="w-full lg:w-2/5 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-6 font-roman h-fit">
+      <aside className="w-full lg:w-2/5 bg-white rounded-3xl shadow-xl border border-stone-200 p-6 h-fit">
         <p className="italic text-stone-700 mb-4 text-sm">"Very little is needed to make a happy life; it is all within yourself, in your way of thinking."<br /><span className="block mt-2 text-right text-xs text-stone-500">—Marcus Aurelius</span></p>
         <h3 className="text-xl font-bold text-burgundy mb-4">Life Balance</h3>
         <ul className="space-y-2 text-sm text-stone-800">

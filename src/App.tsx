@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import ChatWindow from './components/ChatWindow';
-import Dashboard from './components/Dashboard';
-import ProfilePage from './components/ProfilePage';
 import MuscadineBanner from './components/MuscadineBanner';
 import MuscadineFooter from './components/MuscadineFooter';
+import MobileNav from './components/MobileNav';
 import NutritionPage from './components/NutritionPage';
 import PhysicalActivityPage from './components/PhysicalActivityPage';
 import LifestylePage from './components/LifestylePage';
@@ -15,23 +13,21 @@ import HomePage from './components/HomePage';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col transition-colors duration-200 dark:bg-gray-900">
+      <div className="min-h-screen flex flex-col">
         <MuscadineBanner />
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<ChatWindow />} />
-            <Route path="/chat" element={<ChatWindow />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/lifestyle" element={<LifestylePage />} />
             <Route path="/physical-activity" element={<PhysicalActivityPage />} />
             <Route path="/nutrition" element={<NutritionPage />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/health-protocols" element={<HealthProtocolsPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <MuscadineFooter />
+        <MobileNav />
       </div>
     </Router>
   );

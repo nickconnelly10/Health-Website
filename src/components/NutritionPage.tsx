@@ -4,12 +4,12 @@ export default function NutritionPage() {
   return (
     <div className="flex flex-col lg:flex-row max-w-7xl mx-auto mt-12 gap-6">
       {/* Main Content */}
-      <div className="w-full lg:w-3/5 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman">
-        <h2 className="text-2xl font-bold text-burgundy mb-4 font-roman">Nutrition</h2>
+      <div className="w-full lg:w-3/5 bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">Nutrition</h2>
         <div className="space-y-6">
           <section>
             <h3 className="text-xl font-bold text-burgundy mb-2 font-roman">1. Food Quality</h3>
-            <ul className="list-disc ml-6 space-y-2 text-sm text-stone-800">
+              <ul className="list-disc ml-6 space-y-2 text-sm text-stone-800">
               <li><span className="font-semibold">Perimeter shopping.</span> Fresh produce, pasture-raised meats, wild-caught fish, free-range eggs, nuts, and seeds.</li>
               <li><span className="font-semibold">Zero additives.</span> Eliminate refined sugars, industrial seed oils, emulsifiers, artificial flavors, and preservatives.</li>
               <li><span className="font-semibold">Organic.</span> Choose certified organic foods to avoid pesticides and support higher nutrient density.</li>
@@ -79,8 +79,8 @@ export default function NutritionPage() {
       </div>
 
       {/* Supplement Sidebar */}
-      <aside className="w-full lg:w-2/5 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-6 font-roman h-fit">
-        <h3 className="text-xl font-bold text-burgundy mb-4">Supplements</h3>
+      <aside className="w-full lg:w-2/5 bg-white rounded-3xl shadow-xl border border-stone-200 p-6 h-fit">
+        <h3 className="text-xl font-bold text-stone-900 mb-4">Supplements</h3>
         <div className="space-y-4">
           <section>
             <h4 className="text-lg font-bold text-burgundy mb-2">1. Whole Foods First</h4>

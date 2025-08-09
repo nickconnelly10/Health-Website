@@ -4,7 +4,7 @@ export default function ResourcesPage() {
   return (
     <div className="max-w-6xl mx-auto mt-12 px-4">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-burgundy mb-4 font-roman">Health Resources</h1>
+        <h1 className="text-4xl font-bold text-stone-900 mb-4">Health Resources</h1>
         <p className="text-lg text-stone-600 max-w-2xl mx-auto">
           Resources for lifestyle, nutrition, and physical activity.
         </p>
@@ -12,12 +12,12 @@ export default function ResourcesPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {/* Lifestyle Section */}
-        <div className="bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman h-fit">
+        <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-white text-xl">🧘</span>
             </div>
-            <h2 className="text-xl font-bold text-burgundy mb-2">Lifestyle</h2>
+            <h2 className="text-xl font-bold text-stone-900 mb-2">Lifestyle</h2>
             <p className="text-sm text-stone-600">Wellness and daily living</p>
           </div>
           
@@ -61,12 +61,12 @@ export default function ResourcesPage() {
         </div>
 
         {/* Nutrition Section */}
-        <div className="bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman h-fit">
+        <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-white text-xl">🥗</span>
             </div>
-            <h2 className="text-xl font-bold text-burgundy mb-2">Nutrition</h2>
+            <h2 className="text-xl font-bold text-stone-900 mb-2">Nutrition</h2>
             <p className="text-sm text-stone-600">Nutrition guidance</p>
           </div>
           
@@ -112,12 +112,12 @@ export default function ResourcesPage() {
         </div>
 
         {/* Physical Activity Section */}
-        <div className="bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman h-fit">
+        <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-white text-xl">💪</span>
             </div>
-            <h2 className="text-xl font-bold text-burgundy mb-2">Physical Activity</h2>
+            <h2 className="text-xl font-bold text-stone-900 mb-2">Physical Activity</h2>
             <p className="text-sm text-stone-600">Exercise and recovery</p>
           </div>
           
@@ -145,36 +145,7 @@ export default function ResourcesPage() {
 
       </div>
 
-      {/* Health Protocol Database Section - Full Width */}
-      <div className="mt-12 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-8 font-roman">
-        <div className="text-center mb-6">
-          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-white text-2xl">📚</span>
-          </div>
-          <h2 className="text-2xl font-bold text-burgundy mb-2">Health Protocol Database</h2>
-          <p className="text-stone-600">Scientific literature repository</p>
-        </div>
-        
-        <div className="space-y-4">
-          <div className="bg-white rounded-xl p-4 border border-stone-200 shadow-sm">
-            <h3 className="font-semibold text-burgundy mb-2">Scientific Literature Repository</h3>
-            <p className="text-sm text-stone-600 mb-3">
-              Database of peer-reviewed scientific literature. Analyzes evidence-based research to provide informed health recommendations.
-            </p>
-            <div className="flex gap-3">
-              <a 
-                href="/health-protocols" 
-                className="inline-flex items-center text-sm text-green-600 hover:text-green-800 font-medium"
-              >
-                📚 Browse All Protocols
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Health Protocol Database promo removed by request */}
     </div>
   );
 } 

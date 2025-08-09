@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 interface Protocol {
   id: string;
@@ -213,22 +213,6 @@ const categories = [
 export default function HealthProtocolsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All Protocols');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Check for dark mode on mount and listen for changes
-  useEffect(() => {
-    const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    };
-    
-    checkDarkMode();
-    
-    // Listen for dark mode changes
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
 
   const filteredProtocols = protocols.filter(protocol => {
     const matchesCategory = selectedCategory === 'All Protocols' || protocol.category === selectedCategory;
@@ -278,21 +262,9 @@ export default function HealthProtocolsPage() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className="min-h-screen bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className={`text-4xl font-bold mb-4 transition-colors ${
-            isDarkMode ? 'text-white' : 'text-burgundy'
-          } font-roman`}>
-            Health Protocol Database
-          </h1>
-          <p className={`text-lg transition-colors ${
-            isDarkMode ? 'text-gray-300' : 'text-stone-600'
-          } max-w-3xl mx-auto`}>
-            A comprehensive collection of evidence-based health protocols and research papers for AI analysis and health guidance.
-          </p>
-        </div>
+
 
         {/* Search and Filter */}
         <div className="mb-8">
@@ -304,11 +276,7 @@ export default function HealthProtocolsPage() {
                 placeholder="Search protocols..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full px-4 py-3 rounded-lg border transition-colors ${
-                  isDarkMode 
-                    ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400' 
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className="w-full px-4 py-3 rounded-lg border bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             
@@ -317,11 +285,7 @@ export default function HealthProtocolsPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className={`w-full px-4 py-3 rounded-lg border transition-colors ${
-                  isDarkMode 
-                    ? 'bg-gray-800 border-gray-600 text-white' 
-                    : 'bg-white border-gray-300 text-gray-900'
-                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className="w-full px-4 py-3 rounded-lg border bg-white border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
@@ -330,9 +294,7 @@ export default function HealthProtocolsPage() {
             </div>
           </div>
           
-          <p className={`text-sm transition-colors ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <p className="text-sm text-gray-600">
             Showing {filteredProtocols.length} of {protocols.length} protocols
           </p>
         </div>
@@ -340,35 +302,23 @@ export default function HealthProtocolsPage() {
         {/* Protocols Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProtocols.map(protocol => (
-            <div key={protocol.id} className={`rounded-xl border shadow-sm transition-colors ${
-              isDarkMode 
-                ? 'bg-gray-800 border-gray-600' 
-                : 'bg-white border-gray-200'
-            }`}>
+            <div key={protocol.id} className="rounded-xl border shadow-sm bg-white border-gray-200">
               <div className="p-6">
                 {/* Category Badge */}
                 <div className="mb-3">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                    isDarkMode 
-                      ? 'bg-blue-900/50 text-blue-300' 
-                      : 'bg-blue-100 text-blue-800'
-                  }`}>
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     {protocol.category}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-lg font-semibold mb-3 transition-colors ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h3 className="text-lg font-semibold mb-3 text-gray-900">
                   {protocol.title}
                 </h3>
 
                 {/* Metadata */}
                 {(protocol.year || protocol.authors) && (
-                  <div className={`text-sm mb-3 transition-colors ${
-                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
+                  <div className="text-sm mb-3 text-gray-600">
                     {protocol.year && <span>{protocol.year}</span>}
                     {protocol.year && protocol.authors && <span> • </span>}
                     {protocol.authors && <span>{protocol.authors}</span>}
@@ -376,9 +326,7 @@ export default function HealthProtocolsPage() {
                 )}
 
                 {/* Abstract */}
-                <p className={`text-sm mb-4 leading-relaxed transition-colors ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                }`}>
+                <p className="text-sm mb-4 leading-relaxed text-gray-600">
                   {protocol.abstract}
                 </p>
 
@@ -386,21 +334,13 @@ export default function HealthProtocolsPage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleRead(protocol)}
-                    className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isDarkMode 
-                        ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
+                    className="flex-1 px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
                   >
                     Read Online
                   </button>
                   <button
                     onClick={() => handleDownload(protocol)}
-                    className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isDarkMode 
-                        ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                        : 'bg-blue-600 text-white hover:bg-blue-700'
-                    }`}
+                    className="flex-1 px-4 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white hover:bg-blue-700"
                   >
                     Download PDF
                   </button>
@@ -412,23 +352,19 @@ export default function HealthProtocolsPage() {
 
         {/* No Results */}
         {filteredProtocols.length === 0 && (
-          <div className={`text-center py-12 transition-colors ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <div className="text-center py-12 text-gray-600">
             <p className="text-lg">No protocols found matching your search criteria.</p>
             <p className="text-sm mt-2">Try adjusting your search terms or category filter.</p>
           </div>
         )}
 
         {/* Footer */}
-        <div className={`mt-12 text-center transition-colors ${
-          isDarkMode ? 'text-gray-400' : 'text-gray-600'
-        }`}>
+        <div className="mt-12 text-center text-gray-600">
           <p className="text-sm">
             All protocols are peer-reviewed research papers and evidence-based health guidelines.
           </p>
           <p className="text-xs mt-2">
-            For AI analysis and health guidance purposes only. Always consult healthcare professionals for medical advice.
+            For health guidance purposes only. Always consult healthcare professionals for medical advice.
           </p>
         </div>
       </div>

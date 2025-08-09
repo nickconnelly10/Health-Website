@@ -1,11 +1,37 @@
 /* stylelint-disable at-rule-no-unknown */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  @apply font-serif bg-gray-100 text-gray-900;
-  transition: background 0.4s, color 0.4s;
-} 
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-stone-50 text-stone-900;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-stone-200 p-6;
+  }
+  .card-elevated {
+    @apply bg-white/90 shadow-lg border border-stone-200 p-6;
+  }
+}
+
+/* Ensure space for fixed mobile nav on small screens */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 64px; /* approximate height of MobileNav */
+  }
+}

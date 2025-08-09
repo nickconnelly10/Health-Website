@@ -4,8 +4,8 @@ export default function PhysicalActivityPage() {
   return (
     <div className="flex flex-col lg:flex-row max-w-7xl mx-auto mt-12 gap-6">
       {/* Main Content */}
-      <div className="w-full lg:w-3/5 bg-marble rounded-3xl shadow-2xl border-2 border-burgundy p-6 font-roman">
-        <h2 className="text-2xl font-bold text-burgundy mb-4 font-roman">Exercise for Every Body</h2>
+      <div className="w-full lg:w-3/5 bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">Exercise for Every Body</h2>
         <p className="mb-4 text-base text-stone-700 font-semibold">
           CDC guidelines: 150 minutes moderate or 75 minutes vigorous aerobic activity weekly, plus muscle-strengthening 2+ days.
         </p>
@@ -56,8 +56,8 @@ export default function PhysicalActivityPage() {
       </div>
 
       {/* Sidebar */}
-      <aside className="w-full lg:w-2/5 bg-marble rounded-3xl shadow-xl border-2 border-burgundy p-6 font-roman h-fit">
-        <h3 className="text-xl font-bold text-burgundy mb-4">Quick Tips</h3>
+      <aside className="w-full lg:w-2/5 bg-white rounded-3xl shadow-xl border border-stone-200 p-6 h-fit">
+        <h3 className="text-xl font-bold text-stone-900 mb-4">Quick Tips</h3>
         <ul className="space-y-3 text-sm text-stone-800">
           <li><span className="font-semibold">Start Small:</span> Begin with 5-10 minutes daily and build gradually</li>
           <li><span className="font-semibold">Consistency First:</span> Focus on showing up regularly over intensity</li>
