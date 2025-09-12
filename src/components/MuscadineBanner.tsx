@@ -9,16 +9,16 @@ export default function MuscadineBanner() {
       <div className="flex flex-col items-center px-6 py-2 max-w-full">
         <div className="flex justify-between items-center w-full mb-1">
           <a
-            href="https://www.muscadine.box"
+            href="https://www.nicholasconnelly.box"
             className="font-serif text-xl font-bold hover:underline text-stone-900"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Muscadine
+            Nicholas Connelly
           </a>
           <div className="flex items-center gap-4">
             <a
-              href="https://www.muscadine.box"
+              href="https://www.nicholasconnelly.box"
               className="px-4 py-2 rounded-lg font-medium shadow border bg-stone-100 text-stone-700 hover:bg-stone-200 border-stone-300 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
