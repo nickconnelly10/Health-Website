@@ -106,6 +106,12 @@ This site links to external services:
 - **DeFi Dashboard**: `https://defi.nicholasconnelly.box`
 - **Articles**: `https://nicholasconnelly.substack.com/`
 
+## 🌐 Domain Configuration
+
+This repository serves the following domains:
+- **Primary**: `https://health.nicholasconnelly.box`
+- **Muscadine**: `https://health.muscadine.box`
+
 ## 📄 Legal Pages
 
 Static legal pages are served from the `public/` directory:
