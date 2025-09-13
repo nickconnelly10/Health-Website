@@ -25,7 +25,60 @@
     @apply bg-white rounded-xl shadow-sm border border-stone-200 p-6;
   }
   .card-elevated {
-    @apply bg-white/90 shadow-lg border border-stone-200 p-6;
+    @apply bg-white/90 shadow-lg border border-stone-200 p-6 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-gold-600 hover:bg-gold-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-stone-200 hover:bg-stone-300 text-stone-800 font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-stone-300 hover:border-stone-400;
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
