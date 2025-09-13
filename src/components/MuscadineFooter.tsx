@@ -21,8 +21,8 @@ export default function MuscadineFooter() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4 font-serif">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="https://github.com/nickconnelly10/muscadine.box/blob/main/privacy.html" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-              <li><a href="https://github.com/nickconnelly10/muscadine.box/blob/main/terms.html" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+              <li><a href="/privacy.html" className="text-stone-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms.html" className="text-stone-400 hover:text-white transition-colors">Terms of Service</a></li>
               <li><a href="https://github.com/nickconnelly10/health.nicholasconnelly.box" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Open Source</a></li>
             </ul>
           </div>
