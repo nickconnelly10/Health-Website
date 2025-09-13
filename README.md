@@ -38,8 +38,8 @@ Frontend (React/TypeScript) → Static Site → Health Resources
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/nickconnelly10/health.muscadine.box.git
-cd health.muscadine.box
+git clone https://github.com/nickconnelly10/health.nicholasconnelly.box.git
+cd health.nicholasconnelly.box
 ```
 
 ### 2. Install Dependencies
@@ -78,7 +78,7 @@ npm run preview
    npx vercel --prod
    ```
 
-3. **Custom Domain**: Set to `health.muscadine.box` in the Vercel dashboard
+3. **Custom Domain**: Set to `health.nicholasconnelly.box` in the Vercel dashboard
 
 ## 📁 Project Structure
 
@@ -102,8 +102,8 @@ The site uses a custom health-focused theme with:
 ## 🔗 External Services
 
 This site links to external services:
-- **Main Site**: `https://muscadine.box`
-- **DeFi Dashboard**: `https://defi.muscadine.box`
+- **Main Site**: `https://nicholasconnelly.box`
+- **DeFi Dashboard**: `https://defi.nicholasconnelly.box`
 - **Articles**: `https://nicholasconnelly.substack.com/`
 
 ## 📄 Legal Pages
