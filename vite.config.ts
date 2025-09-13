@@ -16,18 +16,35 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false,
+    target: 'esnext',
+    minify: 'esbuild',
+    cssMinify: 'esbuild',
     rollupOptions: {
       external: ['node-fetch', 'node:http', 'node:https', 'node:zlib'],
       input: {
         main: 'index.html'
+      },
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'router': ['react-router-dom']
+        }
       }
-    }
+    },
+    chunkSizeWarningLimit: 1000
   },
   optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
     exclude: ['node-fetch']
   },
   define: {
     'process.env.NODE_ENV': '"production"'
+  },
+  esbuild: {
+    target: 'esnext',
+    minifyIdentifiers: true,
+    minifySyntax: true,
+    minifyWhitespace: true
   }
 }) 

@@ -89,3 +89,8 @@ temp/
 
 # Vercel
 .vercel
+
+# Build cache and optimization
+.tsbuildinfo
+.vite
+.cache
