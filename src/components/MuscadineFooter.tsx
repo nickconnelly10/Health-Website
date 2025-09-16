@@ -3,42 +3,107 @@ import { Link } from 'react-router-dom';
 
 export default function MuscadineFooter() {
   return (
-    <footer className="w-full py-16 mt-12 bg-stone-800 text-stone-300">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-6xl mx-auto px-8 py-16">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 font-serif">Nicholas Connelly</h4>
-            <p className="text-sm font-sans text-stone-400">Health and Financial self-sovereignty.</p>
+            <h3 className="text-lg font-medium text-white mb-4">Health Platform</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Building technology solutions for health and wellness, leading medical missions, and personal health initiatives that empower individuals and communities.
+            </p>
           </div>
+          
+          {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 font-serif">Product</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="https://defi.nicholasconnelly.box" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Launch DeFi</a></li>
-              <li><Link to="/" className="text-stone-400 hover:text-white transition-colors">Launch Health</Link></li>
-              <li><a href="https://nicholasconnelly.substack.com/" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Articles</a></li>
-            </ul>
+            <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Navigation</h4>
+            <nav className="space-y-2">
+              <Link to="/" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Home
+              </Link>
+              <Link to="/lifestyle" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Lifestyle
+              </Link>
+              <Link to="/nutrition" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Nutrition
+              </Link>
+              <Link to="/physical-activity" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Physical Activity
+              </Link>
+              <Link to="/resources" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Resources
+              </Link>
+              <Link to="/health-protocols" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Health Protocols
+              </Link>
+            </nav>
           </div>
+          
+          {/* Connect */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 font-serif">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/privacy.html" className="text-stone-400 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms.html" className="text-stone-400 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="https://github.com/nickconnelly10/health.nicholasconnelly.box" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Open Source</a></li>
-            </ul>
+            <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Connect</h4>
+            <div className="space-y-2">
+              <a 
+                href="https://github.com/nickconnelly10" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                GitHub
+              </a>
+              <a 
+                href="https://linkedin.com/in/nicholasconnelly" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                LinkedIn
+              </a>
+              <a 
+                href="https://nicholasconnelly.substack.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Substack
+              </a>
+              <a 
+                href="mailto:nickconnelly10@gmail.com"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Email
+              </a>
+            </div>
           </div>
+          
+          {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 font-serif">Connect</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="https://twitter.com/nicklutk" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-              <li><a href="https://nicholasconnelly.substack.com/" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Substack</a></li>
-              <li><a href="mailto:nickconnelly10@gmail.com?subject=Muscadine%20Inquiry" className="text-stone-400 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="https://www.strava.com/clubs/1284036" className="text-stone-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Strava Club</a></li>
-            </ul>
+            <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Resources</h4>
+            <div className="space-y-2">
+              <a 
+                href="https://muscadine.box" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                DeFi - Muscadine
+              </a>
+              <a 
+                href="https://github.com/nickconnelly10/health.nicholasconnelly.box" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Open Source
+              </a>
+            </div>
           </div>
         </div>
-        <div className="border-t border-stone-700 pt-8 text-center">
-          <p className="text-sm mb-4">© 2025 Nicholas Connelly. All rights reserved.</p>
-          <p className="text-xs text-stone-400">Built on BITCOIN • Secure • Transparent • Professional</p>
+        
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-sm text-gray-400">
+            © {new Date().getFullYear()} Nicholas Connelly. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

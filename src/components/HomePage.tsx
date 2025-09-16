@@ -4,13 +4,71 @@ import AboutPage from './AboutPage';
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* About Section First */}
+      {/* Hero Section */}
+      <div className='relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-white'>
+        <div className='flex flex-col justify-center min-h-screen relative w-full pt-20'>
+          <div className='relative z-10 max-w-4xl mx-auto container-padding w-full'>
+            <h1 className='font-light text-gray-800 leading-tight mb-8 animate-fade-in'>
+              Health & Wellness Platform
+            </h1>
+            <p className='text-xl text-gray-600 leading-relaxed max-w-2xl animate-slide-up'>
+              Evidence-based health protocols, personal wellness journeys, and comprehensive resources for optimal health and longevity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* About Section */}
       <AboutPage />
       
+      {/* Personal Journey Section */}
+      <section className='section-padding bg-white'>
+        <div className='max-w-4xl mx-auto container-padding'>
+          <div className='text-center mb-16 animate-fade-in'>
+            <h2 className='font-light text-gray-800 leading-tight mb-8'>
+              My Personal Health Journey
+            </h2>
+          </div>
+          
+          <div className='prose prose-lg max-w-none text-gray-800 leading-relaxed space-y-6 animate-fade-in'>
+            <p className='text-lg'>
+              My journey into health optimization began during my time in medical school, where I witnessed firsthand the disconnect between traditional medical approaches and the power of preventive care and lifestyle optimization.
+            </p>
+            
+            <p className='text-lg'>
+              Through extensive research, personal experimentation, and working with leading experts in the field, I've developed a comprehensive approach to health that combines cutting-edge science with practical, actionable protocols.
+            </p>
+            
+            <p className='text-lg'>
+              This platform represents years of research, personal testing, and collaboration with health professionals. Every protocol, supplement recommendation, and lifestyle modification has been carefully vetted through scientific literature and real-world application.
+            </p>
+
+            <div className='bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400 mt-8'>
+              <h3 className='text-xl font-semibold text-gray-800 mb-4'>Key Areas of Focus</h3>
+              <div className='grid md:grid-cols-2 gap-4'>
+                <ul className='space-y-2 text-gray-700'>
+                  <li>• Metabolic optimization</li>
+                  <li>• Sleep quality enhancement</li>
+                  <li>• Stress management protocols</li>
+                  <li>• Immune system support</li>
+                </ul>
+                <ul className='space-y-2 text-gray-700'>
+                  <li>• Cardiovascular health</li>
+                  <li>• Cognitive performance</li>
+                  <li>• Longevity biomarkers</li>
+                  <li>• Exercise optimization</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Main Content Section */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-10">
-          <h2 className="text-3xl font-bold text-stone-900 mb-8 text-center">Health Resources</h2>
+      <section className='section-padding bg-gray-50'>
+        <div className="max-w-6xl mx-auto container-padding">
+          <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Health Resources</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <a 
@@ -104,14 +162,15 @@ export default function HomePage() {
             </a>
           </div>
           
-          <div className="mt-8 p-6 bg-stone-100 border border-stone-300 rounded-2xl text-stone-800 text-center">
+          <div className="mt-8 p-6 bg-gray-100 border border-gray-300 rounded-2xl text-gray-800 text-center">
             <p className="text-lg">
               For questions, more in-depth details, or if you want to add more to our directory, contact me at
               <a href="mailto:nickconnelly10@gmail.com" className="underline ml-1 font-semibold">nickconnelly10@gmail.com</a>.
             </p>
           </div>
         </div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 } 
