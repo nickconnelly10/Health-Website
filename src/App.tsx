@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MuscadineBanner from './components/MuscadineBanner';
 import MuscadineFooter from './components/MuscadineFooter';
 import MobileNav from './components/MobileNav';
-import NutritionPage from './components/NutritionPage';
-import PhysicalActivityPage from './components/PhysicalActivityPage';
-import LifestylePage from './components/LifestylePage';
+import HealthyLivingPage from './components/HealthyLivingPage';
 import ResourcesPage from './components/ResourcesPage';
 import HealthProtocolsPage from './components/HealthProtocolsPage';
 import NicksJourneyPage from './components/NicksJourneyPage';
@@ -20,9 +18,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/nicks-journey" element={<NicksJourneyPage />} />
-            <Route path="/lifestyle" element={<LifestylePage />} />
-            <Route path="/physical-activity" element={<PhysicalActivityPage />} />
-            <Route path="/nutrition" element={<NutritionPage />} />
+            <Route path="/healthy-living" element={<HealthyLivingPage />} />
+            <Route path="/lifestyle" element={<Navigate to="/healthy-living" replace />} />
+            <Route path="/nutrition" element={<Navigate to="/healthy-living" replace />} />
+            <Route path="/physical-activity" element={<Navigate to="/healthy-living" replace />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/health-protocols" element={<HealthProtocolsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />

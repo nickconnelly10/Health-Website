@@ -1,7 +1,7 @@
 {
-  "name": "Nicholas Connelly - Health Dashboard",
-  "short_name": "Health Dashboard",
-  "description": "Evidence-based health protocols and scientific research for optimizing wellness and preventive care",
+  "name": "Health & Wellness",
+  "short_name": "Health & Wellness",
+  "description": "Comprehensive health platform featuring lifestyle optimization, nutrition guidance, physical activity protocols, and evidence-based wellness resources for preventive care",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fafaf9",
@@ -15,7 +15,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["health", "medical", "wellness"],
+  "categories": ["health", "medical", "wellness", "lifestyle"],
   "lang": "en",
   "dir": "ltr",
   "scope": "/",

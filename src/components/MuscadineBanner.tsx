@@ -30,22 +30,10 @@ export default function MuscadineBanner() {
             Nick's Journey
           </button>
           <button
-            onClick={() => void navigate('/lifestyle')}
+            onClick={() => void navigate('/healthy-living')}
             className="nav-link text-gray-600"
           >
-            Lifestyle
-          </button>
-          <button
-            onClick={() => void navigate('/nutrition')}
-            className="nav-link text-gray-600"
-          >
-            Nutrition
-          </button>
-          <button
-            onClick={() => void navigate('/physical-activity')}
-            className="nav-link text-gray-600"
-          >
-            Physical Activity
+            Healthy Living
           </button>
           <button
             onClick={() => void navigate('/resources')}
@@ -96,22 +84,10 @@ export default function MuscadineBanner() {
               Nick's Journey
             </button>
             <button
-              onClick={() => { void navigate('/lifestyle'); setIsOpen(false); }}
+              onClick={() => { void navigate('/healthy-living'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
-              Lifestyle
-            </button>
-            <button
-              onClick={() => { void navigate('/nutrition'); setIsOpen(false); }}
-              className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
-            >
-              Nutrition
-            </button>
-            <button
-              onClick={() => { void navigate('/physical-activity'); setIsOpen(false); }}
-              className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
-            >
-              Physical Activity
+              Healthy Living
             </button>
             <button
               onClick={() => { void navigate('/resources'); setIsOpen(false); }}

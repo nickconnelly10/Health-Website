@@ -6,7 +6,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className='relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-white'>
-        <div className='flex flex-col justify-center min-h-screen relative w-full pt-20'>
+        <div className='flex flex-col justify-center min-h-screen relative w-full pt-24'>
           <div className='relative z-10 max-w-4xl mx-auto container-padding w-full'>
             <h1 className='font-light text-gray-800 leading-tight mb-8 animate-fade-in'>
               Health & Wellness Platform
@@ -31,7 +31,7 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <a 
               href="/nicks-journey" 
               className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
@@ -51,56 +51,20 @@ export default function HomePage() {
             </a>
             
             <a 
-              href="/nutrition" 
+              href="/healthy-living" 
               className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
             >
               <div className="mb-4 flex justify-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:from-green-200 group-hover:to-green-300 transition-all duration-200">
-                  <svg className="w-6 h-6 text-green-600 group-hover:text-green-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg flex items-center justify-center group-hover:from-emerald-200 group-hover:to-emerald-300 transition-all duration-200">
+                  <svg className="w-6 h-6 text-emerald-600 group-hover:text-emerald-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Nutrition</h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Evidence-based nutrition protocols, dietary guidelines, and meal planning strategies for optimal health.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Healthy Living</h3>
+              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Comprehensive lifestyle optimization including nutrition protocols, physical activity guidelines, and daily wellness routines for optimal health and longevity.</p>
               <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
-                Explore nutrition →
-              </div>
-            </a>
-            
-            <a 
-              href="/physical-activity" 
-              className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
-            >
-              <div className="mb-4 flex justify-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-200">
-                  <svg className="w-6 h-6 text-blue-600 group-hover:text-blue-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Physical Activity</h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Exercise protocols, movement guidelines, and fitness strategies for maintaining optimal physical health.</p>
-              <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
-                View exercises →
-              </div>
-            </a>
-            
-            <a 
-              href="/lifestyle" 
-              className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
-            >
-              <div className="mb-4 flex justify-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-200">
-                  <svg className="w-6 h-6 text-purple-600 group-hover:text-purple-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Lifestyle</h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Lifestyle optimization strategies, habit formation, and daily routines for overall wellness and longevity.</p>
-              <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
-                Optimize habits →
+                Explore healthy living →
               </div>
             </a>
             

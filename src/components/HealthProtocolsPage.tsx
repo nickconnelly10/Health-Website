@@ -263,7 +263,7 @@ export default function HealthProtocolsPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 pt-24 pb-8">
 
 
         {/* Search and Filter */}

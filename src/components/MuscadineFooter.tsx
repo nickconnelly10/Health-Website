@@ -21,14 +21,8 @@ export default function MuscadineFooter() {
               <Link to="/" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
                 Home
               </Link>
-              <Link to="/lifestyle" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Lifestyle
-              </Link>
-              <Link to="/nutrition" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Nutrition
-              </Link>
-              <Link to="/physical-activity" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Physical Activity
+              <Link to="/healthy-living" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Healthy Living
               </Link>
               <Link to="/resources" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
                 Resources
@@ -44,12 +38,12 @@ export default function MuscadineFooter() {
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Connect</h4>
             <div className="space-y-2">
               <a 
-                href="https://github.com/nickconnelly10" 
+                href="https://www.nicholasconnelly.box/contact/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
               >
-                GitHub
+                Contact
               </a>
               <a 
                 href="https://linkedin.com/in/nicholasconnelly" 
@@ -67,12 +61,6 @@ export default function MuscadineFooter() {
               >
                 Substack
               </a>
-              <a 
-                href="mailto:nickconnelly10@gmail.com"
-                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
-              >
-                Email
-              </a>
             </div>
           </div>
           
@@ -80,6 +68,14 @@ export default function MuscadineFooter() {
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Resources</h4>
             <div className="space-y-2">
+              <a 
+                href="https://www.nicholasconnelly.box" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Nicholas Connelly
+              </a>
               <a 
                 href="https://muscadine.box" 
                 target="_blank" 

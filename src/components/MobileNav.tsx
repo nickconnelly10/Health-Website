@@ -5,11 +5,9 @@ export default function MobileNav() {
   const navigate = useNavigate();
 
   const items = [
-    { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/lifestyle', label: 'Lifestyle', icon: '🧘' },
-    { path: '/nutrition', label: 'Nutrition', icon: '🥗' },
-    { path: '/physical-activity', label: 'Activity', icon: '💪' },
-    { path: '/resources', label: 'Resources', icon: '📚' },
+    { path: '/', label: 'Home' },
+    { path: '/healthy-living', label: 'Healthy Living' },
+    { path: '/resources', label: 'Resources' },
   ];
 
   return (
@@ -18,7 +16,7 @@ export default function MobileNav() {
       aria-label="Primary"
     >
       <ul className="flex justify-around items-stretch py-2">
-        {items.map(({ path, label, icon }) => {
+        {items.map(({ path, label }) => {
           const isActive = location.pathname === path;
           return (
             <li key={path} className="flex-1">
@@ -29,9 +27,6 @@ export default function MobileNav() {
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
-                <span className="text-base" aria-hidden>
-                  {icon}
-                </span>
                 <span className="leading-none">{label}</span>
               </button>
             </li>

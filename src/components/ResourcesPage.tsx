@@ -15,7 +15,7 @@ export default function ResourcesPage() {
         <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-white text-xl">🧘</span>
+              <span className="text-white text-xl font-bold">L</span>
             </div>
             <h2 className="text-xl font-bold text-stone-900 mb-2">Lifestyle</h2>
             <p className="text-sm text-stone-600">Wellness and daily living</p>
@@ -64,7 +64,7 @@ export default function ResourcesPage() {
         <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-white text-xl">🥗</span>
+              <span className="text-white text-xl font-bold">N</span>
             </div>
             <h2 className="text-xl font-bold text-stone-900 mb-2">Nutrition</h2>
             <p className="text-sm text-stone-600">Nutrition guidance</p>
@@ -115,7 +115,7 @@ export default function ResourcesPage() {
         <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 h-fit">
           <div className="text-center mb-6">
             <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-white text-xl">💪</span>
+              <span className="text-white text-xl font-bold">P</span>
             </div>
             <h2 className="text-xl font-bold text-stone-900 mb-2">Physical Activity</h2>
             <p className="text-sm text-stone-600">Exercise and recovery</p>
