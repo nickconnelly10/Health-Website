@@ -76,7 +76,7 @@ export default function PhysicalActivityPage() {
               <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Strava_Logo.svg" alt="Strava logo" className="h-6 w-auto" />
               <span className="text-lg font-bold text-orange-500 tracking-wide">NEST RUN CLUB</span>
             </div>
-            <iframe allowTransparency={true} frameBorder='0' height='160' scrolling='no' src='https://www.strava.com/clubs/1284036/latest-rides/d1fef7f441c5fc4894f0308226fa46da1465ff16?show_rides=false' width='320' className="rounded-lg border border-stone-200"></iframe>
+            <iframe allowTransparency={true} frameBorder='0' height='160' scrolling='no' src='https://www.strava.com/clubs/1284036/latest-rides/d1fef7f441c5fc4894f0308226fa46da1465ff16?show_rides=false' width='300' className="rounded-lg border border-gray-200"></iframe>
             <a href="https://www.strava.com/clubs/1284036" target="_blank" rel="noopener noreferrer" className="mt-1 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-1.5 rounded-lg shadow transition-colors text-center w-full">
               View Club on Strava
             </a>

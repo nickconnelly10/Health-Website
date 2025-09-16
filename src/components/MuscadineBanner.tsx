@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function MuscadineBanner() {
   const navigate = useNavigate();
@@ -18,37 +18,43 @@ export default function MuscadineBanner() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => void navigate('/')}
             className="nav-link text-gray-600"
           >
             Home
           </button>
           <button
-            onClick={() => navigate('/lifestyle')}
+            onClick={() => void navigate('/nicks-journey')}
+            className="nav-link text-gray-600"
+          >
+            Nick's Journey
+          </button>
+          <button
+            onClick={() => void navigate('/lifestyle')}
             className="nav-link text-gray-600"
           >
             Lifestyle
           </button>
           <button
-            onClick={() => navigate('/nutrition')}
+            onClick={() => void navigate('/nutrition')}
             className="nav-link text-gray-600"
           >
             Nutrition
           </button>
           <button
-            onClick={() => navigate('/physical-activity')}
+            onClick={() => void navigate('/physical-activity')}
             className="nav-link text-gray-600"
           >
             Physical Activity
           </button>
           <button
-            onClick={() => navigate('/resources')}
+            onClick={() => void navigate('/resources')}
             className="nav-link text-gray-600"
           >
             Resources
           </button>
           <button
-            onClick={() => navigate('/health-protocols')}
+            onClick={() => void navigate('/health-protocols')}
             className="nav-link text-gray-600"
           >
             Health Protocols
@@ -78,37 +84,43 @@ export default function MuscadineBanner() {
         <div className="md:hidden mt-3 border-t border-gray-200 bg-white/95 backdrop-blur-lg">
           <div className="max-w-6xl mx-auto px-4 py-3 space-y-3">
             <button
-              onClick={() => { navigate('/'); setIsOpen(false); }}
+              onClick={() => { void navigate('/'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Home
             </button>
             <button
-              onClick={() => { navigate('/lifestyle'); setIsOpen(false); }}
+              onClick={() => { void navigate('/nicks-journey'); setIsOpen(false); }}
+              className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
+            >
+              Nick's Journey
+            </button>
+            <button
+              onClick={() => { void navigate('/lifestyle'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Lifestyle
             </button>
             <button
-              onClick={() => { navigate('/nutrition'); setIsOpen(false); }}
+              onClick={() => { void navigate('/nutrition'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Nutrition
             </button>
             <button
-              onClick={() => { navigate('/physical-activity'); setIsOpen(false); }}
+              onClick={() => { void navigate('/physical-activity'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Physical Activity
             </button>
             <button
-              onClick={() => { navigate('/resources'); setIsOpen(false); }}
+              onClick={() => { void navigate('/resources'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Resources
             </button>
             <button
-              onClick={() => { navigate('/health-protocols'); setIsOpen(false); }}
+              onClick={() => { void navigate('/health-protocols'); setIsOpen(false); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Health Protocols

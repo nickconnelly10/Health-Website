@@ -8,6 +8,7 @@ import PhysicalActivityPage from './components/PhysicalActivityPage';
 import LifestylePage from './components/LifestylePage';
 import ResourcesPage from './components/ResourcesPage';
 import HealthProtocolsPage from './components/HealthProtocolsPage';
+import NicksJourneyPage from './components/NicksJourneyPage';
 import HomePage from './components/HomePage';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/nicks-journey" element={<NicksJourneyPage />} />
             <Route path="/lifestyle" element={<LifestylePage />} />
             <Route path="/physical-activity" element={<PhysicalActivityPage />} />
             <Route path="/nutrition" element={<NutritionPage />} />

@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function NutritionPage() {
   return (
-    <div className="flex flex-col lg:flex-row max-w-7xl mx-auto mt-12 gap-6">
+    <div className="max-w-4xl mx-auto mt-12">
       {/* Main Content */}
-      <div className="w-full lg:w-3/5 bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
+      <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
         <h2 className="text-2xl font-bold text-stone-900 mb-4">Nutrition</h2>
         <div className="space-y-6">
           <section>
@@ -63,7 +63,7 @@ export default function NutritionPage() {
             <ul className="list-disc ml-6 space-y-2 text-sm text-stone-800">
               <li><span className="font-semibold">Superfoods:</span> Fermented foods, organ meats, shellfish, and seaweeds.</li>
               <li><span className="font-semibold">Color diversity:</span> Eat the rainbow for broad spectrum of antioxidants.</li>
-              <li><span className="font-semibold">Supplements:</span> Consider vitamin D3/K2, omega-3s, magnesium only when needed.</li>
+              <li><span className="font-semibold">Supplements:</span> Supplement based on deficiency or physician's advice. Eating whole foods is the best way to gain all nutrition, but supplements are more commonly needed based on the modern lifestyle such as minerals, vitamins, and sunlight-induced hormones.</li>
             </ul>
           </section>
 
@@ -77,74 +77,6 @@ export default function NutritionPage() {
           </section>
         </div>
       </div>
-
-      {/* Supplement Sidebar */}
-      <aside className="w-full lg:w-2/5 bg-white rounded-3xl shadow-xl border border-stone-200 p-6 h-fit">
-        <h3 className="text-xl font-bold text-stone-900 mb-4">Supplements</h3>
-        <div className="space-y-4">
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">1. Whole Foods First</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">Priority:</span> Meet nutrient needs through diverse, Paleo-style diet.</li>
-              <li><span className="font-semibold">Why:</span> Whole foods deliver vitamins, minerals, fiber in balanced forms.</li>
-              <li><span className="font-semibold">Supplements:</span> Fill specific gaps, not replace poor diet.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">2. Foundational</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">Multivitamin:</span> 5-MTHF instead of folic acid, third-party tested brands.</li>
-              <li><span className="font-semibold">Omega-3s:</span> 500–1,000 mg EPA+DHA daily or fatty fish 2×/week.</li>
-              <li><span className="font-semibold">Vitamin D₃ + K₂:</span> 1,000–4,000 IU D₃ daily, MK-7 K₂ form.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">3. Micronutrients</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">B-Complex:</span> Methylated forms for energy, mood, methylation.</li>
-              <li><span className="font-semibold">Magnesium:</span> 200–400 mg glycinate at night for sleep support.</li>
-              <li><span className="font-semibold">Zinc:</span> 10–30 mg/day for immune health.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">4. Condition-Specific</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">Collagen:</span> 10 g/day with vitamin C for skin, joint repair.</li>
-              <li><span className="font-semibold">Immune:</span> Vitamin C (1–3 g), elderberry, zinc during illness.</li>
-              <li><span className="font-semibold">Sleep:</span> Magnesium glycinate, L-Theanine 100–200 mg.</li>
-              <li><span className="font-semibold">Energy:</span> CoQ10 100–200 mg, creatine 3–5 g daily.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">5. Gut Health</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">Fermented foods:</span> Yogurt, kefir, sauerkraut, kimchi.</li>
-              <li><span className="font-semibold">Prebiotics:</span> Diverse fibers from onion, garlic, asparagus.</li>
-              <li><span className="font-semibold">Glutamine:</span> 5 g/day on empty stomach for gut healing.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">6. Safety</h4>
-            <ul className="list-disc ml-5 space-y-1 text-sm text-stone-800">
-              <li><span className="font-semibold">One at a time:</span> Introduce single supplement, monitor 2–4 weeks.</li>
-              <li><span className="font-semibold">Check interactions:</span> Review with healthcare provider.</li>
-              <li><span className="font-semibold">Quality:</span> Third-party tested brands with minimal fillers.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h4 className="text-lg font-bold text-burgundy mb-2">Key Takeaway</h4>
-            <p className="text-sm text-stone-800">
-              Supplements are tools, not essentials. Ground nutrition in whole foods, then add targeted support for proven deficiencies or goals.
-            </p>
-          </section>
-        </div>
-      </aside>
     </div>
   );
 }
