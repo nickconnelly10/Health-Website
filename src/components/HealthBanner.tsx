@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function MuscadineBanner() {
+export default function HealthBanner() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 

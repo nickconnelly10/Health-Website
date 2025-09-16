@@ -1,6 +1,6 @@
-# 🏥 Muscadine Health Dashboard
+# 🏥 Health Dashboard
 
-A modern, responsive health dashboard for the Muscadine ecosystem. Built as a static React app with health resources and educational content.
+A modern, responsive health dashboard for health and wellness. Built as a static React app with health resources and educational content.
 
 ## ✨ Features
 
