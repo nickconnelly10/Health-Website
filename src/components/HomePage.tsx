@@ -9,7 +9,7 @@ export default function HomePage() {
         <div className='flex flex-col justify-center min-h-screen relative w-full pt-24'>
           <div className='relative z-10 max-w-4xl mx-auto container-padding w-full'>
             <h1 className='font-light text-gray-800 leading-tight mb-8 animate-fade-in'>
-              Health & Wellness Platform
+              Health & Wellness
             </h1>
             <p className='text-xl text-gray-600 leading-relaxed max-w-2xl animate-slide-up'>
               Evidence-based health protocols, personal wellness journeys, and comprehensive resources for optimal health and longevity.
