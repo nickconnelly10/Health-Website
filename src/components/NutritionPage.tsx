@@ -19,7 +19,7 @@ export default function NutritionPage() {
           <section>
             <h3 className="text-xl font-bold text-burgundy mb-2 font-roman">2. Paleo Plate</h3>
             <ul className="list-disc ml-6 space-y-2 text-sm text-stone-800">
-              <li><span className="font-semibold">Veggies & Fruits:</span> Non-starchy veggies (leafy greens, broccoli, asparagus) plus berries and safe starches—sweet potatoes, winter squash, plantains.</li>
+              <li><span className="font-semibold">Veggies & Fruits:</span> Non-starchy veggies (leafy greens, broccoli, asparagus) plus berries and starches—sweet potatoes, winter squash, plantains.</li>
               <li><span className="font-semibold">Protein:</span>
                 <ul className="ml-5 list-disc">
                   <li>Animal proteins: grass-fed beef, pasture-raised poultry, wild salmon, shellfish, organ meats.</li>
@@ -63,7 +63,7 @@ export default function NutritionPage() {
             <ul className="list-disc ml-6 space-y-2 text-sm text-stone-800">
               <li><span className="font-semibold">Superfoods:</span> Fermented foods, organ meats, shellfish, and seaweeds.</li>
               <li><span className="font-semibold">Color diversity:</span> Eat the rainbow for broad spectrum of antioxidants.</li>
-              <li><span className="font-semibold">Supplements:</span> Supplement based on deficiency or physician's advice. Eating whole foods is the best way to gain all nutrition, but supplements are more commonly needed based on the modern lifestyle such as minerals, vitamins, and sunlight-induced hormones.</li>
+              <li><span className="font-semibold">Supplements:</span> Supplement based on deficiency or physician's advice. Eating whole foods is the best way to gain all nutrition, but supplements are more commonly needed based on the modern lifestyle such as minerals and vitamins.</li>
             </ul>
           </section>
 

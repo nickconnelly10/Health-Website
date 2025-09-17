@@ -8,6 +8,7 @@ import ResourcesPage from './components/ResourcesPage';
 import HealthProtocolsPage from './components/HealthProtocolsPage';
 import NicksJourneyPage from './components/NicksJourneyPage';
 import HomePage from './components/HomePage';
+import ContactPage from './components/ContactPage';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/physical-activity" element={<Navigate to="/healthy-living" replace />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/health-protocols" element={<HealthProtocolsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

@@ -9,12 +9,112 @@ export default function NicksJourneyPage() {
             Nick's Health Journey
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            My personal journey into health optimization, from medical school insights to evidence-based protocols.
+            My personal journey into my mind, body and spirit.
           </p>
         </div>
         
+        {/* Three Pillars of Health */}
+        <div className="space-y-16 animate-slide-up">
+          {/* Body Section */}
+          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Body</h2>
+            
+            {/* Photo Placeholders */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                <svg className="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-gray-500 text-sm">Photo Placeholder 1</p>
+              </div>
+              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                <svg className="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-gray-500 text-sm">Photo Placeholder 2</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Nutrition</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  My approach to nutrition focuses on whole, nutrient-dense foods that fuel optimal performance and recovery. I prioritize quality proteins, healthy fats, and a variety of colorful vegetables while maintaining flexibility in my eating patterns.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Physical Activity & Exercise</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Movement is medicine. I combine strength training, cardiovascular work, and functional movement to build a resilient, capable body that serves me in all aspects of life.
+                </p>
+              </div>
+              <div className="md:col-span-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Hobbies in Movement</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Beyond structured exercise, I find joy in activities that keep me moving - whether it's hiking in nature, playing sports, or simply taking long walks. These activities not only support physical health but also mental well-being.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mind Section */}
+          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Mind</h2>
+            
+            {/* Photo Placeholder */}
+            <div className="mb-8">
+              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center max-w-md mx-auto">
+                <svg className="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-gray-500 text-sm">Photo Placeholder</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Reading & Learning</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Continuous learning keeps the mind sharp and curious. I'm passionate about reading across disciplines - from health and science to philosophy and personal development. Books have been instrumental in shaping my understanding of optimal living.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Plants & Gardening</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Tending to plants and gardening provides a unique form of mindfulness and connection to nature. There's something deeply therapeutic about nurturing growth and witnessing the natural cycles of life firsthand.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Spirit Section */}
+          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Spirit</h2>
+            
+            {/* Photo Placeholder */}
+            <div className="mb-8">
+              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center max-w-md mx-auto">
+                <svg className="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-gray-500 text-sm">Photo Placeholder</p>
+              </div>
+            </div>
+
+            <div className="max-w-3xl mx-auto text-center">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6">Connection with God & Continuing Faith</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                My spiritual journey is deeply personal and ever-evolving. Faith has been both a source of strength and a constant challenge, requiring me to continually seek, question, and grow in my relationship with God. This spiritual foundation influences how I approach health, relationships, and purpose in life.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                The intersection of faith and health has taught me that true wellness encompasses more than physical and mental aspects - it requires nurturing the soul and maintaining a connection to something greater than ourselves.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Journey Timeline */}
-        <div className="space-y-12 animate-slide-up">
+        <div className="space-y-12 animate-slide-up mt-16">
           <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">The Beginning</h2>
             <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
@@ -93,24 +193,6 @@ export default function NicksJourneyPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Current Focus</h2>
-            <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
-              <p>
-                Today, I continue to research and implement the latest findings in health optimization. My current focus areas include longevity biomarkers, cognitive enhancement, and the intersection of technology and health.
-              </p>
-              <p>
-                This platform represents years of research, personal testing, and collaboration with health professionals. Every protocol, supplement recommendation, and lifestyle modification has been carefully vetted through scientific literature and real-world application.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">My Mission</h2>
-            <p className="text-lg text-gray-700 text-center leading-relaxed">
-              To bridge the gap between cutting-edge health research and practical, actionable protocols that people can implement in their daily lives. I believe that everyone deserves access to evidence-based health optimization strategies that can transform their quality of life.
-            </p>
-          </div>
         </div>
       </div>
     </div>

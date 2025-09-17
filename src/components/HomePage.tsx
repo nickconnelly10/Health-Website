@@ -69,24 +69,6 @@ export default function HomePage() {
             </a>
             
             <a 
-              href="/health-protocols" 
-              className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
-            >
-              <div className="mb-4 flex justify-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-200">
-                  <svg className="w-6 h-6 text-orange-600 group-hover:text-orange-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Health Protocols</h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Comprehensive health protocols, testing recommendations, and evidence-based health optimization strategies.</p>
-              <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
-                View protocols →
-              </div>
-            </a>
-            
-            <a 
               href="/resources" 
               className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
             >
@@ -101,6 +83,24 @@ export default function HomePage() {
               <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Additional health resources, tools, educational materials, and recommended reading for health optimization.</p>
               <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
                 Browse resources →
+              </div>
+            </a>
+            
+            <a 
+              href="/health-protocols" 
+              className="group block bg-white hover:bg-gray-50 rounded-lg p-6 border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-gray-300"
+            >
+              <div className="mb-4 flex justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-200">
+                  <svg className="w-6 h-6 text-orange-600 group-hover:text-orange-700 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-200">Health Protocols</h3>
+              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-200">Comprehensive health protocols, testing recommendations, and evidence-based health optimization strategies.</p>
+              <div className="mt-3 text-xs text-gray-500 group-hover:text-gray-600 transition-colors duration-200">
+                View protocols →
               </div>
             </a>
           </div>
