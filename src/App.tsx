@@ -4,8 +4,7 @@ import HealthBanner from './components/HealthBanner';
 import HealthFooter from './components/HealthFooter';
 import MobileNav from './components/MobileNav';
 import HealthyLivingPage from './components/HealthyLivingPage';
-import ResourcesPage from './components/ResourcesPage';
-import HealthProtocolsPage from './components/HealthProtocolsPage';
+import ResourcesProtocolsPage from './components/ResourcesProtocolsPage';
 import NicksJourneyPage from './components/NicksJourneyPage';
 import HomePage from './components/HomePage';
 import ContactPage from './components/ContactPage';
@@ -23,8 +22,7 @@ export default function App() {
             <Route path="/lifestyle" element={<Navigate to="/healthy-living" replace />} />
             <Route path="/nutrition" element={<Navigate to="/healthy-living" replace />} />
             <Route path="/physical-activity" element={<Navigate to="/healthy-living" replace />} />
-            <Route path="/resources" element={<ResourcesPage />} />
-            <Route path="/health-protocols" element={<HealthProtocolsPage />} />
+            <Route path="/resources-protocols" element={<ResourcesProtocolsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

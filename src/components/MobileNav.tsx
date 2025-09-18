@@ -6,8 +6,10 @@ export default function MobileNav() {
 
   const items = [
     { path: '/', label: 'Home' },
-    { path: '/healthy-living', label: 'Healthy Living' },
-    { path: '/resources', label: 'Resources' },
+    { path: '/nicks-journey', label: 'Journey' },
+    { path: '/healthy-living', label: 'Living' },
+    { path: '/resources-protocols', label: 'Resources' },
+    { path: '/contact', label: 'Contact' },
   ];
 
   return (

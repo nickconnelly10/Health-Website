@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="bg-white rounded-3xl shadow-2xl border border-stone-200 p-10">
-        <h1 className="text-4xl font-bold text-stone-900 mb-8 text-center">About Health Platform</h1>
+        <h1 className="text-4xl font-bold text-stone-900 mb-8 text-center">About Health & Wellness</h1>
         
         <div className="prose prose-lg max-w-none text-stone-700 space-y-6">
           <p>

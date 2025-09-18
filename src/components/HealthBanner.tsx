@@ -37,16 +37,10 @@ export default function HealthBanner() {
             Healthy Living
           </button>
           <button
-            onClick={() => { void navigate('/resources'); scrollToTop(); }}
+            onClick={() => { void navigate('/resources-protocols'); scrollToTop(); }}
             className="nav-link text-gray-600"
           >
-            Resources
-          </button>
-          <button
-            onClick={() => { void navigate('/health-protocols'); scrollToTop(); }}
-            className="nav-link text-gray-600"
-          >
-            Health Protocols
+            Resources & Protocols
           </button>
           <button
             onClick={() => { void navigate('/contact'); scrollToTop(); }}
@@ -97,16 +91,10 @@ export default function HealthBanner() {
               Healthy Living
             </button>
             <button
-              onClick={() => { void navigate('/resources'); setIsOpen(false); scrollToTop(); }}
+              onClick={() => { void navigate('/resources-protocols'); setIsOpen(false); scrollToTop(); }}
               className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
-              Resources
-            </button>
-            <button
-              onClick={() => { void navigate('/health-protocols'); setIsOpen(false); scrollToTop(); }}
-              className="block text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
-            >
-              Health Protocols
+              Resources & Protocols
             </button>
             <button
               onClick={() => { void navigate('/contact'); setIsOpen(false); scrollToTop(); }}

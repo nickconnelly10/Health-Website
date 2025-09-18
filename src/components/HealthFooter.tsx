@@ -5,12 +5,12 @@ export default function HealthFooter() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-5 gap-8">
           {/* Brand */}
           <div>
             <h3 className="text-lg font-medium text-white mb-4">Health Platform</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Building technology solutions for health and wellness, leading medical missions, and personal health initiatives that empower individuals and communities.
+              Evidence-based health protocols, my personal journey, and comprehensive resources for optimal health and longevity.
             </p>
           </div>
           
@@ -21,14 +21,17 @@ export default function HealthFooter() {
               <Link to="/" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
                 Home
               </Link>
+              <Link to="/nicks-journey" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Nick's Journey
+              </Link>
               <Link to="/healthy-living" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
                 Healthy Living
               </Link>
-              <Link to="/resources" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Resources
+              <Link to="/resources-protocols" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Resources & Protocols
               </Link>
-              <Link to="/health-protocols" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Health Protocols
+              <Link to="/contact" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Contact
               </Link>
             </nav>
           </div>
@@ -84,6 +87,35 @@ export default function HealthFooter() {
               >
                 DeFi - Muscadine
               </a>
+            </div>
+          </div>
+          
+          {/* Legal */}
+          <div>
+            <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Legal</h4>
+            <div className="space-y-2">
+              <a 
+                href="/privacy.html" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Privacy Policy
+              </a>
+              <a 
+                href="/terms.html" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Terms of Service
+              </a>
+              <a 
+                href="#disclaimer" 
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                Legal Disclaimer
+              </a>
               <a 
                 href="https://github.com/nickconnelly10/health.nicholasconnelly.box" 
                 target="_blank" 
@@ -96,10 +128,17 @@ export default function HealthFooter() {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Nicholas Connelly. All rights reserved.
-          </p>
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="text-center mb-2">
+            <p className="text-sm text-gray-400 max-w-4xl mx-auto">
+              Education guidance only—no medical advice, no treatment recommendations, no diagnosis.
+            </p>
+          </div>
+          <div className="text-center">
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Nicholas Connelly. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

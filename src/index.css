@@ -41,24 +41,8 @@ body {
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-75 inline-flex items-center justify-center;
-  }
-  
-  .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-900 font-medium py-3 px-6 rounded-lg border border-gray-300 hover:border-gray-400 transition-all duration-75 inline-flex items-center justify-center;
-  }
-  
-  .btn-outline {
-    @apply border border-gray-800 hover:bg-gray-800 hover:text-white text-gray-800 font-medium py-3 px-6 rounded-lg transition-all duration-75 inline-flex items-center justify-center;
-  }
-  
   .card {
     @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
-  }
-  
-  .card-hover {
-    @apply hover:shadow-md hover:border-gray-300 transition-all duration-75;
   }
   
   .section-padding {
@@ -69,34 +53,18 @@ body {
     @apply px-4 md:px-8;
   }
   
-  .text-gradient {
-    @apply bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent;
-  }
-  
   .nav-link {
     @apply text-sm font-medium transition-colors duration-75 hover:text-gray-900;
-  }
-  
-  .nav-link-active {
-    @apply text-gray-900 font-semibold;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
   .animate-fade-in {
     animation: fadeIn 0.15s ease-out;
   }
   
   .animate-slide-up {
     animation: slideUp 0.15s ease-out;
-  }
-  
-  .animate-bounce-slow {
-    animation: bounce 0.5s infinite;
   }
 }
 
