@@ -11,7 +11,7 @@ export default function HealthBanner() {
       <div className="w-full flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo */}
         <div className="text-xl font-medium text-gray-800">
-          <a href="https://health.nicholasconnelly.box" target="_blank" rel="noopener noreferrer">
+          <a href="https://health.nickconnelly.box" target="_blank" rel="noopener noreferrer">
             Health & Wellness
           </a>
         </div>

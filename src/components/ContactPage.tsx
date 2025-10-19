@@ -91,7 +91,7 @@ export default function ContactPage() {
                 </a>
                 
                 <a 
-                  href="https://www.nicholasconnelly.box"
+                  href="https://www.nickconnelly.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200 group"

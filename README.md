@@ -40,8 +40,8 @@ Frontend (React/TypeScript) → Static Site → Health Resources & Personal Jour
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/nickconnelly10/health.nicholasconnelly.box.git
-cd health.nicholasconnelly.box
+git clone https://github.com/nickconnelly10/health.nickconnelly.box.git
+cd health.nickconnelly.box
 ```
 
 ### 2. Install Dependencies
@@ -80,7 +80,7 @@ npm run preview
    npx vercel --prod
    ```
 
-3. **Custom Domain**: Set to `health.nicholasconnelly.box` in the Vercel dashboard
+3. **Custom Domain**: Set to `health.nickconnelly.box` in the Vercel dashboard
 
 ## Project Structure
 
@@ -132,14 +132,14 @@ The site uses a health-focused theme with:
 ## External Services
 
 This site links to external services:
-- **Main Site**: `https://nicholasconnelly.box`
-- **DeFi Dashboard**: `https://defi.nicholasconnelly.box`
+- **Main Site**: `https://nickconnelly.com`
+- **DeFi Dashboard**: `https://defi.nickconnelly.com`
 - **Articles**: `https://nicholasconnelly.substack.com/`
 
 ## Domain Configuration
 
 This repository serves the following domains:
-- **Primary**: `https://health.nicholasconnelly.box`
+- **Primary**: `https://health.nickconnelly.box`
 
 ## Legal Pages
 

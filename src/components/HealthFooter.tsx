@@ -41,7 +41,7 @@ export default function HealthFooter() {
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Connect</h4>
             <div className="space-y-2">
               <a 
-                href="https://www.nicholasconnelly.box/contact/" 
+                href="https://www.nickconnelly.com/contact/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
@@ -72,7 +72,7 @@ export default function HealthFooter() {
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Resources</h4>
             <div className="space-y-2">
               <a 
-                href="https://www.nicholasconnelly.box" 
+                href="https://www.nickconnelly.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
@@ -80,7 +80,7 @@ export default function HealthFooter() {
                 Nicholas Connelly
               </a>
               <a 
-                href="https://muscadine.box" 
+                href="https://muscadine.io" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
@@ -117,7 +117,7 @@ export default function HealthFooter() {
                 Legal Disclaimer
               </a>
               <a 
-                href="https://github.com/nickconnelly10/health.nicholasconnelly.box" 
+                href="https://github.com/nickconnelly10/Health-Website" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
