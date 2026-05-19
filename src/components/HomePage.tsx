@@ -20,7 +20,7 @@ export default function HomePage() {
                   Health & Wellness
                 </h1>
                 <p className='text-xl text-gray-600 leading-relaxed max-w-2xl animate-slide-up'>
-                  My personal journey and comprehensive resources for optimal health and longevity.
+                  My personal journey and resources for optimal health and longevity.
                 </p>
               </div>
               <div className="animate-slide-up">

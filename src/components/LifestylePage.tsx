@@ -1,41 +1,68 @@
 import React from 'react';
+import PersonalDisclaimer from './PersonalDisclaimer';
 
 export default function LifestylePage() {
   return (
     <div className="flex flex-col lg:flex-row max-w-7xl mx-auto mt-12 gap-6">
       {/* Main Content */}
       <div className="w-full lg:w-3/5 bg-white rounded-3xl shadow-2xl border border-stone-200 p-6">
-        <h2 className="text-2xl font-bold text-stone-900 mb-4">Lifestyle – Dawn to Dusk</h2>
-        <ul className="space-y-4 text-sm text-stone-800">
-          <li>
-            <span className="font-bold text-burgundy">Morning Wakefulness</span><br />
-            Within 10 minutes of waking, expose yourself to natural light—walk outside, eat breakfast on patio, or read by sunny window. Early sun sets circadian clock, boosts alertness and cortisol.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Nutrition Habits</span><br />
-            Refer to Nutrition tab for details. Follow 8-12 hour eating window, focus on whole foods—animal meats, fruits, vegetables, nuts, seeds—avoid processed products.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Physical Activity</span><br />
-            CDC recommends 150 minutes moderate or 75 minutes vigorous aerobic activity weekly. Build in daily low-intensity movement—walk at dawn or dusk—and aim for one higher-intensity session daily.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Connection & Purpose</span><br />
-            Aim for one meaningful social interaction daily—walk with friend, call family, share meal. These connections boost well-being and promote oxytocin release.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Focused Work & Breaks</span><br />
-            Work in concentrated blocks (50 minutes), then pause to walk, hydrate, stretch, or do push-ups. Regular breaks sustain energy and productivity.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Environmental Detox</span><br />
-            Choose non-toxic cleaning and personal-care products, store food in glass or stainless-steel containers. Avoid plastics—use glass water bottles, natural textiles over synthetic fabrics.
-          </li>
-          <li>
-            <span className="font-bold text-burgundy">Evening Wind-Down</span><br />
-            Finish eating 2 hours before bedtime. Dim lights and put away screens 60 minutes before sleep. Unwind with journaling, reading, or gentle stretching.
-          </li>
-        </ul>
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">How I Live</h2>
+        <div className="space-y-4 text-sm text-stone-800">
+          <p>
+            The habits below are the ones I&apos;ve built for myself. They keep me grounded, focused, and ready for the demands of everyday life.
+          </p>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Morning Light</h3>
+            <p>
+              I try to get outside shortly after waking — a quick walk, breakfast on the patio, or just reading by a sunny window. It&apos;s how I start the day clear-headed.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Nutrition</h3>
+            <p>
+              Covered on the Nutrition tab — a whole-foods approach with a daily eating window that works for me.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Movement</h3>
+            <p>
+              Covered on the Physical Activity tab — I follow the CDC&apos;s general guidance on weekly activity such as lifting or running and build in daily walks.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Connection</h3>
+            <p>
+              I make space for at least one real interaction a day — a walk with a friend, a call home, a shared meal. It matters more than people give it credit for.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Focused Work</h3>
+            <p>
+              I work in deep blocks with short breaks in between — usually a walk, water, or some stretching. It&apos;s what keeps me sharp through long study sessions.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Environment</h3>
+            <p>
+              I lean toward non-toxic personal-care and cleaning products, store food in glass or stainless steel, and choose natural fabrics where I can.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-bold text-burgundy mb-2">Evening Wind-Down</h3>
+            <p>
+              I stop eating a couple of hours before bed, dim the lights, and put my phone away well before sleep. Journaling, reading, or a few minutes of stretching closes the day out. High quaility sleep is essential for a healthy life.
+            </p>
+          </section>
+
+          <PersonalDisclaimer className="mt-6" />
+        </div>
       </div>
       {/* Sidebar */}
       <aside className="w-full lg:w-2/5 bg-white rounded-3xl shadow-xl border border-stone-200 p-6 h-fit">

@@ -10,7 +10,7 @@ export default function HealthFooter() {
           <div>
             <h3 className="text-lg font-medium text-white mb-4">Health Platform</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              My personal journey and comprehensive resources for optimal health and longevity.
+              My personal journey and resources for optimal health and longevity.
             </p>
           </div>
           
@@ -60,15 +60,22 @@ export default function HealthFooter() {
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Legal</h4>
             <div className="space-y-2">
-              <Link href="/privacy" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+              <a
+                href="https://www.nickconnelly.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
                 Privacy Policy
-              </Link>
-              <Link href="/terms" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+              </a>
+              <a
+                href="https://www.nickconnelly.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
                 Terms of Service
-              </Link>
-              <Link href="/disclaimer" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
-                Legal Disclaimer
-              </Link>
+              </a>
             </div>
           </div>
         </div>
