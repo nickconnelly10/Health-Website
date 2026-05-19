@@ -60,12 +60,22 @@ export default function HealthFooter() {
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Legal</h4>
             <div className="space-y-2">
-              <Link href="/privacy" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+              <a
+                href="https://www.nickconnelly.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
                 Privacy Policy
-              </Link>
-              <Link href="/terms" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+              </a>
+              <a
+                href="https://www.nickconnelly.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              >
                 Terms of Service
-              </Link>
+              </a>
             </div>
           </div>
         </div>
