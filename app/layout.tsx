@@ -19,7 +19,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Health & Wellness',
-  description: 'Personal journey and comprehensive resources for optimal health and longevity.',
+  description: 'My personal journey and resources for optimal health and longevity.',
   icons: { icon: '/favicon.svg' },
 }
 

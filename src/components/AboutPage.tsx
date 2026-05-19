@@ -1,4 +1,5 @@
 import React from 'react';
+import PersonalDisclaimer from './PersonalDisclaimer';
 
 export default function AboutPage() {
   return (
@@ -11,15 +12,7 @@ export default function AboutPage() {
             This health platform provides comprehensive access to evidence-based scientific research for nutrition, lifestyle optimization, and preventive care. Access our collection of resources for evidence-based health guidance.
           </p>
           
-          <p>
-            This information is continuously updated with the latest research, providing step-by-step guidance for optimizing nutrition, physical activity, sleep, and overall wellness.
-          </p>
-          
-          <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
-            <p className="text-amber-800 font-medium">
-              <strong>Important:</strong> These resources are for educational purposes and should not replace professional medical advice. Please consult with a physician for proper medical guidance.
-            </p>
-          </div>
+          <PersonalDisclaimer className="p-6" />
         </div>
       </div>
     </div>

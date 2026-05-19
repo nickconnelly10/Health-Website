@@ -13,7 +13,7 @@ export default function TermsPage() {
         Terms of Service
       </h1>
       <p className="mb-6">
-        <strong>Last updated:</strong> January 2026
+        <strong>Last updated:</strong> May 2026
       </p>
 
       <div className="bg-[#fef3c7] border-l-4 border-[#d97706] p-4 my-4 rounded">
