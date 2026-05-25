@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { PERSONAL_DISCLAIMER } from '../constants/disclaimer';
 
 export default function HealthFooter() {
   return (
@@ -60,7 +59,7 @@ export default function HealthFooter() {
           {/* Legal */}
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Legal</h4>
-            <nav className="space-y-2 mb-4">
+            <nav className="space-y-2">
               <Link href="/terms" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
                 Terms
               </Link>
@@ -68,9 +67,6 @@ export default function HealthFooter() {
                 Privacy
               </Link>
             </nav>
-            <p className="text-xs text-gray-400 leading-relaxed">
-              {PERSONAL_DISCLAIMER}
-            </p>
           </div>
         </div>
         
