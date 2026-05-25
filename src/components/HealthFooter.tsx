@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { PERSONAL_DISCLAIMER } from '../constants/disclaimer';
 
 export default function HealthFooter() {
   return (
@@ -59,33 +60,21 @@ export default function HealthFooter() {
           {/* Legal */}
           <div>
             <h4 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">Legal</h4>
-            <div className="space-y-2">
-              <a
-                href="https://www.nickconnelly.com/privacy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="https://www.nickconnelly.com/terms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-sm text-gray-300 hover:text-white transition-colors duration-200"
-              >
-                Terms of Service
-              </a>
-            </div>
+            <nav className="space-y-2 mb-4">
+              <Link href="/terms" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Terms
+              </Link>
+              <Link href="/privacy" className="block text-sm text-gray-300 hover:text-white transition-colors duration-200">
+                Privacy
+              </Link>
+            </nav>
+            <p className="text-xs text-gray-400 leading-relaxed">
+              {PERSONAL_DISCLAIMER}
+            </p>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="text-center mb-2">
-            <p className="text-sm text-gray-400 max-w-4xl mx-auto">
-              Education guidance only—no medical advice, no treatment recommendations, no diagnosis.
-            </p>
-          </div>
           <div className="text-center">
             <p className="text-sm text-gray-400" suppressHydrationWarning>
               © {new Date().getFullYear()} Nicholas Connelly. All rights reserved.
