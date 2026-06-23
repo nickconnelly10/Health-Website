@@ -42,6 +42,18 @@ body {
   .card {
     @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
   }
+
+  .content-card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm p-6 md:p-8;
+  }
+
+  .content-card-hover {
+    @apply hover:shadow-md hover:border-gray-300 transition-all duration-200;
+  }
+
+  .page-shell {
+    @apply min-h-screen bg-gray-50;
+  }
   
   .section-padding {
     @apply py-16 md:py-20;

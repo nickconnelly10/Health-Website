@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import LifestylePage from './LifestylePage';
 import NutritionPage from './NutritionPage';
 import PhysicalActivityPage from './PhysicalActivityPage';
+import PageHero from './PageHero';
 
 export default function HealthyLivingPage() {
   const [activeTab, setActiveTab] = useState<'lifestyle' | 'nutrition' | 'physical-activity'>('lifestyle');
@@ -28,32 +29,37 @@ export default function HealthyLivingPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Tab Navigation */}
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-stone-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex space-x-1">
+    <div className="page-shell">
+      <PageHero
+        title="Healthy Living"
+        description="How I approach lifestyle, nutrition, and movement — personal habits, not prescriptions."
+      />
+
+      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
+        <div className="max-w-6xl mx-auto container-padding">
+          <div className="flex gap-2 py-3 overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
+                type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors duration-200 border-b-2 ${
+                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                   activeTab === tab.id
-                    ? 'text-burgundy border-burgundy bg-stone-50'
-                    : 'text-stone-600 border-transparent hover:text-stone-900 hover:border-stone-300'
+                    ? 'bg-gray-900 text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
                 }`}
               >
-                <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+                {tab.label}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Tab Content */}
-      <div className="pt-4">
-        {renderContent()}
+      <div className="section-padding">
+        <div className="max-w-6xl mx-auto container-padding animate-slide-up">
+          {renderContent()}
+        </div>
       </div>
     </div>
   );
