@@ -1,40 +1,28 @@
 # Health & Wellness Website
 
-A modern health and wellness website featuring Nick's personal health journey and comprehensive resources for optimal health and longevity.
+Personal health and wellness site for Nicholas Connelly — journey, nutrition, activity, and lifestyle resources.
+
+**Live:** [health.nickconnelly.com](https://health.nickconnelly.com)
 
 ## Tech Stack
 
-- **Next.js 16.1.1** with React 19, TypeScript, Tailwind CSS
+- **Next.js 16** with React 19, TypeScript, Tailwind CSS
 - **Deployment**: Vercel
-- **Domain**: `health.nickconnelly.com`
 
 ## Quick Start
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
-npm run dev
-# Available at http://localhost:3001
-
-# Build for production
+npm run dev      # http://localhost:3000
 npm run build
-
-# Start production server
 npm start
 ```
 
+No environment variables required.
+
 ## Deployment
 
-Deploy to Vercel:
-
-```bash
-npx vercel login
-npx vercel --prod
-```
-
-Set custom domain `health.nickconnelly.io` in Vercel dashboard.
+Deploy to Vercel. Custom domain: `health.nickconnelly.com`.
 
 ## Project Structure
 
@@ -47,11 +35,8 @@ public/                 # Static assets (photos, videos)
 ## Features
 
 - Personal health journey (Body, Mind, Spirit)
-- Comprehensive health resources
-- Nutrition, Physical Activity, and Lifestyle guides
-- Responsive design with optimized performance
-- Static site generation for fast loading
+- Nutrition, physical activity, and lifestyle guides
+- Terms and privacy pages
+- Responsive design with Vercel Analytics
 
----
-
-Secure • Professional • Health & Wellness Focused*
+See `CLAUDE.md` for content and legal guidelines.
