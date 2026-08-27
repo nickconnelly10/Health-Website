@@ -10,11 +10,7 @@ export default function NicksJourneyPage() {
       <PageHero
         title="Nick's Health Journey"
         description="My personal journey into my body, mind and spirit."
-      >
-        <p className="text-base text-gray-500 max-w-xl mx-auto mt-4 italic">
-          &ldquo;The Spirit controls the mind, the mind controls the body&rdquo;
-        </p>
-      </PageHero>
+      />
 
       <section className="section-padding">
         <div className="max-w-4xl mx-auto container-padding space-y-8 animate-slide-up">
@@ -22,13 +18,13 @@ export default function NicksJourneyPage() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Body</h2>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-64 overflow-hidden rounded-lg border border-gray-200">
                 <Image
                   src="/photos/journey/body/farmersmarket.jpeg"
                   alt="Farmers market produce"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover rounded-lg border border-gray-200"
+                  className="object-cover"
                 />
               </div>
               <div className="relative">
@@ -70,22 +66,22 @@ export default function NicksJourneyPage() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Mind</h2>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-64 overflow-hidden rounded-lg border border-gray-200">
                 <Image
                   src="/photos/journey/mind/mind-photo-2.jpg"
                   alt="Mind journey - plants and gardening"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover rounded-lg border border-gray-200"
+                  className="object-cover"
                 />
               </div>
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-64 overflow-hidden rounded-lg border border-gray-200">
                 <Image
                   src="/photos/journey/mind/mind-photo-1.jpg"
                   alt="Mind journey - reading and learning"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover rounded-lg border border-gray-200"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -110,13 +106,13 @@ export default function NicksJourneyPage() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Spirit</h2>
 
             <div className="mb-8">
-              <div className="relative max-w-md mx-auto w-full h-64">
+              <div className="relative max-w-md mx-auto w-full h-64 overflow-hidden rounded-lg border border-gray-200">
                 <Image
                   src="/photos/journey/spirit/mural-jordan-jesus.jpg"
                   alt="Spirit journey - faith and connection with God"
                   fill
                   sizes="(max-width: 768px) 100vw, 448px"
-                  className="object-cover rounded-lg border border-gray-200"
+                  className="object-cover"
                 />
               </div>
             </div>

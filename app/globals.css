@@ -79,7 +79,11 @@ body {
   }
   
   .nav-link {
-    @apply text-sm font-medium transition-colors duration-75 hover:text-gray-900;
+    @apply text-sm font-medium transition-colors duration-75 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400 rounded-sm;
+  }
+
+  .nav-link-active {
+    @apply text-gray-900 font-semibold;
   }
 }
 

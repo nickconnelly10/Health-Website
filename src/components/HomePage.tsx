@@ -17,14 +17,14 @@ export default function HomePage() {
               </p>
             </div>
             <div className="animate-slide-up">
-              <div className="relative w-full h-[400px] md:h-[480px]">
+              <div className="relative w-full h-[400px] md:h-[480px] overflow-hidden rounded-xl shadow-sm border border-gray-200">
                 <Image
                   src="/photos/home/hero-image.jpg"
                   alt="Health and Wellness"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover rounded-xl shadow-sm border border-gray-200"
+                  className="object-cover"
                 />
               </div>
             </div>

@@ -62,7 +62,6 @@ export default function PhysicalActivityPage() {
               width={70}
               height={24}
               className="h-6 w-auto"
-              unoptimized
             />
             <span className="text-base font-semibold text-orange-500 tracking-wide">NEST RUN CLUB</span>
           </div>

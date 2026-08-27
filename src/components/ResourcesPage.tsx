@@ -142,7 +142,7 @@ export default function ResourcesPage() {
                 type="button"
                 aria-pressed={activeFilter === category.id}
                 onClick={() => setActiveFilter(category.id)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer ${
                   activeFilter === category.id
                     ? 'bg-gray-900 text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'

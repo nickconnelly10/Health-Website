@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import HomePage from '../src/components/HomePage'
+import { pageMetadata } from '../src/lib/metadata'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Health & Wellness' },
+export const metadata: Metadata = pageMetadata({
+  absoluteTitle: 'Health & Wellness',
   description: 'My personal journey and resources for optimal health and longevity.',
-  alternates: { canonical: '/' },
-}
+  path: '/',
+})
 
 export default function Page() {
   return <HomePage />

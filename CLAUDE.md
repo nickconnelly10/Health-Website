@@ -13,7 +13,7 @@ Personal health and wellness website for Nicholas Connelly. The site documents N
 ## Tech Stack
 
 - **Next.js 16** (App Router) with **React 19** and **TypeScript**
-- **Tailwind CSS 4** for styling
+- **Tailwind CSS 4** for styling (Inter via `next/font`, matches nickconnelly.com)
 - **Vercel** for deployment and **Vercel Analytics**
 - Static/SSG-oriented pages; no backend database or auth
 
@@ -24,67 +24,63 @@ npm install      # Install dependencies
 npm run dev      # Dev server at http://localhost:3000
 npm run build    # Production build
 npm run start    # Start production server
-npm run lint     # ESLint
+npm run lint     # ESLint --max-warnings 0
 ```
 
 ## Project Structure
 
 ```
-app/                      # Next.js App Router routes (thin page wrappers)
-  layout.tsx              # Root layout: fonts, banner, footer, analytics
+app/                      # Next.js App Router routes (thin page wrappers + metadata)
+  layout.tsx              # Root layout: fonts, HealthBanner, analytics
   page.tsx                # Home
   nicks-journey/
   healthy-living/
-  nutrition/
-  physical-activity/
-  lifestyle/
+  nutrition/              # 308 → /healthy-living?tab=nutrition
+  physical-activity/      # 308 → /healthy-living?tab=physical-activity
+  lifestyle/              # 308 → /healthy-living?tab=lifestyle
   resources/
   terms/
   privacy/
+  not-found.tsx
+  sitemap.ts
+  robots.ts
 src/
   components/             # Page and layout components
   constants/              # Shared strings (e.g. disclaimer text)
-  utils/                  # Utilities (e.g. scrollToTop)
-public/                   # Static assets (photos, favicon, manifest)
+  lib/
+    metadata.ts           # Per-page Open Graph / Twitter helper
+public/                   # Static assets (photos, videos, favicon, manifest)
 ```
 
 ## Architecture Conventions
 
-- **Routes**: `app/<route>/page.tsx` imports a component from `src/components/`.
-- **Layout**: `HealthBanner` (nav) and `HealthFooter` wrap all pages via `app/layout.tsx`.
-- **Styling**: Tailwind utility classes; custom theme in `tailwind.config.js` and `app/globals.css`.
-- **Client components**: Use `'use client'` only when needed (state, effects, event handlers).
-- **Images**: Next.js `Image` in `public/photos/`; handle missing images with fallbacks where used.
+- **Routes**: `app/<route>/page.tsx` imports a component from `src/components/` and exports metadata.
+- **Layout**: `HealthBanner` only (footer removed). Brand dropdown links to nickconnelly.com, Terms, Privacy.
+- **Healthy Living**: tabbed client page; deep links via `?tab=lifestyle|nutrition|physical-activity`.
+- **Styling**: Tailwind v4 via `@config` in `app/globals.css`; burgundy accent in theme.
+- **Client components**: Use `'use client'` only when needed (banner, tabbed pages, filters).
+- **Images**: Next.js `Image` in `public/photos/`.
 
 ## Content & Legal Guidelines
 
-- **Disclaimer**: All health-related content must respect the personal-disclaimer policy. The canonical text lives in `src/constants/disclaimer.ts` and is rendered via `PersonalDisclaimer`.
+- **Disclaimer**: Canonical text in `src/constants/disclaimer.ts` via `PersonalDisclaimer`.
 - **Tone**: First-person, personal journey—not clinical or prescriptive.
-- **Do not** present site content as medical, nutritional, fitness, or health advice.
-- **Legal pages**: `/terms` and `/privacy` are first-party pages; footer Legal section links to them.
+- **Legal pages**: `/terms` and `/privacy`; linked from HealthBanner brand dropdown.
 
 ## Key Components
 
 | Component | Purpose |
 |-----------|---------|
-| `HealthBanner` | Top navigation |
-| `HealthFooter` | Footer with nav, connect, and legal sections |
+| `HealthBanner` | Top nav + brand dropdown (legal / main site links) |
 | `PersonalDisclaimer` | Amber callout with standard disclaimer |
 | `HomePage` | Landing page with hero and about section |
 | `NicksJourneyPage` | Personal health journey (Body, Mind, Spirit) |
-| `HealthyLivingPage` | Hub for nutrition, activity, lifestyle |
-| `ResourcesPage` | External health resource links |
-
-## What to Avoid
-
-- Adding medical advice, diagnosis, or treatment recommendations
-- Introducing unnecessary dependencies or backend infrastructure
-- Duplicating disclaimer text—import from `src/constants/disclaimer.ts`
-- Breaking the existing visual style (stone/gray palette, rounded cards, Playfair + Inter fonts)
+| `HealthyLivingPage` | Tabbed lifestyle, nutrition, physical activity |
+| `ResourcesPage` | External health resource links with filters |
 
 ## Deployment
 
-Deployed on Vercel. Config in `vercel.json`. Do not commit secrets or `.env` files.
+Deployed on Vercel. Config in `vercel.json` (CSP includes Strava `frame-src`). Node `24.x`. Do not commit secrets or `.env` files.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

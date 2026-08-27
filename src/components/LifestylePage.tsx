@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ContentCard from './ContentCard';
 import PersonalDisclaimer from './PersonalDisclaimer';
 
@@ -9,11 +10,27 @@ const sections = [
   },
   {
     title: 'Nutrition',
-    body: 'Covered on the Nutrition tab — a whole-foods approach with a daily eating window that works for me.',
+    body: (
+      <>
+        Covered on the{' '}
+        <Link href="/healthy-living?tab=nutrition" className="text-burgundy hover:underline">
+          Nutrition
+        </Link>{' '}
+        tab — a whole-foods approach with a daily eating window that works for me.
+      </>
+    ),
   },
   {
     title: 'Movement',
-    body: "Covered on the Physical Activity tab — I follow the CDC's general guidance on weekly activity such as lifting or running and build in daily walks.",
+    body: (
+      <>
+        Covered on the{' '}
+        <Link href="/healthy-living?tab=physical-activity" className="text-burgundy hover:underline">
+          Physical Activity
+        </Link>{' '}
+        tab — I follow the CDC&apos;s general guidance on weekly activity such as lifting or running and build in daily walks.
+      </>
+    ),
   },
   {
     title: 'Connection',

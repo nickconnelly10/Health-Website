@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import HealthBanner from '../src/components/HealthBanner'
-import HealthFooter from '../src/components/HealthFooter'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,11 +20,20 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg' },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Health & Wellness',
-    description: 'My personal journey and resources for optimal health and longevity.',
-    url: 'https://health.nickconnelly.com',
     siteName: 'Health & Wellness',
     type: 'website',
+    images: [
+      {
+        url: '/photos/home/hero-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Health & Wellness',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/photos/home/hero-image.jpg'],
   },
 }
 
@@ -54,7 +62,6 @@ export default function RootLayout({
           <main id="main-content" className="flex-1">
             {children}
           </main>
-          <HealthFooter />
           <Analytics />
         </div>
       </body>
