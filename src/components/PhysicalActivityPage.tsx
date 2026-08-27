@@ -57,11 +57,12 @@ export default function PhysicalActivityPage() {
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-2">
             <Image
-              src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Strava_Logo.svg"
+              src="/images/strava-logo.svg"
               alt="Strava logo"
               width={70}
               height={24}
               className="h-6 w-auto"
+              unoptimized
             />
             <span className="text-base font-semibold text-orange-500 tracking-wide">NEST RUN CLUB</span>
           </div>
@@ -73,6 +74,7 @@ export default function PhysicalActivityPage() {
             width={300}
             className="rounded-lg border border-gray-200 max-w-full"
             title="Nest Run Club on Strava"
+            sandbox="allow-scripts allow-same-origin allow-popups"
           />
           <a
             href="https://www.strava.com/clubs/1284036"

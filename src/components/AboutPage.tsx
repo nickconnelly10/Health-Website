@@ -10,7 +10,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">About Health & Wellness</h2>
           <div className="space-y-6 text-gray-600 leading-relaxed">
             <p>
-              This health platform provides comprehensive access to evidence-based scientific research for nutrition, lifestyle optimization, and preventive care. Access our collection of resources for evidence-based health guidance.
+              This site shares my personal approach to nutrition, movement, and daily habits — along with resources I use for my own health. It is not medical advice or a substitute for care from a licensed clinician.
             </p>
             <PersonalDisclaimer />
           </div>

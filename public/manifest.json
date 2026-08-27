@@ -1,23 +1,16 @@
 {
   "name": "Health & Wellness",
-  "short_name": "Health & Wellness",
-  "description": "Comprehensive health platform featuring lifestyle optimization, nutrition guidance, physical activity, and evidence-based wellness resources for preventive care",
+  "short_name": "Health",
+  "description": "My personal journey and resources for optimal health and longevity.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafaf9",
-  "theme_color": "#059669",
-  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#8e2222",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
-  ],
-  "categories": ["health", "medical", "wellness", "lifestyle"],
-  "lang": "en",
-  "dir": "ltr",
-  "scope": "/",
-  "prefer_related_applications": false
+  ]
 }

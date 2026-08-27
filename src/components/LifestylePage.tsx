@@ -29,7 +29,7 @@ const sections = [
   },
   {
     title: 'Evening Wind-Down',
-    body: 'I stop eating a couple of hours before bed, dim the lights, and put my phone away well before sleep. Journaling, reading, or a few minutes of stretching closes the day out. High quaility sleep is essential for a healthy life.',
+    body: 'I stop eating a couple of hours before bed, dim the lights, and put my phone away well before sleep. Journaling, reading, or a few minutes of stretching closes the day out. High quality sleep is essential for a healthy life.',
   },
 ];
 

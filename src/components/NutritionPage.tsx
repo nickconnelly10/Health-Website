@@ -31,7 +31,7 @@ export default function NutritionPage() {
       <ContentCard>
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">How I Eat</h2>
         <p className="text-gray-600 text-sm leading-relaxed mb-8">
-          Nutrition is foundational to quality of life. I cook in weekly bulk for time convenience, some people call this the &ldquo;paleo diet&rdquo;, which is eating mostly whole and least unproccessed foods. What follows isn&apos;t advice; it&apos;s a snapshot of the principles I personally follow.
+          Nutrition is foundational to quality of life. I cook in weekly bulk for time convenience, some people call this the &ldquo;paleo diet&rdquo;, which is eating mostly whole and least unprocessed foods. What follows isn&apos;t advice; it&apos;s a snapshot of the principles I personally follow.
         </p>
 
         <div className="space-y-6">

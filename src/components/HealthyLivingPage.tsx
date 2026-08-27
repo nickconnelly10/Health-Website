@@ -35,13 +35,17 @@ export default function HealthyLivingPage() {
         description="How I approach lifestyle, nutrition, and movement — personal habits, not prescriptions."
       />
 
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
+      <div className="sticky top-20 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
         <div className="max-w-6xl mx-auto container-padding">
-          <div className="flex gap-2 py-3 overflow-x-auto">
+          <div className="flex gap-2 py-3 overflow-x-auto" role="tablist" aria-label="Healthy living topics">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
+                role="tab"
+                id={`tab-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                aria-controls={`panel-${tab.id}`}
                 onClick={() => setActiveTab(tab.id)}
                 className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                   activeTab === tab.id
@@ -57,7 +61,12 @@ export default function HealthyLivingPage() {
       </div>
 
       <div className="section-padding">
-        <div className="max-w-6xl mx-auto container-padding animate-slide-up">
+        <div
+          id={`panel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTab}`}
+          className="max-w-6xl mx-auto container-padding animate-slide-up"
+        >
           {renderContent()}
         </div>
       </div>

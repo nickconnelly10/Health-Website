@@ -1,7 +1,5 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
-export default function LifestylePage() {
-  redirect('/healthy-living')
+export default function LifestyleRedirect() {
+  permanentRedirect('/healthy-living')
 }
-
-

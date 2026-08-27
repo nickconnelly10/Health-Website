@@ -30,7 +30,7 @@ const categoryStyles: Record<
   lifestyle: {
     badge: 'bg-purple-100 text-purple-800',
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
@@ -38,7 +38,7 @@ const categoryStyles: Record<
   nutrition: {
     badge: 'bg-emerald-100 text-emerald-800',
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
     ),
@@ -46,7 +46,7 @@ const categoryStyles: Record<
   'physical-activity': {
     badge: 'bg-blue-100 text-blue-800',
     icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
@@ -109,7 +109,7 @@ const categoryLabels: Record<Category, string> = {
 
 function ExternalLinkIcon() {
   return (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
     </svg>
   );
@@ -133,13 +133,14 @@ export default function ResourcesPage() {
         description="Trusted sources I reference for lifestyle, nutrition, and physical activity — organized so you can find what you need quickly."
       />
 
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
+      <div className="sticky top-20 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
         <div className="max-w-6xl mx-auto container-padding">
-          <div className="flex gap-2 py-3 overflow-x-auto">
+          <div className="flex gap-2 py-3 overflow-x-auto" role="group" aria-label="Filter resources">
             {categories.map((category) => (
               <button
                 key={category.id}
                 type="button"
+                aria-pressed={activeFilter === category.id}
                 onClick={() => setActiveFilter(category.id)}
                 className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                   activeFilter === category.id

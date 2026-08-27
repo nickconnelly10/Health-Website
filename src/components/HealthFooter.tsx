@@ -8,7 +8,7 @@ export default function HealthFooter() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-lg font-medium text-white mb-4">Health Platform</h3>
+            <h3 className="text-lg font-medium text-white mb-4">Health & Wellness</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               My personal journey and resources for optimal health and longevity.
             </p>
@@ -73,7 +73,7 @@ export default function HealthFooter() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="text-center">
             <p className="text-sm text-gray-400" suppressHydrationWarning>
-              © {new Date().getFullYear()} Nicholas Connelly. All rights reserved.
+              © 2026 Nicholas Connelly. All rights reserved.
             </p>
           </div>
         </div>

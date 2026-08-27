@@ -1,4 +1,19 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  --color-burgundy: #8e2222;
+  --color-burgundy-50: #fdf2f2;
+  --color-burgundy-100: #fce7e7;
+  --color-burgundy-200: #f9d1d1;
+  --color-burgundy-300: #f4abab;
+  --color-burgundy-400: #ed7a7a;
+  --color-burgundy-500: #e14d4d;
+  --color-burgundy-600: #cc2e2e;
+  --color-burgundy-700: #ab2525;
+  --color-burgundy-800: #8e2222;
+  --color-burgundy-900: #762121;
+}
 
 :root {
   --background: #ffffff;
@@ -11,7 +26,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   line-height: 1.6;
 }
 
@@ -100,3 +115,9 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
+  }
+}
