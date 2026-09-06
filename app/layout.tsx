@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import HealthBanner from '../src/components/HealthBanner'
+import DeferredAnalytics from '../src/components/DeferredAnalytics'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -62,7 +62,7 @@ export default function RootLayout({
           <main id="main-content" className="flex-1">
             {children}
           </main>
-          <Analytics />
+          <DeferredAnalytics />
         </div>
       </body>
     </html>

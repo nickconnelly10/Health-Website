@@ -1,11 +1,13 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
-import LifestylePage from './LifestylePage';
-import NutritionPage from './NutritionPage';
-import PhysicalActivityPage from './PhysicalActivityPage';
 import PageHero from './PageHero';
+
+const LifestylePage = dynamic(() => import('./LifestylePage'));
+const NutritionPage = dynamic(() => import('./NutritionPage'));
+const PhysicalActivityPage = dynamic(() => import('./PhysicalActivityPage'));
 
 type TabId = 'lifestyle' | 'nutrition' | 'physical-activity';
 
